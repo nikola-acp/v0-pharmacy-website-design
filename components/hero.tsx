@@ -3,10 +3,10 @@ import { Button } from "@/components/ui/button"
 import { ArrowRight, ShieldCheck, Zap, Truck, Headphones } from "lucide-react"
 
 const highlights = [
-  { icon: ShieldCheck, text: "Best price guaranteed on every order" },
-  { icon: Zap, text: "Fast delivery across Ontario" },
-  { icon: Truck, text: "Wholesale & custom orders available" },
-  { icon: Headphones, text: "Free technical support included" },
+  { icon: ShieldCheck, text: "Wholesale & Custom Orders" },
+  { icon: Zap, text: "Highest Quality Products" },
+  { icon: Truck, text: "Easy-Remove Labels" },
+  { icon: Headphones, text: "Fast Delivery Ontario-Wide" },
 ]
 
 const stats = [

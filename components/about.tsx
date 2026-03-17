@@ -1,27 +1,27 @@
 import { Button } from "@/components/ui/button"
 import Link from "next/link"
-import { MapPin, Building2, ShieldCheck, Star, DollarSign, Paintbrush, Truck, Headphones } from "lucide-react"
+import { MapPin, Building2, ShieldCheck, Star, DollarSign, Paintbrush, Truck } from "lucide-react"
 
 const whyReasons = [
   {
     icon: DollarSign,
-    title: "Best Price Guaranteed",
-    description: "Direct manufacturer pricing — no middleman markup.",
+    title: "Wholesale & Custom Orders",
+    description: "Volume pricing for high-quantity orders, plus fully custom-branded labels and receipts built to your specifications.",
+  },
+  {
+    icon: ShieldCheck,
+    title: "Highest Quality Products",
+    description: "High-sensitivity thermal paper and high-adhesion labels — carefully sourced for reliability and long-lasting print quality.",
   },
   {
     icon: Paintbrush,
-    title: "Custom Branding",
-    description: "Labels and receipts with your pharmacy's logo and info.",
+    title: "Easy-Remove Labels",
+    description: "Our thermal labels peel cleanly with no residue — designed specifically for prescription bottles and pharmacy packaging.",
   },
   {
     icon: Truck,
-    title: "Fast Ontario Delivery",
-    description: "Most orders ship within 24 hours, arrive in 48 hours.",
-  },
-  {
-    icon: Headphones,
-    title: "Free Tech Support",
-    description: "Remote setup, troubleshooting, and ongoing help included.",
+    title: "Fast Delivery Ontario-Wide",
+    description: "Most orders ship within 24 hours and arrive in 48 hours. We serve independent pharmacies and multi-location chains across Ontario.",
   },
 ]
 
@@ -53,7 +53,7 @@ export function About() {
     <section id="about" className="py-28 bg-white">
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
 
-        {/* Why Pharmabest Supplies */}
+        {/* WHY PHARMABEST SUPPLIES — top 4 cards */}
         <div className="mb-24">
           <div className="max-w-2xl mb-12">
             <div className="flex items-center gap-3 mb-5">
@@ -68,23 +68,18 @@ export function About() {
             </h2>
           </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
             {whyReasons.map((reason, i) => (
               <div
                 key={reason.title}
                 className="group flex flex-col gap-4 rounded-2xl border-2 border-slate-100 bg-white p-6 hover:border-blue-200 hover:shadow-xl hover:shadow-blue-50/80 transition-all duration-300"
               >
-                <div className={`flex h-12 w-12 items-center justify-center rounded-xl bg-gradient-to-br ${
-                  i === 0 ? "from-blue-500 to-blue-700" :
-                  i === 1 ? "from-sky-400 to-blue-600" :
-                  i === 2 ? "from-blue-600 to-indigo-700" :
-                  "from-indigo-500 to-blue-600"
-                } shadow-lg ${
-                  i === 0 ? "shadow-blue-200" :
-                  i === 1 ? "shadow-sky-200" :
-                  i === 2 ? "shadow-indigo-200" :
-                  "shadow-blue-200"
-                } group-hover:scale-105 transition-transform duration-200`}>
+                <div className={`flex h-12 w-12 items-center justify-center rounded-xl bg-gradient-to-br shadow-lg group-hover:scale-105 transition-transform duration-200 ${
+                  i === 0 ? "from-blue-500 to-blue-700 shadow-blue-200" :
+                  i === 1 ? "from-sky-400 to-blue-600 shadow-sky-200" :
+                  i === 2 ? "from-blue-600 to-indigo-700 shadow-indigo-200" :
+                  "from-indigo-500 to-blue-600 shadow-blue-200"
+                }`}>
                   <reason.icon className="h-5 w-5 text-white" />
                 </div>
                 <div>
@@ -96,7 +91,7 @@ export function About() {
           </div>
         </div>
 
-        {/* About Us */}
+        {/* About Us — split layout */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
 
           {/* Left: text */}
@@ -118,7 +113,6 @@ export function About() {
               We carry custom and plain thermal labels and receipts for IDA, Guardian, Pharmasave, and independent pharmacies — with the best prices and fastest delivery in the province.
             </p>
 
-            {/* Inline stats */}
             <div className="mt-8 flex gap-8">
               <div>
                 <p className="text-3xl font-extrabold text-slate-900">500+</p>
@@ -145,17 +139,12 @@ export function About() {
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
             {pillars.map((pillar, i) => (
               <div key={pillar.title} className="group flex flex-col gap-4 rounded-2xl border-2 border-slate-100 bg-white p-6 hover:border-blue-200 hover:shadow-xl hover:shadow-blue-50/80 transition-all duration-300">
-                <div className={`flex h-11 w-11 items-center justify-center rounded-xl bg-gradient-to-br ${
-                  i === 0 ? "from-blue-500 to-blue-700" :
-                  i === 1 ? "from-sky-400 to-blue-600" :
-                  i === 2 ? "from-blue-600 to-indigo-700" :
-                  "from-indigo-500 to-blue-600"
-                } shadow-md ${
-                  i === 0 ? "shadow-blue-200" :
-                  i === 1 ? "shadow-sky-200" :
-                  i === 2 ? "shadow-indigo-200" :
-                  "shadow-blue-200"
-                } group-hover:scale-105 transition-transform duration-200`}>
+                <div className={`flex h-11 w-11 items-center justify-center rounded-xl bg-gradient-to-br shadow-md group-hover:scale-105 transition-transform duration-200 ${
+                  i === 0 ? "from-blue-500 to-blue-700 shadow-blue-200" :
+                  i === 1 ? "from-sky-400 to-blue-600 shadow-sky-200" :
+                  i === 2 ? "from-blue-600 to-indigo-700 shadow-indigo-200" :
+                  "from-indigo-500 to-blue-600 shadow-blue-200"
+                }`}>
                   <pillar.icon className="h-5 w-5 text-white" />
                 </div>
                 <div>
@@ -166,6 +155,7 @@ export function About() {
             ))}
           </div>
         </div>
+
       </div>
     </section>
   )
