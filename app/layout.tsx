@@ -1,21 +1,22 @@
 import type { Metadata } from 'next'
-import { Inter, Geist_Mono } from 'next/font/google'
+import { Plus_Jakarta_Sans, Geist_Mono } from 'next/font/google'
 import './globals.css'
 
-const inter = Inter({
+const plusJakartaSans = Plus_Jakarta_Sans({
   subsets: ['latin'],
-  variable: '--font-inter',
+  variable: '--font-sans',
+  weight: ['400', '500', '600', '700', '800'],
 })
 
 const geistMono = Geist_Mono({
   subsets: ['latin'],
-  variable: '--font-geist-mono',
+  variable: '--font-mono',
 })
 
 export const metadata: Metadata = {
-  title: 'Pharmabest Supplies | Pharmacy Essentials for Ontario Pharmacies',
-  description: 'Pharmabest Supplies provides high-quality labels, receipts, thermal printers, and accessories to pharmacies across Ontario. Competitive pricing, fast shipping, and free technical support.',
-  keywords: ['pharmacy supplies', 'thermal printers', 'pharmacy labels', 'receipt rolls', 'Toronto', 'Ontario', 'custom labels'],
+  title: 'Pharmabest Supplies | Pharmacy Thermal Labels, Receipts & Printers — Ontario',
+  description: 'Pharmabest Supplies provides high-quality thermal labels, receipt rolls, thermal printers, and accessories to pharmacies across Ontario. Best price guaranteed, fast shipping, free tech support.',
+  keywords: ['pharmacy supplies', 'thermal labels', 'thermal printers', 'thermal receipt rolls', 'custom pharmacy labels', 'IDA labels', 'Pharmasave labels', 'Toronto', 'Ontario'],
 }
 
 export default function RootLayout({
@@ -25,7 +26,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${inter.variable} ${geistMono.variable} font-sans antialiased`}>
+      <body className={`${plusJakartaSans.variable} ${geistMono.variable} font-sans antialiased`}>
         {children}
       </body>
     </html>

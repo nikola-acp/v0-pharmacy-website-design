@@ -1,70 +1,85 @@
-import { Tag, Receipt, Printer, Star } from "lucide-react"
-import { Button } from "@/components/ui/button"
+import { Tag, Receipt, Printer, Sparkles } from "lucide-react"
 import Link from "next/link"
 import { Badge } from "@/components/ui/badge"
 
 const products = [
   {
     title: "Plain Thermal Labels",
-    description: "Durable, high-adhesion thermal label rolls for prescription bottles, packages, and general pharmacy use. Available in multiple sizes.",
+    description: "High-adhesion, durable thermal label rolls for prescription bottles, packages, and general pharmacy use. Available in multiple sizes.",
     icon: Tag,
     tag: null,
-    gradient: "from-blue-600 to-blue-700",
+    gradient: "from-blue-500 to-blue-700",
     shadow: "shadow-blue-200",
+    bg: "bg-blue-50",
   },
   {
     title: "Plain Thermal Receipts",
-    description: "Clean thermal receipt rolls that produce clear, long-lasting transaction records. Compatible with all major POS systems.",
+    description: "Crystal-clear thermal receipt rolls that produce long-lasting transaction records. Compatible with all major POS systems.",
     icon: Receipt,
     tag: null,
-    gradient: "from-sky-500 to-blue-600",
+    gradient: "from-sky-400 to-blue-600",
     shadow: "shadow-sky-200",
+    bg: "bg-sky-50",
   },
   {
     title: "Custom Thermal Labels",
-    description: "Thermal labels printed with your pharmacy's logo, name, address, and phone number. Reinforce your brand with every prescription.",
+    description: "Branded thermal labels printed with your pharmacy's logo, name, address, and phone number. Every prescription reflects your brand.",
     icon: Tag,
-    tag: "Popular",
-    gradient: "from-blue-700 to-indigo-700",
-    shadow: "shadow-blue-200",
+    tag: "Most Popular",
+    gradient: "from-blue-600 to-indigo-700",
+    shadow: "shadow-indigo-200",
+    bg: "bg-indigo-50",
   },
   {
     title: "Custom Thermal Receipts",
-    description: "Branded thermal receipt rolls that double as a marketing touchpoint — your logo and contact details on every transaction.",
+    description: "Branded thermal receipt rolls featuring your logo and contact info on every transaction — a marketing touchpoint at no extra effort.",
     icon: Receipt,
-    tag: "Popular",
-    gradient: "from-indigo-600 to-blue-700",
-    shadow: "shadow-indigo-200",
+    tag: "Most Popular",
+    gradient: "from-indigo-500 to-blue-700",
+    shadow: "shadow-blue-200",
+    bg: "bg-blue-50",
   },
   {
     title: "Thermal Printers",
-    description: "Fast, quiet, and reliable thermal printers built for high-volume pharmacy environments. Includes free remote setup support.",
+    description: "Fast, quiet, reliable thermal printers built for high-volume pharmacy environments. Includes free remote setup and ongoing support.",
     icon: Printer,
-    tag: "Includes support",
+    tag: "Includes free setup",
     gradient: "from-blue-500 to-sky-500",
     shadow: "shadow-sky-200",
+    bg: "bg-sky-50",
+  },
+  {
+    title: "Request Custom Order",
+    description: "Need a specific size, format, or branded design not listed above? We specialize in custom solutions for any pharmacy requirement.",
+    icon: Sparkles,
+    tag: "We can help",
+    gradient: "from-sky-500 to-indigo-600",
+    shadow: "shadow-indigo-200",
+    bg: "bg-gradient-to-br from-blue-50 to-indigo-50",
+    cta: "Talk to us",
   },
 ]
 
 export function Products() {
   return (
-    <section id="products" className="py-24 bg-gradient-to-b from-slate-50 to-blue-50/40">
+    <section id="products" className="py-28 bg-gradient-to-b from-slate-50 via-white to-blue-50/30">
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
 
         {/* Header */}
-        <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-6 mb-14">
-          <div>
-            <div className="flex items-center gap-3 mb-4">
-              <span className="inline-block h-1 w-8 rounded-full bg-gradient-to-r from-blue-600 to-sky-400" />
-              <p className="text-sm font-semibold uppercase tracking-widest text-accent">Our Products</p>
-            </div>
-            <h2 className="text-3xl font-extrabold tracking-tight text-foreground sm:text-4xl text-balance leading-tight">
-              A complete lineup for your pharmacy
-            </h2>
+        <div className="max-w-2xl mb-16">
+          <div className="flex items-center gap-3 mb-5">
+            <span className="inline-block h-0.5 w-6 rounded-full bg-gradient-to-r from-blue-600 to-sky-400" />
+            <p className="text-xs font-bold uppercase tracking-[0.2em] text-blue-600">Our Products</p>
           </div>
-          <Button asChild variant="outline" className="shrink-0 rounded-full px-6 border-accent/40 text-accent hover:bg-accent hover:text-accent-foreground self-start sm:self-auto transition-colors">
-            <Link href="#contact">Request Custom Order</Link>
-          </Button>
+          <h2 className="text-4xl font-extrabold tracking-tight text-slate-900 sm:text-5xl text-balance leading-[1.06]">
+            A complete lineup{" "}
+            <span className="bg-gradient-to-r from-blue-600 to-sky-500 bg-clip-text text-transparent">
+              for your pharmacy
+            </span>
+          </h2>
+          <p className="mt-4 text-base text-slate-500 font-medium leading-relaxed">
+            IDA, Guardian, and Pharmasave thermal labels and thermal receipts available. Best price guaranteed.
+          </p>
         </div>
 
         {/* Product grid */}
@@ -72,33 +87,32 @@ export function Products() {
           {products.map((product) => (
             <div
               key={product.title}
-              className="group relative rounded-2xl bg-white border border-border p-7 hover:border-blue-200 hover:shadow-xl hover:shadow-blue-50 transition-all duration-300 flex flex-col"
+              className="group relative rounded-2xl bg-white border border-slate-100 p-7 hover:border-blue-100 hover:shadow-2xl hover:shadow-blue-100/50 transition-all duration-300 flex flex-col"
             >
               {product.tag && (
                 <Badge
                   variant="secondary"
-                  className="absolute top-5 right-5 bg-blue-50 text-accent border-blue-100 text-xs font-semibold"
+                  className="absolute top-5 right-5 bg-blue-50 text-blue-700 border-blue-100 text-[11px] font-bold tracking-wide px-2.5 py-0.5"
                 >
-                  <Star className="h-3 w-3 mr-1 fill-current" />
                   {product.tag}
                 </Badge>
               )}
 
-              <div className={`flex h-12 w-12 items-center justify-center rounded-xl bg-gradient-to-br ${product.gradient} mb-5 shadow-md ${product.shadow}`}>
+              <div className={`flex h-12 w-12 items-center justify-center rounded-2xl bg-gradient-to-br ${product.gradient} mb-5 shadow-lg ${product.shadow} group-hover:scale-105 transition-transform duration-200`}>
                 <product.icon className="h-5 w-5 text-white" />
               </div>
 
-              <h3 className="text-base font-bold text-foreground mb-2">{product.title}</h3>
-              <p className="text-sm text-muted-foreground leading-relaxed flex-1">{product.description}</p>
+              <h3 className="text-[15px] font-extrabold text-slate-900 mb-2 tracking-tight">{product.title}</h3>
+              <p className="text-sm text-slate-500 leading-relaxed flex-1 font-medium">{product.description}</p>
 
-              <div className="mt-5 pt-5 border-t border-border">
+              <div className="mt-5 pt-4 border-t border-slate-100">
                 <Link
                   href="#contact"
-                  className="text-sm font-semibold text-accent hover:text-primary transition-colors flex items-center gap-1 group-hover:gap-2"
+                  className="inline-flex items-center gap-1.5 text-sm font-bold text-blue-600 hover:text-blue-800 transition-colors group/link"
                 >
-                  Enquire now
-                  <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true" className="transition-transform group-hover:translate-x-0.5">
-                    <path d="M2.5 7h9m0 0L8 3.5M11.5 7L8 10.5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+                  {product.cta ?? "Enquire now"}
+                  <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true" className="transition-transform group-hover/link:translate-x-0.5">
+                    <path d="M2.5 7h9m0 0L8 3.5M11.5 7L8 10.5" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"/>
                   </svg>
                 </Link>
               </div>
