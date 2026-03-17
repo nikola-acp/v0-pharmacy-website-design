@@ -6,9 +6,9 @@ import { Menu, X, Phone } from "lucide-react"
 import { Button } from "@/components/ui/button"
 
 const navLinks = [
-  { label: "Products", href: "#products" },
-  { label: "About", href: "#about" },
-  { label: "Contact", href: "#contact" },
+  { label: "Products", href: "/products" },
+  { label: "About", href: "/#about" },
+  { label: "Contact", href: "/#contact" },
 ]
 
 export function Header() {

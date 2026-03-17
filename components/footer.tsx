@@ -3,14 +3,14 @@ import { Phone, Mail } from "lucide-react"
 
 const footerNav = {
   company: [
-    { label: "Products", href: "#products" },
-    { label: "About", href: "#about" },
-    { label: "Contact", href: "#contact" },
+    { label: "Products", href: "/products" },
+    { label: "About", href: "/#about" },
+    { label: "Contact", href: "/#contact" },
   ],
   support: [
-    { label: "Technical Support", href: "#contact" },
-    { label: "Custom Orders", href: "#contact" },
-    { label: "Shipping Info", href: "#contact" },
+    { label: "Technical Support", href: "/#contact" },
+    { label: "Custom Orders", href: "/products" },
+    { label: "Shipping Info", href: "/#contact" },
   ],
 }
 

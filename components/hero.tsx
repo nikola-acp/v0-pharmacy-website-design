@@ -1,11 +1,12 @@
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
-import { ArrowRight, ShieldCheck, Zap, Tag } from "lucide-react"
+import { ArrowRight, ShieldCheck, Zap, Truck, Headphones } from "lucide-react"
 
 const highlights = [
-  { icon: ShieldCheck, text: "Best price guaranteed — every order" },
-  { icon: Zap, text: "48-hour delivery across Ontario" },
-  { icon: Tag, text: "IDA, Guardian & Pharmasave labels available" },
+  { icon: ShieldCheck, text: "Best price guaranteed on every order" },
+  { icon: Zap, text: "Fast delivery across Ontario" },
+  { icon: Truck, text: "Wholesale & custom orders available" },
+  { icon: Headphones, text: "Free technical support included" },
 ]
 
 const stats = [
@@ -36,7 +37,7 @@ export function Hero() {
       <div className="absolute bottom-10 left-1/3 h-56 w-56 rounded-full bg-sky-400/15 blur-3xl pointer-events-none" />
 
       {/* Bottom fade */}
-      <div className="absolute bottom-0 left-0 right-0 h-40 bg-gradient-to-t from-background to-transparent" />
+      <div className="absolute bottom-0 left-0 right-0 h-40 bg-gradient-to-t from-slate-50 to-transparent" />
 
       <div className="relative mx-auto max-w-7xl px-6 lg:px-8">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center py-24 lg:py-32">
@@ -49,17 +50,17 @@ export function Hero() {
             </div>
 
             <h1 className="text-5xl font-extrabold tracking-tight text-white sm:text-6xl lg:text-[4.25rem] text-balance leading-[1.05]">
-              Pharmacy Thermal{" "}
+              Your Partner for{" "}
               <span className="bg-gradient-to-r from-sky-300 to-blue-200 bg-clip-text text-transparent">
-                Labels &amp; Receipts
+                Pharmacy Supplies
               </span>
             </h1>
 
             <p className="mt-6 text-lg leading-relaxed text-white/65 max-w-lg font-medium">
-              Premium quality. Lowest prices. Fast Ontario-wide delivery. Plain and custom-branded thermal supplies for every pharmacy.
+              Premium quality thermal labels, receipt rolls, printers, and accessories. Lowest prices, fast Ontario-wide delivery, and dedicated support for every pharmacy.
             </p>
 
-            <ul className="mt-8 space-y-3.5">
+            <ul className="mt-8 grid grid-cols-1 sm:grid-cols-2 gap-3">
               {highlights.map((item) => (
                 <li key={item.text} className="flex items-center gap-3 text-sm text-white/75 font-medium">
                   <div className="flex h-7 w-7 shrink-0 items-center justify-center rounded-lg bg-white/10 border border-white/15">
@@ -72,8 +73,8 @@ export function Hero() {
 
             <div className="mt-10 flex flex-col sm:flex-row gap-3">
               <Button asChild size="lg" className="rounded-full px-8 h-12 text-sm font-bold bg-white text-blue-900 hover:bg-blue-50 shadow-xl shadow-blue-900/30 border-0 transition-all">
-                <Link href="#products">
-                  Shop Products
+                <Link href="/products">
+                  View Products
                   <ArrowRight className="ml-2 h-4 w-4" />
                 </Link>
               </Button>

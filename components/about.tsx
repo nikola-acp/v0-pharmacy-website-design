@@ -1,35 +1,50 @@
 import { Button } from "@/components/ui/button"
 import Link from "next/link"
-import { MapPin, Building2, ShieldCheck, Star } from "lucide-react"
+import { MapPin, Building2, ShieldCheck, Star, DollarSign, Paintbrush, Truck, Headphones } from "lucide-react"
+
+const whyReasons = [
+  {
+    icon: DollarSign,
+    title: "Best Price Guaranteed",
+    description: "Direct manufacturer pricing — no middleman markup.",
+  },
+  {
+    icon: Paintbrush,
+    title: "Custom Branding",
+    description: "Labels and receipts with your pharmacy's logo and info.",
+  },
+  {
+    icon: Truck,
+    title: "Fast Ontario Delivery",
+    description: "Most orders ship within 24 hours, arrive in 48 hours.",
+  },
+  {
+    icon: Headphones,
+    title: "Free Tech Support",
+    description: "Remote setup, troubleshooting, and ongoing help included.",
+  },
+]
 
 const pillars = [
   {
     icon: Building2,
     title: "Toronto-Based",
-    description: "Locally operated, serving pharmacies all across Ontario with speed and personal care.",
-    gradient: "from-blue-500 to-blue-700",
-    shadow: "shadow-blue-200",
+    description: "Locally operated, serving pharmacies across Ontario with speed and personal care.",
   },
   {
     icon: ShieldCheck,
     title: "Quality Guaranteed",
-    description: "Every product is carefully sourced to meet the demands of a busy pharmacy environment. Easy-peel, no residue.",
-    gradient: "from-sky-400 to-blue-600",
-    shadow: "shadow-sky-200",
+    description: "Every product is carefully sourced. Easy-peel labels, no residue.",
   },
   {
     icon: MapPin,
     title: "Ontario-Wide Reach",
-    description: "From small independent pharmacies to multi-location chains — IDA, Guardian, Pharmasave and more.",
-    gradient: "from-blue-600 to-indigo-700",
-    shadow: "shadow-indigo-200",
+    description: "From independent pharmacies to multi-location chains.",
   },
   {
     icon: Star,
     title: "Wholesale Pricing",
-    description: "Volume discounts available for larger orders. Call us to discuss your pharmacy's specific needs.",
-    gradient: "from-indigo-500 to-blue-600",
-    shadow: "shadow-blue-200",
+    description: "Volume discounts available. Call us to discuss your needs.",
   },
 ]
 
@@ -37,6 +52,51 @@ export function About() {
   return (
     <section id="about" className="py-28 bg-white">
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
+
+        {/* Why Pharmabest Supplies */}
+        <div className="mb-24">
+          <div className="max-w-2xl mb-12">
+            <div className="flex items-center gap-3 mb-5">
+              <span className="inline-block h-0.5 w-6 rounded-full bg-gradient-to-r from-blue-600 to-sky-400" />
+              <p className="text-xs font-bold uppercase tracking-[0.2em] text-blue-600">Why Pharmabest Supplies</p>
+            </div>
+            <h2 className="text-4xl font-extrabold tracking-tight text-slate-900 sm:text-5xl text-balance leading-[1.06]">
+              Everything your pharmacy needs,{" "}
+              <span className="bg-gradient-to-r from-blue-600 to-sky-500 bg-clip-text text-transparent">
+                all in one place
+              </span>
+            </h2>
+          </div>
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+            {whyReasons.map((reason, i) => (
+              <div
+                key={reason.title}
+                className="group flex flex-col gap-4 rounded-2xl border-2 border-slate-100 bg-white p-6 hover:border-blue-200 hover:shadow-xl hover:shadow-blue-50/80 transition-all duration-300"
+              >
+                <div className={`flex h-12 w-12 items-center justify-center rounded-xl bg-gradient-to-br ${
+                  i === 0 ? "from-blue-500 to-blue-700" :
+                  i === 1 ? "from-sky-400 to-blue-600" :
+                  i === 2 ? "from-blue-600 to-indigo-700" :
+                  "from-indigo-500 to-blue-600"
+                } shadow-lg ${
+                  i === 0 ? "shadow-blue-200" :
+                  i === 1 ? "shadow-sky-200" :
+                  i === 2 ? "shadow-indigo-200" :
+                  "shadow-blue-200"
+                } group-hover:scale-105 transition-transform duration-200`}>
+                  <reason.icon className="h-5 w-5 text-white" />
+                </div>
+                <div>
+                  <h3 className="text-sm font-extrabold text-slate-900 mb-1.5 tracking-tight">{reason.title}</h3>
+                  <p className="text-sm text-slate-500 font-medium leading-relaxed">{reason.description}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        {/* About Us */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
 
           {/* Left: text */}
@@ -83,9 +143,19 @@ export function About() {
 
           {/* Right: pillars */}
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-            {pillars.map((pillar) => (
-              <div key={pillar.title} className="group flex flex-col gap-4 rounded-2xl border border-slate-100 bg-white p-6 hover:border-blue-100 hover:shadow-xl hover:shadow-blue-50/80 transition-all duration-300">
-                <div className={`flex h-11 w-11 items-center justify-center rounded-xl bg-gradient-to-br ${pillar.gradient} shadow-md ${pillar.shadow} group-hover:scale-105 transition-transform duration-200`}>
+            {pillars.map((pillar, i) => (
+              <div key={pillar.title} className="group flex flex-col gap-4 rounded-2xl border-2 border-slate-100 bg-white p-6 hover:border-blue-200 hover:shadow-xl hover:shadow-blue-50/80 transition-all duration-300">
+                <div className={`flex h-11 w-11 items-center justify-center rounded-xl bg-gradient-to-br ${
+                  i === 0 ? "from-blue-500 to-blue-700" :
+                  i === 1 ? "from-sky-400 to-blue-600" :
+                  i === 2 ? "from-blue-600 to-indigo-700" :
+                  "from-indigo-500 to-blue-600"
+                } shadow-md ${
+                  i === 0 ? "shadow-blue-200" :
+                  i === 1 ? "shadow-sky-200" :
+                  i === 2 ? "shadow-indigo-200" :
+                  "shadow-blue-200"
+                } group-hover:scale-105 transition-transform duration-200`}>
                   <pillar.icon className="h-5 w-5 text-white" />
                 </div>
                 <div>
