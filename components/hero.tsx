@@ -1,47 +1,84 @@
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
-import { ArrowRight } from "lucide-react"
+import { ArrowRight, CheckCircle2 } from "lucide-react"
+
+const highlights = [
+  "Serving Ontario pharmacies since day one",
+  "Free remote printer setup & support",
+  "Custom branded labels & receipts",
+]
 
 export function Hero() {
   return (
-    <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
-      {/* Background with subtle pattern */}
-      <div className="absolute inset-0 bg-background" />
-      <div 
-        className="absolute inset-0 opacity-30"
-        style={{
-          backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23000000' fill-opacity='0.03'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")`,
-        }}
-      />
-      
-      <div className="relative z-10 mx-auto max-w-5xl px-6 pt-32 pb-24 text-center lg:px-8">
-        <div className="inline-flex items-center gap-2 rounded-full bg-card border border-border px-4 py-1.5 text-sm text-muted-foreground mb-8">
-          <span className="h-2 w-2 rounded-full bg-accent animate-pulse" />
-          Serving pharmacies across Ontario
-        </div>
-        
-        <h1 className="text-4xl font-semibold tracking-tight text-foreground sm:text-5xl md:text-6xl lg:text-7xl text-balance">
-          Your Trusted Partner for Pharmacy Supplies
-        </h1>
-        
-        <p className="mt-6 text-lg leading-relaxed text-muted-foreground max-w-2xl mx-auto text-pretty">
-          High-quality labels, receipts, thermal printers, and accessories designed to streamline your pharmacy operations. Competitive pricing with exceptional support.
-        </p>
-        
-        <div className="mt-10 flex flex-col sm:flex-row items-center justify-center gap-4">
-          <Button asChild size="lg" className="rounded-full px-8 text-base h-12">
-            <Link href="#products">
-              Explore Products
-              <ArrowRight className="ml-2 h-4 w-4" />
-            </Link>
-          </Button>
-          <Button asChild variant="outline" size="lg" className="rounded-full px-8 text-base h-12">
-            <Link href="#contact">
-              Contact Us
-            </Link>
-          </Button>
+    <section className="relative pt-[68px] overflow-hidden bg-white">
+      {/* Top accent band */}
+      <div className="h-1 w-full bg-primary" />
+
+      <div className="mx-auto max-w-7xl px-6 lg:px-8">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center py-20 lg:py-28">
+
+          {/* Left: text */}
+          <div>
+            <div className="inline-flex items-center gap-2 rounded-full bg-secondary border border-border px-4 py-1.5 text-sm font-medium text-accent mb-8">
+              <span className="h-2 w-2 rounded-full bg-accent" />
+              Trusted by pharmacies across Ontario
+            </div>
+
+            <h1 className="text-4xl font-bold tracking-tight text-foreground sm:text-5xl lg:text-6xl text-balance leading-[1.1]">
+              Premium Supplies for{" "}
+              <span className="text-accent">Modern Pharmacies</span>
+            </h1>
+
+            <p className="mt-6 text-lg leading-relaxed text-muted-foreground max-w-lg">
+              Labels, receipts, thermal printers and accessories — competitively priced, quickly shipped, and backed by hands-on technical support.
+            </p>
+
+            <ul className="mt-8 space-y-3">
+              {highlights.map((item) => (
+                <li key={item} className="flex items-center gap-3 text-sm text-foreground">
+                  <CheckCircle2 className="h-4 w-4 text-accent shrink-0" />
+                  {item}
+                </li>
+              ))}
+            </ul>
+
+            <div className="mt-10 flex flex-col sm:flex-row gap-3">
+              <Button asChild size="lg" className="rounded-full px-8 h-12 text-base bg-primary text-primary-foreground hover:bg-primary/90">
+                <Link href="#products">
+                  View Products
+                  <ArrowRight className="ml-2 h-4 w-4" />
+                </Link>
+              </Button>
+              <Button asChild variant="outline" size="lg" className="rounded-full px-8 h-12 text-base border-border hover:bg-secondary">
+                <Link href="#contact">Contact Us</Link>
+              </Button>
+            </div>
+          </div>
+
+          {/* Right: stat cards */}
+          <div className="grid grid-cols-2 gap-4">
+            <div className="rounded-2xl bg-primary p-6 text-primary-foreground">
+              <p className="text-4xl font-bold">500+</p>
+              <p className="mt-1 text-sm text-primary-foreground/80">Pharmacies served</p>
+            </div>
+            <div className="rounded-2xl bg-secondary border border-border p-6">
+              <p className="text-4xl font-bold text-foreground">100%</p>
+              <p className="mt-1 text-sm text-muted-foreground">Free tech support</p>
+            </div>
+            <div className="rounded-2xl bg-secondary border border-border p-6">
+              <p className="text-4xl font-bold text-foreground">48h</p>
+              <p className="mt-1 text-sm text-muted-foreground">Avg. delivery time</p>
+            </div>
+            <div className="rounded-2xl bg-accent p-6 text-accent-foreground">
+              <p className="text-4xl font-bold">Custom</p>
+              <p className="mt-1 text-sm text-accent-foreground/80">Labels & receipts</p>
+            </div>
+          </div>
         </div>
       </div>
+
+      {/* Divider */}
+      <div className="border-t border-border" />
     </section>
   )
 }

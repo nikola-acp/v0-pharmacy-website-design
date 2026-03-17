@@ -1,101 +1,99 @@
-import { Tag, Receipt, Printer, Plus } from "lucide-react"
+import { Tag, Receipt, Printer, Star } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import Link from "next/link"
+import { Badge } from "@/components/ui/badge"
 
 const products = [
   {
     title: "Plain Labels",
-    description: "Durable and versatile labels perfect for labeling prescription bottles, packages, and various pharmacy-related items. Adheres securely to surfaces.",
+    description: "Durable, high-adhesion label rolls for prescription bottles, packages, and general pharmacy use. Available in multiple sizes.",
     icon: Tag,
+    tag: null,
   },
   {
     title: "Plain Receipts",
-    description: "Clean, simple receipt rolls providing easy-to-read transaction records. Sturdy material ensures receipts hold up over time.",
+    description: "Clean thermal receipt rolls that produce clear, long-lasting transaction records. Compatible with all major POS systems.",
     icon: Receipt,
+    tag: null,
   },
   {
     title: "Customized Labels",
-    description: "Elevate your pharmacy's brand with custom-designed labels featuring your logo, name, and contact details for professional impressions.",
+    description: "Labels printed with your pharmacy's logo, name, address, and phone number. Reinforce your brand with every prescription.",
     icon: Tag,
-    featured: true,
+    tag: "Popular",
   },
   {
     title: "Customized Receipts",
-    description: "Branded receipts with your pharmacy's logo and contact information. A marketing tool that reinforces your brand with every transaction.",
+    description: "Branded receipt rolls that double as a marketing touchpoint — your logo and contact details on every transaction.",
     icon: Receipt,
-    featured: true,
+    tag: "Popular",
   },
   {
     title: "Thermal Printers",
-    description: "Fast, efficient, and reliable thermal printers designed for high-volume printing. Delivers crisp printouts every time.",
+    description: "Fast, quiet, and reliable thermal printers built for high-volume pharmacy environments. Includes free remote setup support.",
     icon: Printer,
+    tag: "Includes support",
   },
 ]
 
 export function Products() {
   return (
-    <section id="products" className="py-24 bg-background">
+    <section id="products" className="py-20 bg-secondary/50">
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
-        <div className="text-center mb-16">
-          <h2 className="text-3xl font-semibold tracking-tight text-foreground sm:text-4xl md:text-5xl text-balance">
-            Explore Our Premium Selection
-          </h2>
-          <p className="mt-4 text-lg text-muted-foreground max-w-2xl mx-auto">
-            Carefully curated pharmacy products designed to streamline operations and improve customer experience.
-          </p>
+
+        {/* Header */}
+        <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-6 mb-12">
+          <div>
+            <div className="flex items-center gap-3 mb-4">
+              <div className="h-px w-8 bg-accent" />
+              <p className="text-sm font-semibold uppercase tracking-widest text-accent">Our Products</p>
+            </div>
+            <h2 className="text-3xl font-bold tracking-tight text-foreground sm:text-4xl text-balance">
+              A complete lineup for your pharmacy
+            </h2>
+          </div>
+          <Button asChild variant="outline" className="shrink-0 rounded-full px-6 border-border bg-white hover:bg-secondary self-start sm:self-auto">
+            <Link href="#contact">Request Custom Order</Link>
+          </Button>
         </div>
-        
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+
+        {/* Product grid */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
           {products.map((product) => (
             <div
               key={product.title}
-              className={`group relative rounded-2xl p-8 transition-all duration-300 hover:scale-[1.02] ${
-                product.featured 
-                  ? "bg-primary text-primary-foreground" 
-                  : "bg-card border border-border hover:border-foreground/20"
-              }`}
+              className="group relative rounded-2xl bg-white border border-border p-7 hover:border-accent/40 hover:shadow-md transition-all duration-200 flex flex-col"
             >
-              <div className={`inline-flex items-center justify-center w-12 h-12 rounded-xl mb-6 ${
-                product.featured 
-                  ? "bg-primary-foreground/10" 
-                  : "bg-secondary"
-              }`}>
-                <product.icon className={`w-6 h-6 ${
-                  product.featured ? "text-primary-foreground" : "text-foreground"
-                }`} />
+              {product.tag && (
+                <Badge
+                  variant="secondary"
+                  className="absolute top-5 right-5 bg-secondary text-accent border-0 text-xs font-medium"
+                >
+                  <Star className="h-3 w-3 mr-1" />
+                  {product.tag}
+                </Badge>
+              )}
+
+              <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-primary mb-5">
+                <product.icon className="h-5 w-5 text-primary-foreground" />
               </div>
-              
-              <h3 className={`text-xl font-semibold mb-3 ${
-                product.featured ? "text-primary-foreground" : "text-foreground"
-              }`}>
-                {product.title}
-              </h3>
-              
-              <p className={`leading-relaxed ${
-                product.featured ? "text-primary-foreground/80" : "text-muted-foreground"
-              }`}>
-                {product.description}
-              </p>
-              
-              <div className={`absolute top-6 right-6 w-8 h-8 rounded-full flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity ${
-                product.featured 
-                  ? "bg-primary-foreground/10" 
-                  : "bg-secondary"
-              }`}>
-                <Plus className={`w-4 h-4 ${
-                  product.featured ? "text-primary-foreground" : "text-foreground"
-                }`} />
+
+              <h3 className="text-lg font-semibold text-foreground mb-2">{product.title}</h3>
+              <p className="text-sm text-muted-foreground leading-relaxed flex-1">{product.description}</p>
+
+              <div className="mt-5 pt-5 border-t border-border">
+                <Link
+                  href="#contact"
+                  className="text-sm font-medium text-accent hover:text-primary transition-colors flex items-center gap-1"
+                >
+                  Enquire now
+                  <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
+                    <path d="M2.5 7h9m0 0L8 3.5M11.5 7L8 10.5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+                  </svg>
+                </Link>
               </div>
             </div>
           ))}
-        </div>
-        
-        <div className="mt-12 text-center">
-          <Button asChild variant="outline" size="lg" className="rounded-full px-8">
-            <Link href="#contact">
-              Request Custom Order
-            </Link>
-          </Button>
         </div>
       </div>
     </section>
