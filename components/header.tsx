@@ -2,7 +2,7 @@
 
 import Link from "next/link"
 import { useState } from "react"
-import { Menu, X, Phone } from "lucide-react"
+import { Menu, X } from "lucide-react"
 import { Button } from "@/components/ui/button"
 
 const navLinks = [
@@ -15,21 +15,21 @@ export function Header() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
 
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 bg-white/95 backdrop-blur-sm border-b border-border shadow-sm">
-      <nav className="mx-auto flex max-w-7xl items-center justify-between px-6 py-0 lg:px-8" style={{ height: "68px" }}>
+    <header className="fixed top-0 left-0 right-0 z-50 bg-white/90 backdrop-blur-md border-b border-border shadow-sm">
+      <nav className="mx-auto flex max-w-7xl items-center justify-between px-6 lg:px-8 h-[72px]">
 
-        {/* Logo - always full name */}
+        {/* Logo */}
         <Link href="/" className="flex items-center gap-3 shrink-0">
-          <div className="flex h-9 w-9 items-center justify-center rounded-lg bg-primary">
-            <svg width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true">
-              <path d="M10 2L10 10M10 10L6 7M10 10L14 7" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-              <rect x="3" y="11" width="14" height="7" rx="1.5" stroke="white" strokeWidth="1.8"/>
-              <path d="M7 14.5h6" stroke="white" strokeWidth="1.8" strokeLinecap="round"/>
+          <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-gradient-to-br from-blue-600 to-blue-800 shadow-md shadow-blue-200">
+            <svg width="22" height="22" viewBox="0 0 22 22" fill="none" aria-hidden="true">
+              <path d="M11 3v7M11 10L7 7m4 3l4-3" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+              <rect x="3" y="12" width="16" height="7" rx="2" stroke="white" strokeWidth="1.8"/>
+              <path d="M8 15.5h6" stroke="white" strokeWidth="1.8" strokeLinecap="round"/>
             </svg>
           </div>
-          <div className="flex flex-col leading-none">
-            <span className="text-base font-bold tracking-tight text-foreground">Pharmabest</span>
-            <span className="text-[11px] font-medium tracking-widest text-muted-foreground uppercase">Supplies</span>
+          <div className="flex flex-col leading-tight">
+            <span className="text-[17px] font-bold tracking-tight text-foreground">Pharmabest</span>
+            <span className="text-[11px] font-semibold tracking-[0.18em] text-accent uppercase">Supplies</span>
           </div>
         </Link>
 
@@ -50,12 +50,11 @@ export function Header() {
         <div className="hidden lg:flex items-center gap-3">
           <a
             href="mailto:supplies@pharmabest.ca"
-            className="flex items-center gap-1.5 text-sm font-medium text-muted-foreground hover:text-foreground transition-colors"
+            className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors"
           >
-            <Phone className="h-3.5 w-3.5" />
             supplies@pharmabest.ca
           </a>
-          <Button asChild size="sm" className="rounded-full px-5 bg-primary text-primary-foreground hover:bg-primary/90">
+          <Button asChild size="sm" className="rounded-full px-5 bg-gradient-to-r from-blue-600 to-blue-700 text-white hover:from-blue-700 hover:to-blue-800 shadow shadow-blue-200 border-0">
             <Link href="#contact">Get a Quote</Link>
           </Button>
         </div>
@@ -74,31 +73,23 @@ export function Header() {
       {/* Mobile overlay */}
       {mobileMenuOpen && (
         <>
-          <div
-            className="fixed inset-0 z-40 bg-black/30"
-            onClick={() => setMobileMenuOpen(false)}
-          />
-          <div className="fixed inset-y-0 right-0 z-50 w-72 bg-white shadow-xl flex flex-col">
+          <div className="fixed inset-0 z-40 bg-black/30 backdrop-blur-sm" onClick={() => setMobileMenuOpen(false)} />
+          <div className="fixed inset-y-0 right-0 z-50 w-72 bg-white shadow-2xl flex flex-col">
             <div className="flex items-center justify-between px-6 py-5 border-b border-border">
               <Link href="/" className="flex items-center gap-3" onClick={() => setMobileMenuOpen(false)}>
-                <div className="flex h-9 w-9 items-center justify-center rounded-lg bg-primary">
-                  <svg width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true">
-                    <path d="M10 2L10 10M10 10L6 7M10 10L14 7" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-                    <rect x="3" y="11" width="14" height="7" rx="1.5" stroke="white" strokeWidth="1.8"/>
-                    <path d="M7 14.5h6" stroke="white" strokeWidth="1.8" strokeLinecap="round"/>
+                <div className="flex h-9 w-9 items-center justify-center rounded-xl bg-gradient-to-br from-blue-600 to-blue-800">
+                  <svg width="20" height="20" viewBox="0 0 22 22" fill="none" aria-hidden="true">
+                    <path d="M11 3v7M11 10L7 7m4 3l4-3" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                    <rect x="3" y="12" width="16" height="7" rx="2" stroke="white" strokeWidth="1.8"/>
+                    <path d="M8 15.5h6" stroke="white" strokeWidth="1.8" strokeLinecap="round"/>
                   </svg>
                 </div>
-                <div className="flex flex-col leading-none">
+                <div className="flex flex-col leading-tight">
                   <span className="text-base font-bold tracking-tight text-foreground">Pharmabest</span>
-                  <span className="text-[11px] font-medium tracking-widest text-muted-foreground uppercase">Supplies</span>
+                  <span className="text-[10px] font-semibold tracking-[0.18em] text-accent uppercase">Supplies</span>
                 </div>
               </Link>
-              <button
-                type="button"
-                className="-m-2 p-2 text-foreground"
-                onClick={() => setMobileMenuOpen(false)}
-                aria-label="Close menu"
-              >
+              <button type="button" className="-m-2 p-2 text-foreground" onClick={() => setMobileMenuOpen(false)} aria-label="Close menu">
                 <X className="h-5 w-5" />
               </button>
             </div>
@@ -107,7 +98,7 @@ export function Header() {
                 <Link
                   key={link.label}
                   href={link.href}
-                  className="rounded-lg px-4 py-3 text-base font-medium text-foreground hover:bg-secondary transition-colors"
+                  className="rounded-xl px-4 py-3 text-base font-medium text-foreground hover:bg-secondary transition-colors"
                   onClick={() => setMobileMenuOpen(false)}
                 >
                   {link.label}
@@ -115,7 +106,7 @@ export function Header() {
               ))}
             </nav>
             <div className="p-4 border-t border-border">
-              <Button asChild className="w-full rounded-full bg-primary text-primary-foreground">
+              <Button asChild className="w-full rounded-full bg-gradient-to-r from-blue-600 to-blue-700 text-white border-0">
                 <Link href="#contact" onClick={() => setMobileMenuOpen(false)}>Get a Quote</Link>
               </Button>
             </div>
