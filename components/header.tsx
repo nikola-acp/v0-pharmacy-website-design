@@ -53,9 +53,9 @@ export function Header() {
             <Image
               src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-yDm7taDhcUunPAdnZz02ZCaGqRdILS.png"
               alt="Pharmabest Supplies"
-              width={220}
-              height={56}
-              className="h-12 w-auto object-contain"
+              width={300}
+              height={76}
+              className="h-16 w-auto object-contain opacity-90"
               priority
             />
           </Link>
@@ -118,9 +118,9 @@ export function Header() {
                 <Image
                   src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-yDm7taDhcUunPAdnZz02ZCaGqRdILS.png"
                   alt="Pharmabest Supplies"
-                  width={180}
-                  height={46}
-                  className="h-10 w-auto object-contain"
+                  width={200}
+                  height={52}
+                  className="h-12 w-auto object-contain"
                 />
               </Link>
               <button type="button" className="-m-2 p-2 text-slate-700 rounded-lg hover:bg-slate-50" onClick={() => setMobileMenuOpen(false)} aria-label="Close menu">

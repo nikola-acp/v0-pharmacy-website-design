@@ -31,9 +31,9 @@ export function Footer() {
               <Image
                 src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-yDm7taDhcUunPAdnZz02ZCaGqRdILS.png"
                 alt="Pharmabest Supplies"
-                width={240}
-                height={62}
-                className="h-14 w-auto object-contain"
+                width={280}
+                height={72}
+                className="h-16 w-auto object-contain opacity-85"
               />
             </Link>
             <p className="text-sm text-white/45 max-w-sm leading-relaxed font-medium">
