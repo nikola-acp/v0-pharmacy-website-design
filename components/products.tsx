@@ -1,35 +1,41 @@
 import Link from "next/link"
+import Image from "next/image"
 import { Badge } from "@/components/ui/badge"
 
 const products = [
   {
     title: "Plain Thermal Labels",
-    description: "High-adhesion durable label rolls for prescription bottles and general pharmacy use. Multiple sizes available.",
+    description: "High-adhesion durable label rolls for prescription bottles and general pharmacy use.",
     tag: null,
+    image: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-h13ZAChSBAZTEDgIhF5WmK4xE0b9jo.png",
     href: "/order",
   },
   {
     title: "Plain Thermal Receipts",
-    description: "Crystal-clear thermal receipt rolls for long-lasting transaction records. Compatible with all major POS systems.",
+    description: "Crystal-clear thermal receipt rolls for long-lasting transaction records.",
     tag: null,
+    image: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-cTn9jJ73j4RrgBoyexgVXXchOd3usN.png",
     href: "/order",
   },
   {
     title: "Custom Thermal Labels",
-    description: "Branded labels with your pharmacy's logo, name, address, and phone. Every prescription reflects your brand.",
+    description: "Branded labels with your pharmacy's logo, name, and contact information.",
     tag: "Most Popular",
+    image: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-1ok9umYv0dUc47R5nG6bjXX1aZ05br.png",
     href: "/order",
   },
   {
     title: "Custom Thermal Receipts",
-    description: "Branded receipt rolls featuring your logo and contact info on every transaction.",
+    description: "Branded receipt rolls featuring your pharmacy logo on every transaction.",
     tag: "Most Popular",
+    image: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-4et2MQ90j1NlsTkPqDeyIm04X2EyhC.png",
     href: "/order",
   },
   {
     title: "Thermal Printers",
-    description: "Fast, reliable thermal printers built for high-volume pharmacy environments. Free remote setup included.",
+    description: "Fast, reliable thermal printers built for high-volume pharmacy environments.",
     tag: "Free setup",
+    image: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-fMiiPtFeIDCq3sEgOYDTyWHgh3In0V.png",
     href: "/order",
   },
 ]
@@ -61,30 +67,46 @@ export function Products() {
           {products.map((product) => (
             <div
               key={product.title}
-              className="group relative rounded-2xl bg-white border-2 border-slate-100 p-6 hover:border-blue-200 hover:shadow-xl hover:shadow-blue-100/50 transition-all duration-300 flex flex-col"
+              className="group relative rounded-2xl bg-white border-2 border-slate-100 overflow-hidden hover:border-blue-200 hover:shadow-xl hover:shadow-blue-100/50 transition-all duration-300 flex flex-col"
             >
               {product.tag && (
                 <Badge
                   variant="secondary"
-                  className="absolute top-4 right-4 bg-blue-50 text-blue-700 border border-blue-100 text-[11px] font-bold tracking-wide px-2.5 py-0.5"
+                  className="absolute top-4 right-4 z-10 bg-blue-50 text-blue-700 border border-blue-100 text-[11px] font-bold tracking-wide px-2.5 py-0.5"
                 >
                   {product.tag}
                 </Badge>
               )}
 
-              <h3 className="text-[15px] font-extrabold text-slate-900 mb-2 tracking-tight pr-16">{product.title}</h3>
-              <p className="text-sm text-slate-500 leading-relaxed flex-1 font-medium">{product.description}</p>
+              {/* Product image */}
+              <div className="relative aspect-square bg-slate-100 overflow-hidden">
+                {product.image ? (
+                  <Image
+                    src={product.image}
+                    alt={product.title}
+                    fill
+                    className="object-cover group-hover:scale-105 transition-transform duration-300"
+                  />
+                ) : (
+                  <div className="flex items-center justify-center h-full bg-slate-100" />
+                )}
+              </div>
 
-              <div className="mt-4 pt-4 border-t border-slate-100">
-                <Link
-                  href={product.href}
-                  className="inline-flex items-center justify-center gap-1.5 rounded-full bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-indigo-700 text-white text-sm font-bold px-5 py-2 shadow-md shadow-blue-200 hover:shadow-blue-300 transition-all duration-200"
-                >
-                  Order Now
-                  <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
-                    <path d="M2.5 7h9m0 0L8 3.5M11.5 7L8 10.5" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"/>
-                  </svg>
-                </Link>
+              <div className="p-6 flex flex-col flex-1">
+                <h3 className="text-[15px] font-extrabold text-slate-900 mb-2 tracking-tight">{product.title}</h3>
+                <p className="text-sm text-slate-500 leading-relaxed flex-1 font-medium">{product.description}</p>
+
+                <div className="mt-4 pt-4 border-t border-slate-100">
+                  <Link
+                    href={product.href}
+                    className="inline-flex items-center justify-center gap-1.5 rounded-full bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-indigo-700 text-white text-sm font-bold px-5 py-2 shadow-md shadow-blue-200 hover:shadow-blue-300 transition-all duration-200"
+                  >
+                    Order Now
+                    <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
+                      <path d="M2.5 7h9m0 0L8 3.5M11.5 7L8 10.5" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"/>
+                    </svg>
+                  </Link>
+                </div>
               </div>
             </div>
           ))}

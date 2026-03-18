@@ -13,39 +13,39 @@ import { Footer } from "@/components/footer"
 
 const products = [
   {
-    id: "custom-labels",
-    name: "Customized Label — Thermal Paper Roll",
-    category: "Customized Labels",
-    basePrice: null,
-    image: null,
-  },
-  {
-    id: "custom-receipts",
-    name: "Customized Receipt — Thermal Paper Roll",
-    category: "Customized Receipts",
-    basePrice: null,
-    image: null,
-  },
-  {
     id: "plain-labels",
-    name: "Plain Label — Thermal Paper Roll",
+    name: "Plain Thermal Labels",
     category: "Plain Labels",
     basePrice: 233.58,
-    image: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-KmX2MXr7wFQcIezqCssZdx1vWvcvDv.png",
+    image: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-h13ZAChSBAZTEDgIhF5WmK4xE0b9jo.png",
   },
   {
     id: "plain-receipts",
-    name: "Plain Receipt — Thermal Paper Roll",
+    name: "Plain Thermal Receipts",
     category: "Plain Receipts",
     basePrice: 202.78,
-    image: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-KmX2MXr7wFQcIezqCssZdx1vWvcvDv.png",
+    image: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-cTn9jJ73j4RrgBoyexgVXXchOd3usN.png",
+  },
+  {
+    id: "custom-labels",
+    name: "Custom Thermal Labels",
+    category: "Custom Labels",
+    basePrice: null,
+    image: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-1ok9umYv0dUc47R5nG6bjXX1aZ05br.png",
+  },
+  {
+    id: "custom-receipts",
+    name: "Custom Thermal Receipts",
+    category: "Custom Receipts",
+    basePrice: null,
+    image: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-4et2MQ90j1NlsTkPqDeyIm04X2EyhC.png",
   },
   {
     id: "thermal-printer",
     name: "Thermal Printer",
     category: "Thermal Printers",
     basePrice: 1.00,
-    image: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-KmX2MXr7wFQcIezqCssZdx1vWvcvDv.png",
+    image: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-fMiiPtFeIDCq3sEgOYDTyWHgh3In0V.png",
   },
 ]
 
