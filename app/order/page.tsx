@@ -396,56 +396,58 @@ export default function OrderPage() {
 
                         {/* Regular products — Add to Cart button */}
                         {product.id !== "thermal-printer" && (
-                          {inCart ? (
-                            <div className="flex items-center gap-2">
+                          <div className="mt-4 pt-4 border-t border-slate-100">
+                            {inCart ? (
+                              <div className="flex items-center gap-2">
+                                <button
+                                  type="button"
+                                  onClick={() => updateQuantity(product.id, cartItem.quantity - 1)}
+                                  className="h-9 w-9 rounded-lg border border-slate-200 flex items-center justify-center hover:bg-slate-50 transition-colors"
+                                >
+                                  <Minus className="h-4 w-4 text-slate-600" />
+                                </button>
+                                <Select
+                                  value={String(cartItem.quantity)}
+                                  onValueChange={(val) => updateQuantity(product.id, parseInt(val))}
+                                >
+                                  <SelectTrigger className="flex-1 h-9 text-sm font-semibold border-slate-200">
+                                    <SelectValue />
+                                  </SelectTrigger>
+                                  <SelectContent>
+                                    {quantityOptions.map((qty) => (
+                                      <SelectItem key={qty} value={String(qty)}>{qty}</SelectItem>
+                                    ))}
+                                  </SelectContent>
+                                </Select>
+                                <button
+                                  type="button"
+                                  onClick={() => updateQuantity(product.id, cartItem.quantity + 1)}
+                                  className="h-9 w-9 rounded-lg border border-slate-200 flex items-center justify-center hover:bg-slate-50 transition-colors"
+                                >
+                                  <Plus className="h-4 w-4 text-slate-600" />
+                                </button>
+                                <button
+                                  type="button"
+                                  onClick={() => removeFromCart(product.id)}
+                                  className="h-9 w-9 rounded-lg border border-red-200 flex items-center justify-center hover:bg-red-50 transition-colors"
+                                >
+                                  <Trash2 className="h-4 w-4 text-red-500" />
+                                </button>
+                              </div>
+                            ) : (
                               <button
                                 type="button"
-                                onClick={() => updateQuantity(product.id, cartItem.quantity - 1)}
-                                className="h-9 w-9 rounded-lg border border-slate-200 flex items-center justify-center hover:bg-slate-50 transition-colors"
+                                onClick={() => addToCart(product.id)}
+                                className="inline-flex items-center justify-center gap-1.5 rounded-full bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-indigo-700 text-white text-sm font-bold px-5 py-2 shadow-md shadow-blue-200 hover:shadow-blue-300 transition-all duration-200"
                               >
-                                <Minus className="h-4 w-4 text-slate-600" />
+                                Add to Cart
+                                <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
+                                  <path d="M2.5 7h9m0 0L8 3.5M11.5 7L8 10.5" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"/>
+                                </svg>
                               </button>
-                              <Select
-                                value={String(cartItem.quantity)}
-                                onValueChange={(val) => updateQuantity(product.id, parseInt(val))}
-                              >
-                                <SelectTrigger className="flex-1 h-9 text-sm font-semibold border-slate-200">
-                                  <SelectValue />
-                                </SelectTrigger>
-                                <SelectContent>
-                                  {quantityOptions.map((qty) => (
-                                    <SelectItem key={qty} value={String(qty)}>{qty}</SelectItem>
-                                  ))}
-                                </SelectContent>
-                              </Select>
-                              <button
-                                type="button"
-                                onClick={() => updateQuantity(product.id, cartItem.quantity + 1)}
-                                className="h-9 w-9 rounded-lg border border-slate-200 flex items-center justify-center hover:bg-slate-50 transition-colors"
-                              >
-                                <Plus className="h-4 w-4 text-slate-600" />
-                              </button>
-                              <button
-                                type="button"
-                                onClick={() => removeFromCart(product.id)}
-                                className="h-9 w-9 rounded-lg border border-red-200 flex items-center justify-center hover:bg-red-50 transition-colors"
-                              >
-                                <Trash2 className="h-4 w-4 text-red-500" />
-                              </button>
-                            </div>
-                          ) : (
-                            <button
-                              type="button"
-                              onClick={() => addToCart(product.id)}
-                              className="inline-flex items-center justify-center gap-1.5 rounded-full bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-indigo-700 text-white text-sm font-bold px-5 py-2 shadow-md shadow-blue-200 hover:shadow-blue-300 transition-all duration-200"
-                            >
-                              Add to Cart
-                              <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
-                                <path d="M2.5 7h9m0 0L8 3.5M11.5 7L8 10.5" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"/>
-                              </svg>
-                            </button>
-                          )}
-                        </div>
+                            )}
+                          </div>
+                        )}
                       </div>
                     </div>
                   )

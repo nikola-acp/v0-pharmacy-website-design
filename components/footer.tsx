@@ -33,7 +33,7 @@ export function Footer() {
                 alt="Pharmabest Supplies"
                 width={280}
                 height={72}
-                className="h-16 w-auto object-contain opacity-85"
+                className="h-16 w-auto object-contain opacity-70"
               />
             </Link>
             <p className="text-sm text-white/45 max-w-sm leading-relaxed font-medium">

@@ -55,7 +55,7 @@ export function Header() {
               alt="Pharmabest Supplies"
               width={300}
               height={76}
-              className="h-16 w-auto object-contain opacity-90"
+              className="h-16 w-auto object-contain opacity-75"
               priority
             />
           </Link>
