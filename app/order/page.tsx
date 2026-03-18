@@ -394,7 +394,7 @@ export default function OrderPage() {
                           </div>
                         )}
 
-                        {/* Regular products — Add to Cart button */}
+                        {/* Regular products - Add to Cart button */}
                         {product.id !== "thermal-printer" && (
                           <div className="mt-4 pt-4 border-t border-slate-100">
                             {inCart ? (
