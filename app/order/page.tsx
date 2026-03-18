@@ -426,7 +426,7 @@ export default function OrderPage() {
                           <option value="custom-labels" className="text-slate-900">Custom Thermal Labels</option>
                           <option value="custom-receipts" className="text-slate-900">Custom Thermal Receipts</option>
                           <option value="thermal-printer" className="text-slate-900">Thermal Printer</option>
-                          <option value="other" className="text-slate-900">Other</option>
+                          <option value="other" className="text-slate-900">Other (Please specify)</option>
                         </select>
                       </div>
 

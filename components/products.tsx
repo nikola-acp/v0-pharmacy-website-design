@@ -1,3 +1,6 @@
+"use client"
+
+import { useState } from "react"
 import Link from "next/link"
 import Image from "next/image"
 import { Badge } from "@/components/ui/badge"
@@ -41,6 +44,14 @@ const products = [
 ]
 
 export function Products() {
+  const [customOrder, setCustomOrder] = useState({ format: "", quantity: "", description: "" })
+  const [submitted, setSubmitted] = useState(false)
+
+  const handleCustomSubmit = (e: React.FormEvent) => {
+    e.preventDefault()
+    setSubmitted(true)
+  }
+
   return (
     <section id="products" className="py-24 bg-gradient-to-b from-slate-50 via-white to-blue-50/30">
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
@@ -111,33 +122,78 @@ export function Products() {
             </div>
           ))}
 
-          {/* 6th card - Custom Order - Dark blue standout */}
-          <div className="group relative rounded-2xl bg-gradient-to-br from-blue-800 via-blue-900 to-indigo-950 border-2 border-blue-700/50 p-6 hover:border-blue-500 hover:shadow-2xl hover:shadow-blue-900/40 transition-all duration-300 flex flex-col overflow-hidden">
-            <div className="absolute top-0 right-0 h-28 w-28 rounded-full bg-sky-400/20 blur-2xl pointer-events-none" />
-            <div className="absolute bottom-0 left-0 h-20 w-20 rounded-full bg-indigo-400/15 blur-2xl pointer-events-none" />
+          {/* 6th card - Custom Order fillable form */}
+          <div className="flex flex-col rounded-2xl border-2 border-blue-700/50 bg-gradient-to-br from-blue-800 via-blue-900 to-indigo-950 overflow-hidden">
+            <div className="p-6 flex flex-col gap-4">
+              <div>
+                <p className="text-xs font-bold uppercase tracking-widest text-sky-400 mb-1">Custom</p>
+                <h3 className="text-base font-extrabold text-white leading-snug">Request Custom Order</h3>
+                <p className="text-xs text-white/50 mt-1">Fill in the details below and we will get back to you with a quote.</p>
+              </div>
 
-            <Badge
-              variant="secondary"
-              className="absolute top-4 right-4 bg-sky-400/20 text-sky-300 border border-sky-400/30 text-[11px] font-bold tracking-wide px-2.5 py-0.5"
-            >
-              We can help
-            </Badge>
+              {submitted ? (
+                <div className="flex flex-col items-center justify-center gap-3 py-6 text-center">
+                  <div className="flex h-12 w-12 items-center justify-center rounded-full bg-sky-400/20 border border-sky-400/30">
+                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-sky-300">
+                      <path d="M20 6L9 17l-5-5" />
+                    </svg>
+                  </div>
+                  <p className="text-sm font-bold text-white">Request Submitted!</p>
+                  <p className="text-xs text-white/50">We will reach out with a quote shortly.</p>
+                  <button type="button" onClick={() => { setSubmitted(false); setCustomOrder({ format: "", quantity: "", description: "" }) }} className="text-xs text-sky-400 hover:text-sky-300 underline underline-offset-2 transition-colors">Submit another</button>
+                </div>
+              ) : (
+                <form onSubmit={handleCustomSubmit} className="flex flex-col gap-3">
+                  <div className="flex flex-col gap-1.5">
+                    <label className="text-[10px] font-bold uppercase tracking-widest text-white/50">Product Type</label>
+                    <select
+                      value={customOrder.format}
+                      onChange={(e) => setCustomOrder({ ...customOrder, format: e.target.value })}
+                      required
+                      className="w-full rounded-lg bg-white/10 border border-white/15 text-white text-sm font-medium px-3 py-2 focus:outline-none focus:border-sky-400"
+                    >
+                      <option value="" className="text-slate-900">Select a product...</option>
+                      <option value="plain-labels" className="text-slate-900">Plain Thermal Labels</option>
+                      <option value="plain-receipts" className="text-slate-900">Plain Thermal Receipts</option>
+                      <option value="custom-labels" className="text-slate-900">Custom Thermal Labels</option>
+                      <option value="custom-receipts" className="text-slate-900">Custom Thermal Receipts</option>
+                      <option value="thermal-printer" className="text-slate-900">Thermal Printer</option>
+                      <option value="other" className="text-slate-900">Other (Please specify)</option>
+                    </select>
+                  </div>
 
-            <h3 className="relative text-[15px] font-extrabold text-white mb-2 tracking-tight pr-20">Request Custom Order</h3>
-            <p className="relative text-sm text-white/70 leading-relaxed flex-1 font-medium">
-              Need a specific size, format, or branded design not listed? We specialize in custom solutions for any pharmacy requirement.
-            </p>
+                  <div className="flex flex-col gap-1.5">
+                    <label className="text-[10px] font-bold uppercase tracking-widest text-white/50">Quantity (rolls)</label>
+                    <input
+                      type="number"
+                      placeholder="e.g. 10"
+                      min="1"
+                      value={customOrder.quantity}
+                      onChange={(e) => setCustomOrder({ ...customOrder, quantity: e.target.value })}
+                      required
+                      className="w-full rounded-lg bg-white/10 border border-white/15 text-white placeholder:text-white/30 text-sm font-medium px-3 py-2 focus:outline-none focus:border-sky-400"
+                    />
+                  </div>
 
-            <div className="relative mt-4 pt-4 border-t border-white/10">
-              <Link
-                href="#contact"
-                className="inline-flex items-center gap-1.5 text-sm font-bold text-sky-300 hover:text-white transition-colors group/link"
-              >
-                Talk to us
-                <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true" className="transition-transform group-hover/link:translate-x-0.5">
-                  <path d="M2.5 7h9m0 0L8 3.5M11.5 7L8 10.5" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"/>
-                </svg>
-              </Link>
+                  <div className="flex flex-col gap-1.5">
+                    <label className="text-[10px] font-bold uppercase tracking-widest text-white/50">Details</label>
+                    <textarea
+                      placeholder="Branding, size, logo, special requirements..."
+                      rows={3}
+                      value={customOrder.description}
+                      onChange={(e) => setCustomOrder({ ...customOrder, description: e.target.value })}
+                      className="w-full resize-none rounded-lg bg-white/10 border border-white/15 text-white placeholder:text-white/30 text-sm font-medium px-3 py-2 focus:outline-none focus:border-sky-400"
+                    />
+                  </div>
+
+                  <button
+                    type="submit"
+                    className="w-full rounded-full h-10 text-sm font-bold bg-gradient-to-r from-sky-400 to-blue-500 text-white hover:from-sky-500 hover:to-blue-600 transition-all shadow-lg shadow-blue-900/40 mt-1"
+                  >
+                    Submit Request
+                  </button>
+                </form>
+              )}
             </div>
           </div>
         </div>
