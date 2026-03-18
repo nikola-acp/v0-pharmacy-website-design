@@ -102,7 +102,7 @@ export function Products() {
 
               <div className="mt-5 pt-4 border-t border-slate-100">
                 <Link
-                  href="#contact"
+                  href="/order"
                   className="inline-flex items-center justify-center gap-1.5 rounded-full bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-indigo-700 text-white text-sm font-bold px-5 py-2 shadow-md shadow-blue-200 hover:shadow-blue-300 transition-all duration-200"
                 >
                   Order Now

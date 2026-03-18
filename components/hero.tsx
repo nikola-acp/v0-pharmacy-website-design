@@ -3,48 +3,16 @@
 import Link from "next/link"
 import { useEffect, useRef, useState } from "react"
 import { Button } from "@/components/ui/button"
-import { ArrowRight, ShieldCheck, Zap, Truck, Headphones } from "lucide-react"
+import { ArrowRight, ShieldCheck, Zap, Truck, Package } from "lucide-react"
 
 const highlights = [
-  { icon: ShieldCheck, text: "Wholesale & Custom Orders" },
+  { icon: Package, text: "Wholesale & Custom Orders" },
   { icon: Zap, text: "Highest Quality Products" },
-  { icon: Truck, text: "Easy-Remove Labels" },
-  { icon: Headphones, text: "Fast Delivery Ontario-Wide" },
+  { icon: ShieldCheck, text: "Easy-Remove Labels" },
+  { icon: Truck, text: "Fast Delivery Ontario-Wide" },
 ]
 
-function useCounter(target: number, duration = 1800, start = false) {
-  const [count, setCount] = useState(0)
-  useEffect(() => {
-    if (!start) return
-    let startTime: number | null = null
-    const step = (timestamp: number) => {
-      if (!startTime) startTime = timestamp
-      const progress = Math.min((timestamp - startTime) / duration, 1)
-      setCount(Math.floor(progress * target))
-      if (progress < 1) requestAnimationFrame(step)
-    }
-    requestAnimationFrame(step)
-  }, [start, target, duration])
-  return count
-}
-
 export function Hero() {
-  const statsRef = useRef<HTMLDivElement>(null)
-  const [started, setStarted] = useState(false)
-
-  useEffect(() => {
-    const el = statsRef.current
-    if (!el) return
-    const observer = new IntersectionObserver(
-      ([entry]) => { if (entry.isIntersecting) { setStarted(true); observer.disconnect() } },
-      { threshold: 0.3 }
-    )
-    observer.observe(el)
-    return () => observer.disconnect()
-  }, [])
-
-  const count = useCounter(100, 1800, started)
-
   return (
     <section className="relative pt-[100px] overflow-hidden">
       <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,_#3b82f6_0%,_#1e40af_35%,_#1e1b4b_70%,_#0f172a_100%)]" />
@@ -61,76 +29,49 @@ export function Hero() {
       <div className="absolute bottom-0 left-0 right-0 h-40 bg-gradient-to-t from-slate-50 to-transparent" />
 
       <div className="relative mx-auto max-w-7xl px-6 lg:px-8">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center py-24 lg:py-32">
+        <div className="flex flex-col items-center text-center py-24 lg:py-32 max-w-4xl mx-auto">
 
-          {/* Left: text */}
-          <div>
-            <div className="inline-flex items-center gap-2 rounded-full bg-white/10 border border-white/15 px-4 py-1.5 text-xs font-semibold text-white/85 mb-8 tracking-wide">
-              <span className="h-1.5 w-1.5 rounded-full bg-sky-400 animate-pulse" />
-              Trusted by Ontario Pharmacies
-            </div>
-
-            <h1 className="text-5xl font-extrabold tracking-tight text-white sm:text-6xl lg:text-[4.25rem] text-balance leading-[1.05]">
-              Your Partner for{" "}
-              <span className="bg-gradient-to-r from-sky-300 to-blue-200 bg-clip-text text-transparent">
-                Pharmacy Supplies
-              </span>
-            </h1>
-
-            <p className="mt-6 text-lg leading-relaxed text-white/65 max-w-lg font-medium">
-              Premium quality thermal labels, receipt rolls, printers, and accessories. Lowest prices, fast Ontario-wide delivery, and dedicated support for every pharmacy.
-            </p>
-
-            <ul className="mt-8 grid grid-cols-1 sm:grid-cols-2 gap-3">
-              {highlights.map((item) => (
-                <li key={item.text} className="flex items-center gap-3 text-sm text-white/75 font-medium">
-                  <div className="flex h-7 w-7 shrink-0 items-center justify-center rounded-lg bg-white/10 border border-white/15">
-                    <item.icon className="h-3.5 w-3.5 text-sky-300" />
-                  </div>
-                  {item.text}
-                </li>
-              ))}
-            </ul>
-
-            <div className="mt-10 flex flex-col sm:flex-row gap-3">
-              <Button asChild size="lg" className="rounded-full px-8 h-12 text-sm font-bold bg-white text-blue-900 hover:bg-blue-50 shadow-xl shadow-blue-900/30 border-0 transition-all">
-                <Link href="/products">
-                  View Products
-                  <ArrowRight className="ml-2 h-4 w-4" />
-                </Link>
-              </Button>
-              <Button asChild variant="outline" size="lg" className="rounded-full px-8 h-12 text-sm font-bold border-white/20 bg-white/8 text-white hover:bg-white/15 transition-all">
-                <Link href="#contact">Get a Quote</Link>
-              </Button>
-            </div>
+          <div className="inline-flex items-center gap-2 rounded-full bg-white/10 border border-white/15 px-4 py-1.5 text-xs font-semibold text-white/85 mb-8 tracking-wide">
+            <span className="h-1.5 w-1.5 rounded-full bg-sky-400 animate-pulse" />
+            Trusted by Ontario Pharmacies
           </div>
 
-          {/* Right: stat cards */}
-          <div ref={statsRef} className="grid grid-cols-2 gap-3">
-            {/* Animated counter card */}
-            <div className="rounded-2xl border bg-gradient-to-br from-sky-400/25 to-blue-500/20 border-sky-400/30 p-6">
-              <p className="text-4xl font-extrabold text-white tracking-tight">
-                {started ? (count >= 100 ? "100+" : `${count}+`) : "0+"}
-              </p>
-              <p className="mt-1.5 text-xs font-semibold text-white/55 tracking-wide uppercase">Pharmacies Served</p>
-            </div>
+          <h1 className="text-5xl font-extrabold tracking-tight text-white sm:text-6xl lg:text-[4.25rem] text-balance leading-[1.05]">
+            Your Partner for{" "}
+            <span className="bg-gradient-to-r from-sky-300 to-blue-200 bg-clip-text text-transparent">
+              Pharmacy Supplies
+            </span>
+          </h1>
 
-            <div className="rounded-2xl border bg-white/8 border-white/12 hover:bg-white/12 p-6 transition-all">
-              <p className="text-4xl font-extrabold text-white tracking-tight">Best</p>
-              <p className="mt-1.5 text-xs font-semibold text-white/55 tracking-wide uppercase">Prices</p>
-            </div>
+          <p className="mt-6 text-lg leading-relaxed text-white/65 max-w-2xl font-medium">
+            Premium quality thermal labels, receipt rolls, printers, and accessories. Lowest prices, fast Ontario-wide delivery, and dedicated support for every pharmacy.
+          </p>
 
-            <div className="rounded-2xl border bg-white/8 border-white/12 hover:bg-white/12 p-6 transition-all">
-              <p className="text-4xl font-extrabold text-white tracking-tight">Custom</p>
-              <p className="mt-1.5 text-xs font-semibold text-white/55 tracking-wide uppercase">Orders</p>
-            </div>
-
-            <div className="rounded-2xl border bg-white/8 border-white/12 hover:bg-white/12 p-6 transition-all">
-              <p className="text-4xl font-extrabold text-white tracking-tight">Quality</p>
-              <p className="mt-1.5 text-xs font-semibold text-white/55 tracking-wide uppercase">Products</p>
-            </div>
+          <div className="mt-10 flex flex-col sm:flex-row gap-3">
+            <Button asChild size="lg" className="rounded-full px-8 h-12 text-sm font-bold bg-white text-blue-900 hover:bg-blue-50 shadow-xl shadow-blue-900/30 border-0 transition-all">
+              <Link href="/order">
+                Order Now
+                <ArrowRight className="ml-2 h-4 w-4" />
+              </Link>
+            </Button>
+            <Button asChild variant="outline" size="lg" className="rounded-full px-8 h-12 text-sm font-bold border-white/20 bg-white/8 text-white hover:bg-white/15 transition-all">
+              <Link href="#contact">Get a Quote</Link>
+            </Button>
           </div>
+        </div>
 
+        {/* Highlights bar - horizontal with icons */}
+        <div className="relative pb-16">
+          <div className="flex flex-wrap justify-center gap-x-10 gap-y-4">
+            {highlights.map((item) => (
+              <div key={item.text} className="flex items-center gap-2.5 text-sm text-white/70 font-medium">
+                <div className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-white/10 border border-white/15">
+                  <item.icon className="h-3.5 w-3.5 text-sky-300" />
+                </div>
+                {item.text}
+              </div>
+            ))}
+          </div>
         </div>
       </div>
     </section>

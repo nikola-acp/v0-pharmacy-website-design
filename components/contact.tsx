@@ -25,7 +25,7 @@ function generateTicketId() {
 
 export function Contact() {
   const [selectedType, setSelectedType] = useState("general")
-  const [formData, setFormData] = useState({ name: "", email: "", pharmacy: "", message: "" })
+  const [formData, setFormData] = useState({ name: "", email: "", phone: "", pharmacy: "", message: "" })
   const [submitted, setSubmitted] = useState(false)
   const [ticketId, setTicketId] = useState("")
 
@@ -100,7 +100,7 @@ export function Contact() {
                 size="lg"
                 className="w-full rounded-full h-11 text-sm font-bold bg-white text-blue-900 hover:bg-blue-50 shadow-lg shadow-blue-900/30 border-0 transition-all"
               >
-                <Link href="/products">
+                <Link href="/order">
                   Order Now
                   <ArrowRight className="ml-2 h-4 w-4" />
                 </Link>
@@ -133,7 +133,7 @@ export function Contact() {
                 <Button
                   variant="outline"
                   className="rounded-full border-slate-200 font-semibold hover:bg-slate-50"
-                  onClick={() => { setSubmitted(false); setFormData({ name: "", email: "", pharmacy: "", message: "" }) }}
+                  onClick={() => { setSubmitted(false); setFormData({ name: "", email: "", phone: "", pharmacy: "", message: "" }) }}
                 >
                   Submit another request
                 </Button>
@@ -183,11 +183,17 @@ export function Contact() {
                   </div>
                 </div>
 
-                <div className="flex flex-col gap-1.5">
-                  <label htmlFor="pharmacy" className="text-xs font-bold uppercase tracking-widest text-slate-500">
-                    Pharmacy Name <span className="text-slate-400 normal-case tracking-normal font-medium">(optional)</span>
-                  </label>
-                  <Input id="pharmacy" type="text" placeholder="e.g. Queen St. Pharmacy" value={formData.pharmacy} onChange={(e) => setFormData({ ...formData, pharmacy: e.target.value })} className="rounded-xl border-slate-200 h-11 text-sm font-medium" />
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                  <div className="flex flex-col gap-1.5">
+                    <label htmlFor="pharmacy" className="text-xs font-bold uppercase tracking-widest text-slate-500">Pharmacy Name</label>
+                    <Input id="pharmacy" type="text" placeholder="e.g. Queen St. Pharmacy" value={formData.pharmacy} onChange={(e) => setFormData({ ...formData, pharmacy: e.target.value })} className="rounded-xl border-slate-200 h-11 text-sm font-medium" required />
+                  </div>
+                  <div className="flex flex-col gap-1.5">
+                    <label htmlFor="phone" className="text-xs font-bold uppercase tracking-widest text-slate-500">
+                      Phone <span className="text-slate-400 normal-case tracking-normal font-medium">(optional)</span>
+                    </label>
+                    <Input id="phone" type="tel" placeholder="(647) 123-4567" value={formData.phone} onChange={(e) => setFormData({ ...formData, phone: e.target.value })} className="rounded-xl border-slate-200 h-11 text-sm font-medium" />
+                  </div>
                 </div>
 
                 <div className="flex flex-col gap-1.5">
