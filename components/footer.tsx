@@ -29,11 +29,11 @@ export function Footer() {
           <div className="lg:col-span-2">
             <Link href="/" className="inline-flex mb-6">
               <Image
-                src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-BhoRNq96tHZwnbe1bItzKtGJiS7AAx.png"
+                src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-UhRu2R7VOwTLVRMMI51HW0OEdDIQwA.png"
                 alt="Pharmabest Supplies"
                 width={280}
                 height={72}
-                className="h-16 w-auto object-contain opacity-70"
+                className="h-16 w-auto object-contain"
               />
             </Link>
             <p className="text-sm text-white/45 max-w-sm leading-relaxed font-medium">
