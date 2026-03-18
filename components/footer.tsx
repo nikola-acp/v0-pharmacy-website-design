@@ -29,7 +29,7 @@ export function Footer() {
           <div className="lg:col-span-2">
             <Link href="/" className="inline-flex mb-6">
               <Image
-                src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-yDm7taDhcUunPAdnZz02ZCaGqRdILS.png"
+                src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-BhoRNq96tHZwnbe1bItzKtGJiS7AAx.png"
                 alt="Pharmabest Supplies"
                 width={280}
                 height={72}

@@ -51,7 +51,7 @@ export function Header() {
           {/* Logo */}
           <Link href="/" className="flex items-center shrink-0">
             <Image
-              src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-yDm7taDhcUunPAdnZz02ZCaGqRdILS.png"
+              src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-BhoRNq96tHZwnbe1bItzKtGJiS7AAx.png"
               alt="Pharmabest Supplies"
               width={300}
               height={76}
@@ -116,7 +116,7 @@ export function Header() {
             <div className="flex items-center justify-between px-6 py-5 border-b border-slate-100">
               <Link href="/" className="inline-flex" onClick={() => setMobileMenuOpen(false)}>
                 <Image
-                  src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-yDm7taDhcUunPAdnZz02ZCaGqRdILS.png"
+                  src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-BhoRNq96tHZwnbe1bItzKtGJiS7AAx.png"
                   alt="Pharmabest Supplies"
                   width={200}
                   height={52}
