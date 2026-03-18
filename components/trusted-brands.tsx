@@ -18,6 +18,12 @@ const brands = [
     src: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-jjRzYx8DmlN4wjrNK3IO5yf4diC2Oi.png",
     bg: "bg-white",
   },
+  {
+    name: "& More",
+    src: null,
+    bg: "bg-gradient-to-r from-blue-600 to-indigo-600 border-blue-500",
+    isMore: true,
+  },
 ]
 
 export function TrustedBrands() {
@@ -42,21 +48,23 @@ export function TrustedBrands() {
           {items.map((brand, i) => (
             <div
               key={`${brand.name}-${i}`}
-              className={`flex items-center justify-center h-14 w-44 rounded-xl shrink-0 overflow-hidden border border-slate-100 ${brand.bg}`}
+              className={`flex items-center justify-center h-14 w-44 rounded-xl shrink-0 overflow-hidden border ${
+                brand.isMore ? "border-blue-500" : "border-slate-100"
+              } ${brand.bg}`}
             >
-              <Image
-                src={brand.src}
-                alt={brand.name}
-                width={140}
-                height={44}
-                className="object-contain h-10 w-auto"
-              />
+              {brand.isMore ? (
+                <span className="text-base font-bold text-white tracking-wide">& More</span>
+              ) : (
+                <Image
+                  src={brand.src}
+                  alt={brand.name}
+                  width={140}
+                  height={44}
+                  className="object-contain h-10 w-auto"
+                />
+              )}
             </div>
           ))}
-          {/* & More pill */}
-          <div className="flex items-center justify-center h-14 w-44 shrink-0 rounded-xl bg-gradient-to-r from-blue-600 to-indigo-600 border border-blue-500">
-            <span className="text-base font-bold text-white tracking-wide">& More</span>
-          </div>
         </div>
       </div>
     </section>
