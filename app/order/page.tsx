@@ -76,7 +76,6 @@ export default function OrderPage() {
   const [orderId, setOrderId] = useState("")
   const [showCheckout, setShowCheckout] = useState(false)
   const [customOrder, setCustomOrder] = useState({ description: "", size: "", quantity: "", format: "" })
-  const [customOrderExpanded, setCustomOrderExpanded] = useState(false)
 
   const sortedProducts = useMemo(() => {
     const sorted = [...products]
@@ -405,85 +404,63 @@ export default function OrderPage() {
                 })}
 
                 {/* Custom Order card */}
-                <div className="group flex flex-col rounded-2xl border-2 border-blue-700/50 bg-gradient-to-br from-blue-800 via-blue-900 to-indigo-950 overflow-hidden transition-all duration-200">
-                  <div className="relative aspect-square bg-blue-900/40 flex items-center justify-center overflow-hidden">
-                    <div className="absolute inset-0 bg-gradient-to-br from-sky-400/10 to-indigo-500/10" />
-                    <div className="relative flex flex-col items-center gap-3 p-6 text-center">
-                      <div className="flex h-16 w-16 items-center justify-center rounded-2xl bg-white/10 border border-white/15">
-                        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" className="text-sky-300">
-                          <path d="M12 5v14M5 12h14"/>
-                        </svg>
-                      </div>
-                      <p className="text-sm font-semibold text-white/70 leading-snug max-w-[160px]">Describe your custom requirement below</p>
+                <div className="flex flex-col rounded-2xl border-2 border-blue-700/50 bg-gradient-to-br from-blue-800 via-blue-900 to-indigo-950 overflow-hidden">
+                  <div className="p-6 flex flex-col gap-4">
+                    <div>
+                      <p className="text-xs font-bold uppercase tracking-widest text-sky-400 mb-1">Custom</p>
+                      <h3 className="text-base font-extrabold text-white leading-snug">Request Custom Order</h3>
+                      <p className="text-xs text-white/50 mt-1">Fill in the details below and we will get back to you with a quote.</p>
                     </div>
-                  </div>
-                  <div className="flex flex-col flex-1 p-5">
-                    <p className="text-xs font-semibold text-sky-400 uppercase tracking-wide mb-1">Custom</p>
-                    <h3 className="text-sm font-bold text-white leading-snug mb-3">Request Custom Order</h3>
 
-                    {!customOrderExpanded ? (
+                    <div className="flex flex-col gap-3">
+                      <div className="flex flex-col gap-1.5">
+                        <label className="text-[10px] font-bold uppercase tracking-widest text-white/50">Product Type</label>
+                        <select
+                          value={customOrder.format}
+                          onChange={(e) => setCustomOrder({ ...customOrder, format: e.target.value })}
+                          className="w-full rounded-lg bg-white/10 border border-white/15 text-white text-sm font-medium px-3 py-2 focus:outline-none focus:border-sky-400"
+                        >
+                          <option value="" className="text-slate-900">Select a product...</option>
+                          <option value="plain-labels" className="text-slate-900">Plain Thermal Labels</option>
+                          <option value="plain-receipts" className="text-slate-900">Plain Thermal Receipts</option>
+                          <option value="custom-labels" className="text-slate-900">Custom Thermal Labels</option>
+                          <option value="custom-receipts" className="text-slate-900">Custom Thermal Receipts</option>
+                          <option value="thermal-printer" className="text-slate-900">Thermal Printer</option>
+                          <option value="other" className="text-slate-900">Other</option>
+                        </select>
+                      </div>
+
+                      <div className="flex flex-col gap-1.5">
+                        <label className="text-[10px] font-bold uppercase tracking-widest text-white/50">Quantity (rolls)</label>
+                        <input
+                          type="number"
+                          placeholder="e.g. 10"
+                          min="1"
+                          value={customOrder.quantity}
+                          onChange={(e) => setCustomOrder({ ...customOrder, quantity: e.target.value })}
+                          className="w-full rounded-lg bg-white/10 border border-white/15 text-white placeholder:text-white/30 text-sm font-medium px-3 py-2 focus:outline-none focus:border-sky-400"
+                        />
+                      </div>
+
+                      <div className="flex flex-col gap-1.5">
+                        <label className="text-[10px] font-bold uppercase tracking-widest text-white/50">Details</label>
+                        <textarea
+                          placeholder="Branding, size, logo, special requirements..."
+                          rows={3}
+                          value={customOrder.description}
+                          onChange={(e) => setCustomOrder({ ...customOrder, description: e.target.value })}
+                          className="w-full resize-none rounded-lg bg-white/10 border border-white/15 text-white placeholder:text-white/30 text-sm font-medium px-3 py-2 focus:outline-none focus:border-sky-400"
+                        />
+                      </div>
+
                       <button
                         type="button"
-                        onClick={() => setCustomOrderExpanded(true)}
-                        className="mt-auto w-full rounded-full h-10 text-sm font-bold bg-white/10 border border-white/20 text-white hover:bg-white/20 transition-all"
+                        onClick={() => setShowCheckout(true)}
+                        className="w-full rounded-full h-10 text-sm font-bold bg-gradient-to-r from-sky-400 to-blue-500 text-white hover:from-sky-500 hover:to-blue-600 transition-all shadow-lg shadow-blue-900/40 mt-1"
                       >
-                        Fill Out Request
+                        Submit Request
                       </button>
-                    ) : (
-                      <div className="flex flex-col gap-3">
-                        <div className="flex flex-col gap-1">
-                          <label className="text-[10px] font-bold uppercase tracking-widest text-white/50">Product Type</label>
-                          <select
-                            value={customOrder.format}
-                            onChange={(e) => setCustomOrder({ ...customOrder, format: e.target.value })}
-                            className="w-full rounded-lg bg-white/10 border border-white/15 text-white text-sm font-medium px-3 py-2 focus:outline-none focus:border-sky-400"
-                          >
-                            <option value="" className="text-slate-900">Select type...</option>
-                            <option value="labels" className="text-slate-900">Thermal Labels</option>
-                            <option value="receipts" className="text-slate-900">Thermal Receipts</option>
-                            <option value="other" className="text-slate-900">Other</option>
-                          </select>
-                        </div>
-                        <div className="flex flex-col gap-1">
-                          <label className="text-[10px] font-bold uppercase tracking-widest text-white/50">Size / Dimensions</label>
-                          <input
-                            type="text"
-                            placeholder="e.g. 4&quot; x 6&quot;"
-                            value={customOrder.size}
-                            onChange={(e) => setCustomOrder({ ...customOrder, size: e.target.value })}
-                            className="w-full rounded-lg bg-white/10 border border-white/15 text-white placeholder:text-white/30 text-sm font-medium px-3 py-2 focus:outline-none focus:border-sky-400"
-                          />
-                        </div>
-                        <div className="flex flex-col gap-1">
-                          <label className="text-[10px] font-bold uppercase tracking-widest text-white/50">Quantity (rolls)</label>
-                          <input
-                            type="number"
-                            placeholder="e.g. 10"
-                            min="1"
-                            value={customOrder.quantity}
-                            onChange={(e) => setCustomOrder({ ...customOrder, quantity: e.target.value })}
-                            className="w-full rounded-lg bg-white/10 border border-white/15 text-white placeholder:text-white/30 text-sm font-medium px-3 py-2 focus:outline-none focus:border-sky-400"
-                          />
-                        </div>
-                        <div className="flex flex-col gap-1">
-                          <label className="text-[10px] font-bold uppercase tracking-widest text-white/50">Additional Details</label>
-                          <textarea
-                            placeholder="Branding, colors, logo, special requirements..."
-                            rows={2}
-                            value={customOrder.description}
-                            onChange={(e) => setCustomOrder({ ...customOrder, description: e.target.value })}
-                            className="w-full resize-none rounded-lg bg-white/10 border border-white/15 text-white placeholder:text-white/30 text-sm font-medium px-3 py-2 focus:outline-none focus:border-sky-400"
-                          />
-                        </div>
-                        <button
-                          type="button"
-                          onClick={() => setShowCheckout(true)}
-                          className="w-full rounded-full h-10 text-sm font-bold bg-gradient-to-r from-sky-400 to-blue-500 text-white hover:from-sky-500 hover:to-blue-600 transition-all shadow-lg shadow-blue-900/40"
-                        >
-                          Submit Request
-                        </button>
-                      </div>
-                    )}
+                    </div>
                   </div>
                 </div>
               </div>
