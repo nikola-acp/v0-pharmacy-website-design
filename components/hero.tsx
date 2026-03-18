@@ -1,4 +1,7 @@
+"use client"
+
 import Link from "next/link"
+import { useEffect, useRef, useState } from "react"
 import { Button } from "@/components/ui/button"
 import { ArrowRight, ShieldCheck, Zap, Truck, Headphones } from "lucide-react"
 
@@ -9,20 +12,42 @@ const highlights = [
   { icon: Headphones, text: "Fast Delivery Ontario-Wide" },
 ]
 
-const stats = [
-  { value: "500+", label: "Pharmacies served" },
-  { value: "48h", label: "Avg. delivery" },
-  { value: "10%", label: "Off this week" },
-  { value: "Free", label: "Tech support" },
-]
+function useCounter(target: number, duration = 1800, start = false) {
+  const [count, setCount] = useState(0)
+  useEffect(() => {
+    if (!start) return
+    let startTime: number | null = null
+    const step = (timestamp: number) => {
+      if (!startTime) startTime = timestamp
+      const progress = Math.min((timestamp - startTime) / duration, 1)
+      setCount(Math.floor(progress * target))
+      if (progress < 1) requestAnimationFrame(step)
+    }
+    requestAnimationFrame(step)
+  }, [start, target, duration])
+  return count
+}
 
 export function Hero() {
+  const statsRef = useRef<HTMLDivElement>(null)
+  const [started, setStarted] = useState(false)
+
+  useEffect(() => {
+    const el = statsRef.current
+    if (!el) return
+    const observer = new IntersectionObserver(
+      ([entry]) => { if (entry.isIntersecting) { setStarted(true); observer.disconnect() } },
+      { threshold: 0.3 }
+    )
+    observer.observe(el)
+    return () => observer.disconnect()
+  }, [])
+
+  const count = useCounter(100, 1800, started)
+
   return (
     <section className="relative pt-[100px] overflow-hidden">
-      {/* Rich multi-stop gradient background */}
       <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,_#3b82f6_0%,_#1e40af_35%,_#1e1b4b_70%,_#0f172a_100%)]" />
-
-      {/* Noise/grain texture for depth */}
       <div
         className="absolute inset-0 opacity-[0.04]"
         style={{
@@ -31,12 +56,8 @@ export function Hero() {
           backgroundSize: "128px 128px",
         }}
       />
-
-      {/* Glowing orbs */}
       <div className="absolute top-20 right-1/4 h-72 w-72 rounded-full bg-blue-500/20 blur-3xl pointer-events-none" />
       <div className="absolute bottom-10 left-1/3 h-56 w-56 rounded-full bg-sky-400/15 blur-3xl pointer-events-none" />
-
-      {/* Bottom fade */}
       <div className="absolute bottom-0 left-0 right-0 h-40 bg-gradient-to-t from-slate-50 to-transparent" />
 
       <div className="relative mx-auto max-w-7xl px-6 lg:px-8">
@@ -85,21 +106,31 @@ export function Hero() {
           </div>
 
           {/* Right: stat cards */}
-          <div className="grid grid-cols-2 gap-3">
-            {stats.map((stat, i) => (
-              <div
-                key={stat.label}
-                className={`rounded-2xl border p-6 transition-all ${
-                  i === 2
-                    ? "bg-gradient-to-br from-sky-400/25 to-blue-500/20 border-sky-400/30 col-span-1"
-                    : "bg-white/8 border-white/12 hover:bg-white/12"
-                }`}
-              >
-                <p className="text-4xl font-extrabold text-white tracking-tight">{stat.value}</p>
-                <p className="mt-1.5 text-xs font-semibold text-white/55 tracking-wide uppercase">{stat.label}</p>
-              </div>
-            ))}
+          <div ref={statsRef} className="grid grid-cols-2 gap-3">
+            {/* Animated counter card */}
+            <div className="rounded-2xl border bg-gradient-to-br from-sky-400/25 to-blue-500/20 border-sky-400/30 p-6">
+              <p className="text-4xl font-extrabold text-white tracking-tight">
+                {started ? (count >= 100 ? "100+" : `${count}+`) : "0+"}
+              </p>
+              <p className="mt-1.5 text-xs font-semibold text-white/55 tracking-wide uppercase">Pharmacies Served</p>
+            </div>
+
+            <div className="rounded-2xl border bg-white/8 border-white/12 hover:bg-white/12 p-6 transition-all">
+              <p className="text-4xl font-extrabold text-white tracking-tight">Best</p>
+              <p className="mt-1.5 text-xs font-semibold text-white/55 tracking-wide uppercase">Prices</p>
+            </div>
+
+            <div className="rounded-2xl border bg-white/8 border-white/12 hover:bg-white/12 p-6 transition-all">
+              <p className="text-4xl font-extrabold text-white tracking-tight">Custom</p>
+              <p className="mt-1.5 text-xs font-semibold text-white/55 tracking-wide uppercase">Orders</p>
+            </div>
+
+            <div className="rounded-2xl border bg-white/8 border-white/12 hover:bg-white/12 p-6 transition-all">
+              <p className="text-4xl font-extrabold text-white tracking-tight">Quality</p>
+              <p className="mt-1.5 text-xs font-semibold text-white/55 tracking-wide uppercase">Products</p>
+            </div>
           </div>
+
         </div>
       </div>
     </section>

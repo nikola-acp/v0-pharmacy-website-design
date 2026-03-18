@@ -1,10 +1,11 @@
 "use client"
 
 import { useState } from "react"
+import Link from "next/link"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Textarea } from "@/components/ui/textarea"
-import { Mail, MapPin, Clock, Phone, CheckCircle2, ShoppingCart, Headphones, FileQuestion } from "lucide-react"
+import { Mail, MapPin, Clock, Phone, CheckCircle2, Headphones, FileQuestion, ArrowRight } from "lucide-react"
 
 const contactDetails = [
   { icon: Phone, label: "Phone", value: "+1 (647) 429-2677", href: "tel:+16474292677" },
@@ -14,9 +15,8 @@ const contactDetails = [
 ]
 
 const requestTypes = [
-  { id: "order", label: "Place an Order", icon: ShoppingCart, description: "Request products, pricing, or a custom quote." },
-  { id: "support", label: "Tech Support", icon: Headphones, description: "Printer setup, troubleshooting, or ongoing help." },
-  { id: "general", label: "General Inquiry", icon: FileQuestion, description: "Questions, custom requirements, or anything else." },
+  { id: "general", label: "General Inquiry", icon: FileQuestion, description: "Questions, pricing, custom requirements, or anything else." },
+  { id: "support", label: "Tech Support", icon: Headphones, description: "Printer setup, troubleshooting, or ongoing technical help." },
 ]
 
 function generateTicketId() {
@@ -24,7 +24,7 @@ function generateTicketId() {
 }
 
 export function Contact() {
-  const [selectedType, setSelectedType] = useState("order")
+  const [selectedType, setSelectedType] = useState("general")
   const [formData, setFormData] = useState({ name: "", email: "", pharmacy: "", message: "" })
   const [submitted, setSubmitted] = useState(false)
   const [ticketId, setTicketId] = useState("")
@@ -92,10 +92,19 @@ export function Contact() {
               ))}
             </div>
 
-            <div className="relative mt-auto pt-6 border-t border-white/10">
-              <p className="text-xs text-white/45 font-medium leading-relaxed">
-                Serving independent pharmacies and chains across Ontario. IDA, Guardian, and Pharmasave supplies available.
-              </p>
+            {/* Order Now CTA */}
+            <div className="relative mt-auto pt-6 border-t border-white/10 flex flex-col gap-3">
+              <p className="text-xs text-white/50 font-medium">Ready to place an order?</p>
+              <Button
+                asChild
+                size="lg"
+                className="w-full rounded-full h-11 text-sm font-bold bg-white text-blue-900 hover:bg-blue-50 shadow-lg shadow-blue-900/30 border-0 transition-all"
+              >
+                <Link href="/products">
+                  Order Now
+                  <ArrowRight className="ml-2 h-4 w-4" />
+                </Link>
+              </Button>
             </div>
           </div>
 
@@ -116,7 +125,6 @@ export function Contact() {
                       : "We'll get back to you within one business day."}
                   </p>
                 </div>
-                {/* Ticket ID */}
                 <div className="flex flex-col items-center gap-1 bg-blue-50 border border-blue-100 rounded-2xl px-8 py-4">
                   <p className="text-[10px] font-bold uppercase tracking-widest text-blue-400">Your Ticket ID</p>
                   <p className="text-2xl font-extrabold tracking-widest text-blue-700">{ticketId}</p>
@@ -133,29 +141,29 @@ export function Contact() {
             ) : (
               <form onSubmit={handleSubmit} className="flex flex-col gap-5">
 
-                {/* Request type selector */}
+                {/* Request type selector — 2 options only */}
                 <div>
                   <p className="text-xs font-bold uppercase tracking-widest text-slate-500 mb-3">Request Type</p>
-                  <div className="grid grid-cols-3 gap-2">
+                  <div className="grid grid-cols-2 gap-3">
                     {requestTypes.map((type) => (
                       <button
                         key={type.id}
                         type="button"
                         onClick={() => setSelectedType(type.id)}
-                        className={`flex flex-col items-center gap-2 rounded-2xl border-2 p-3 text-center transition-all duration-200 ${
+                        className={`flex flex-col items-center gap-2 rounded-2xl border-2 p-4 text-center transition-all duration-200 ${
                           selectedType === type.id
                             ? "border-blue-500 bg-blue-50 shadow-md shadow-blue-100"
                             : "border-slate-200 bg-white hover:border-blue-200 hover:bg-blue-50/40"
                         }`}
                       >
-                        <div className={`flex h-9 w-9 items-center justify-center rounded-xl transition-all ${
+                        <div className={`flex h-10 w-10 items-center justify-center rounded-xl transition-all ${
                           selectedType === type.id
                             ? "bg-gradient-to-br from-blue-600 to-indigo-600 shadow-md shadow-blue-200"
                             : "bg-slate-100"
                         }`}>
-                          <type.icon className={`h-4 w-4 ${selectedType === type.id ? "text-white" : "text-slate-500"}`} />
+                          <type.icon className={`h-5 w-5 ${selectedType === type.id ? "text-white" : "text-slate-500"}`} />
                         </div>
-                        <span className={`text-[11px] font-bold leading-tight ${selectedType === type.id ? "text-blue-700" : "text-slate-600"}`}>
+                        <span className={`text-xs font-bold leading-tight ${selectedType === type.id ? "text-blue-700" : "text-slate-600"}`}>
                           {type.label}
                         </span>
                       </button>
@@ -191,8 +199,6 @@ export function Contact() {
                     placeholder={
                       selectedType === "support"
                         ? "Describe your issue — printer model, error message, what you've tried…"
-                        : selectedType === "order"
-                        ? "Tell us what you need — products, quantities, custom requirements…"
                         : "How can we help you today?"
                     }
                     rows={4}
@@ -206,9 +212,9 @@ export function Contact() {
                 <Button
                   type="submit"
                   size="lg"
-                  className="w-full rounded-full h-12 text-sm font-bold bg-gradient-to-r from-blue-600 to-indigo-600 text-white hover:from-blue-700 hover:to-indigo-700 shadow-lg shadow-blue-200 hover:shadow-blue-300 border-0 transition-all"
+                  className="w-full rounded-full h-12 text-sm font-bold bg-gradient-to-r from-blue-600 to-indigo-600 text-white hover:from-blue-700 hover:to-indigo-700 shadow-lg shadow-blue-200 border-0 transition-all"
                 >
-                  {selectedType === "support" ? "Submit Support Ticket" : selectedType === "order" ? "Send Order Request" : "Send Message"}
+                  {selectedType === "support" ? "Submit Support Ticket" : "Send Message"}
                 </Button>
               </form>
             )}
