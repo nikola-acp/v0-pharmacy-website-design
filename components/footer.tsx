@@ -27,18 +27,25 @@ export function Footer() {
           {/* Brand */}
           <div className="lg:col-span-2">
             <Link href="/" className="inline-flex items-center gap-3 mb-6 group">
-              <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-gradient-to-br from-blue-500 to-indigo-700 shadow-lg shadow-blue-900/40 group-hover:shadow-blue-600/40 transition-shadow">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-                  <path d="M9 3H6a2 2 0 00-2 2v4a2 2 0 002 2h3" stroke="white" strokeWidth="2" strokeLinecap="round"/>
-                  <path d="M9 3v8" stroke="white" strokeWidth="2" strokeLinecap="round"/>
-                  <path d="M9 7h4a2 2 0 012 2v1a2 2 0 01-2 2H9" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-                  <path d="M9 12v6" stroke="white" strokeWidth="2" strokeLinecap="round"/>
-                  <path d="M15 18H6" stroke="white" strokeWidth="2" strokeLinecap="round"/>
-                </svg>
-              </div>
+              <svg width="44" height="44" viewBox="0 0 80 80" fill="none" aria-hidden="true">
+                <ellipse cx="40" cy="34" rx="26" ry="10" fill="#3b82f6" opacity="0.18" />
+                <path d="M14 34 Q14 58 40 58 Q66 58 66 34" fill="url(#footer-mortar-grad)" />
+                <ellipse cx="40" cy="34" rx="26" ry="10" fill="#1d4ed8" />
+                <ellipse cx="40" cy="34" rx="22" ry="8" fill="#3b82f6" />
+                <rect x="30" y="57" width="20" height="5" rx="2.5" fill="#1d4ed8" />
+                <rect x="26" y="61" width="28" height="4" rx="2" fill="#2563eb" />
+                <path d="M54 14 Q62 26 56 36" stroke="white" strokeWidth="6" strokeLinecap="round" />
+                <ellipse cx="57.5" cy="35.5" rx="4" ry="3" fill="white" transform="rotate(-20 57.5 35.5)" />
+                <defs>
+                  <linearGradient id="footer-mortar-grad" x1="14" y1="34" x2="66" y2="58" gradientUnits="userSpaceOnUse">
+                    <stop offset="0%" stopColor="#38bdf8" />
+                    <stop offset="100%" stopColor="#1d4ed8" />
+                  </linearGradient>
+                </defs>
+              </svg>
               <div className="flex flex-col leading-none gap-0.5">
-                <span className="text-[17px] font-extrabold tracking-tight">Pharmabest</span>
-                <span className="text-[9.5px] font-bold tracking-[0.22em] text-sky-400 uppercase">Supplies</span>
+                <span className="text-[17px] font-extrabold tracking-tight uppercase text-white">Pharmabest</span>
+                <span className="text-[9.5px] font-bold tracking-[0.28em] text-sky-400 uppercase">Supplies</span>
               </div>
             </Link>
             <p className="text-sm text-white/45 max-w-sm leading-relaxed font-medium">

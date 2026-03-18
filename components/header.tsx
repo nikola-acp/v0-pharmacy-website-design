@@ -88,7 +88,7 @@ export function Header() {
               </a>
             </div>
             <Button asChild size="sm" className="rounded-full px-5 h-9 text-sm font-bold bg-white text-blue-900 hover:bg-blue-50 shadow-md shadow-blue-900/20 border-0 transition-all">
-              <Link href="#contact">Get a Quote</Link>
+              <Link href="/order">Order Now</Link>
             </Button>
           </div>
 
@@ -141,7 +141,7 @@ export function Header() {
                 <Mail className="h-4 w-4 text-blue-500" /> supplies@pharmabest.ca
               </a>
               <Button asChild className="w-full rounded-full font-bold bg-gradient-to-r from-blue-600 to-indigo-600 text-white border-0">
-                <Link href="#contact" onClick={() => setMobileMenuOpen(false)}>Get a Quote</Link>
+                <Link href="/order" onClick={() => setMobileMenuOpen(false)}>Order Now</Link>
               </Button>
             </div>
           </div>

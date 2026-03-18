@@ -2,14 +2,7 @@
 
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
-import { ArrowRight, ShieldCheck, Zap, Truck, Package } from "lucide-react"
-
-const highlights = [
-  { icon: Package, text: "Wholesale & Custom Orders" },
-  { icon: Zap, text: "Highest Quality Products" },
-  { icon: ShieldCheck, text: "Easy-Remove Labels" },
-  { icon: Truck, text: "Fast Delivery Ontario-Wide" },
-]
+import { ArrowRight } from "lucide-react"
 
 export function Hero() {
   return (
@@ -47,31 +40,16 @@ export function Hero() {
             Premium quality thermal labels, receipt rolls, printers, and accessories. Lowest prices, fast Ontario-wide delivery, and dedicated support for every pharmacy.
           </p>
 
-          <div className="mt-10 flex flex-col sm:flex-row gap-3">
+          <div className="mt-10 flex flex-col sm:flex-row gap-3 justify-center">
             <Button asChild size="lg" className="rounded-full px-8 h-12 text-sm font-bold bg-white text-blue-900 hover:bg-blue-50 shadow-xl shadow-blue-900/30 border-0 transition-all">
-              <Link href="/order">
+              <Link href="/order" className="flex items-center justify-center gap-2">
                 Order Now
-                <ArrowRight className="ml-2 h-4 w-4" />
+                <ArrowRight className="h-4 w-4" />
               </Link>
             </Button>
             <Button asChild variant="outline" size="lg" className="rounded-full px-8 h-12 text-sm font-bold border-white/20 bg-white/8 text-white hover:bg-white/15 transition-all">
               <Link href="#contact">Get a Quote</Link>
             </Button>
-          </div>
-        </div>
-
-        {/* Highlights bar - icons only, no text */}
-        <div className="relative pb-12">
-          <div className="flex justify-center gap-6">
-            {highlights.map((item) => (
-              <div
-                key={item.text}
-                title={item.text}
-                className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-white/10 border border-white/15"
-              >
-                <item.icon className="h-4 w-4 text-sky-300" />
-              </div>
-            ))}
           </div>
         </div>
       </div>
