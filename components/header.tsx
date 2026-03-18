@@ -1,6 +1,7 @@
 "use client"
 
 import Link from "next/link"
+import Image from "next/image"
 import { useState } from "react"
 import { Menu, X, Phone, Mail } from "lucide-react"
 import { Button } from "@/components/ui/button"
@@ -48,12 +49,15 @@ export function Header() {
         <div className="mx-auto flex max-w-7xl items-center justify-between px-6 lg:px-8 h-[72px]">
 
           {/* Logo */}
-          <Link href="/" className="flex items-center gap-3 shrink-0 group">
-            <PharmabestLogo size={44} light />
-            <div className="flex flex-col leading-none gap-0.5">
-              <span className="text-[17px] font-extrabold tracking-tight text-white uppercase">Pharmabest</span>
-              <span className="text-[9px] font-bold tracking-[0.28em] text-sky-300 uppercase">Supplies</span>
-            </div>
+          <Link href="/" className="flex items-center shrink-0">
+            <Image
+              src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-yDm7taDhcUunPAdnZz02ZCaGqRdILS.png"
+              alt="Pharmabest Supplies"
+              width={220}
+              height={56}
+              className="h-12 w-auto object-contain"
+              priority
+            />
           </Link>
 
           {/* Desktop nav */}
@@ -110,12 +114,14 @@ export function Header() {
           <div className="fixed inset-0 z-40 bg-black/40 backdrop-blur-sm" onClick={() => setMobileMenuOpen(false)} />
           <div className="fixed inset-y-0 right-0 z-50 w-72 bg-white shadow-2xl flex flex-col">
             <div className="flex items-center justify-between px-6 py-5 border-b border-slate-100">
-              <Link href="/" className="flex items-center gap-3" onClick={() => setMobileMenuOpen(false)}>
-                <PharmabestLogo size={38} />
-                <div className="flex flex-col leading-none gap-0.5">
-                  <span className="text-base font-extrabold tracking-tight text-slate-900 uppercase">Pharmabest</span>
-                  <span className="text-[9px] font-bold tracking-[0.28em] text-blue-600 uppercase">Supplies</span>
-                </div>
+              <Link href="/" className="inline-flex" onClick={() => setMobileMenuOpen(false)}>
+                <Image
+                  src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-yDm7taDhcUunPAdnZz02ZCaGqRdILS.png"
+                  alt="Pharmabest Supplies"
+                  width={180}
+                  height={46}
+                  className="h-10 w-auto object-contain"
+                />
               </Link>
               <button type="button" className="-m-2 p-2 text-slate-700 rounded-lg hover:bg-slate-50" onClick={() => setMobileMenuOpen(false)} aria-label="Close menu">
                 <X className="h-5 w-5" />
