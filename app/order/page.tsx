@@ -309,48 +309,59 @@ export default function OrderPage() {
           ) : (
             /* Product grid */
             <>
-              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 mb-12">
                 {sortedProducts.map((product) => {
                   const cartItem = cart.find((item) => item.productId === product.id)
                   const inCart = !!cartItem
 
+                  const descriptions: Record<string, string> = {
+                    "plain-labels": "High-adhesion durable label rolls for prescription bottles and general pharmacy use.",
+                    "plain-receipts": "Crystal-clear thermal receipt rolls for long-lasting transaction records.",
+                    "custom-labels": "Branded labels with your pharmacy's logo, name, and contact information.",
+                    "custom-receipts": "Branded receipt rolls featuring your pharmacy logo on every transaction.",
+                    "thermal-printer": "Fast, reliable thermal printers built for high-volume pharmacy environments.",
+                  }
+
+                  const tags: Record<string, string | null> = {
+                    "plain-labels": null,
+                    "plain-receipts": null,
+                    "custom-labels": "Most Popular",
+                    "custom-receipts": "Most Popular",
+                    "thermal-printer": "Free setup",
+                  }
+
                   return (
                     <div
                       key={product.id}
-                      className={`group flex flex-col rounded-2xl border-2 bg-white overflow-hidden transition-all duration-200 ${
-                        inCart ? "border-blue-300 shadow-lg shadow-blue-100" : "border-slate-100 hover:border-slate-200 hover:shadow-lg hover:shadow-slate-100"
+                      className={`group relative flex flex-col rounded-2xl bg-white overflow-hidden transition-all duration-300 border-2 ${
+                        inCart
+                          ? "border-blue-300 shadow-xl shadow-blue-100/50"
+                          : "border-slate-100 hover:border-blue-200 hover:shadow-xl hover:shadow-blue-100/50"
                       }`}
                     >
+                      {tags[product.id] && (
+                        <span className="absolute top-4 right-4 z-10 bg-blue-50 text-blue-700 border border-blue-100 text-[11px] font-bold tracking-wide px-2.5 py-0.5 rounded-full">
+                          {tags[product.id]}
+                        </span>
+                      )}
+
                       {/* Product image */}
-                      <div className="relative aspect-square bg-slate-50 flex items-center justify-center overflow-hidden">
-                        {product.image ? (
-                          <Image
-                            src={product.image}
-                            alt={product.name}
-                            fill
-                            className="object-cover group-hover:scale-105 transition-transform duration-300"
-                          />
-                        ) : (
-                          <div className="flex flex-col items-center justify-center text-slate-300">
-                            <svg className="w-16 h-16" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1} d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
-                            </svg>
-                          </div>
-                        )}
+                      <div className="relative aspect-square bg-slate-100 overflow-hidden">
+                        <Image
+                          src={product.image}
+                          alt={product.name}
+                          fill
+                          className="object-cover group-hover:scale-105 transition-transform duration-300"
+                        />
                       </div>
 
                       {/* Product info */}
-                      <div className="flex flex-col flex-1 p-5">
-                        <p className="text-xs font-semibold text-blue-600 uppercase tracking-wide mb-1">{product.category}</p>
-                        <h3 className="text-sm font-bold text-slate-900 leading-snug mb-2">{product.name}</h3>
-                        
-                        {product.basePrice ? (
-                          <p className="text-lg font-extrabold text-slate-900">${product.basePrice.toFixed(2)}</p>
-                        ) : (
-                          <p className="text-sm text-slate-400 font-medium italic">Contact for pricing</p>
-                        )}
+                      <div className="p-6 flex flex-col flex-1">
+                        <h3 className="text-[15px] font-extrabold text-slate-900 mb-2 tracking-tight">{product.name}</h3>
+                        <p className="text-sm text-slate-500 leading-relaxed font-medium flex-1">{descriptions[product.id]}</p>
+                        <p className="text-lg font-extrabold text-slate-900 mt-2">${product.basePrice.toFixed(2)}</p>
 
-                        <div className="mt-auto pt-4">
+                        <div className="mt-4 pt-4 border-t border-slate-100">
                           {inCart ? (
                             <div className="flex items-center gap-2">
                               <button
@@ -389,13 +400,16 @@ export default function OrderPage() {
                               </button>
                             </div>
                           ) : (
-                            <Button
+                            <button
                               type="button"
                               onClick={() => addToCart(product.id)}
-                              className="w-full rounded-full h-10 text-sm font-bold bg-gradient-to-r from-blue-600 to-blue-700 text-white hover:from-blue-700 hover:to-indigo-700 shadow-md shadow-blue-200"
+                              className="inline-flex items-center justify-center gap-1.5 rounded-full bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-indigo-700 text-white text-sm font-bold px-5 py-2 shadow-md shadow-blue-200 hover:shadow-blue-300 transition-all duration-200"
                             >
                               Add to Cart
-                            </Button>
+                              <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
+                                <path d="M2.5 7h9m0 0L8 3.5M11.5 7L8 10.5" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"/>
+                              </svg>
+                            </button>
                           )}
                         </div>
                       </div>
