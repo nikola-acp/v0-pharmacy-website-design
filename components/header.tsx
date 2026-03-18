@@ -51,8 +51,8 @@ export function Header() {
         <a href="mailto:supplies@pharmabest.ca" className="underline underline-offset-2 hover:no-underline">supplies@pharmabest.ca</a>
       </div>
 
-      {/* Main nav - transparent to blend with hero */}
-      <nav className="bg-transparent">
+      {/* Main nav - solid gradient background that stays fixed */}
+      <nav className="bg-gradient-to-r from-blue-800 via-blue-700 to-indigo-800 shadow-lg shadow-blue-900/20">
         <div className="mx-auto flex max-w-7xl items-center justify-between px-6 lg:px-8 h-[72px]">
 
           {/* Logo */}

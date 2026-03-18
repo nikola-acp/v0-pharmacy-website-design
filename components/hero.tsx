@@ -1,7 +1,6 @@
 "use client"
 
 import Link from "next/link"
-import { useEffect, useRef, useState } from "react"
 import { Button } from "@/components/ui/button"
 import { ArrowRight, ShieldCheck, Zap, Truck, Package } from "lucide-react"
 
@@ -14,8 +13,9 @@ const highlights = [
 
 export function Hero() {
   return (
-    <section className="relative pt-[100px] overflow-hidden">
-      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,_#3b82f6_0%,_#1e40af_35%,_#1e1b4b_70%,_#0f172a_100%)]" />
+    <section className="relative pt-[140px] overflow-hidden">
+      {/* Background gradient - slightly lighter to work with solid header */}
+      <div className="absolute inset-0 bg-gradient-to-b from-blue-800 via-blue-900 to-indigo-950" />
       <div
         className="absolute inset-0 opacity-[0.04]"
         style={{
@@ -29,7 +29,7 @@ export function Hero() {
       <div className="absolute bottom-0 left-0 right-0 h-40 bg-gradient-to-t from-slate-50 to-transparent" />
 
       <div className="relative mx-auto max-w-7xl px-6 lg:px-8">
-        <div className="flex flex-col items-center text-center py-24 lg:py-32 max-w-4xl mx-auto">
+        <div className="flex flex-col items-center text-center py-20 lg:py-28 max-w-4xl mx-auto">
 
           <div className="inline-flex items-center gap-2 rounded-full bg-white/10 border border-white/15 px-4 py-1.5 text-xs font-semibold text-white/85 mb-8 tracking-wide">
             <span className="h-1.5 w-1.5 rounded-full bg-sky-400 animate-pulse" />
@@ -60,8 +60,8 @@ export function Hero() {
           </div>
         </div>
 
-        {/* Highlights bar - horizontal with icons */}
-        <div className="relative pb-16">
+        {/* Highlights bar - horizontal with icons, no descriptions */}
+        <div className="relative pb-12">
           <div className="flex flex-wrap justify-center gap-x-10 gap-y-4">
             {highlights.map((item) => (
               <div key={item.text} className="flex items-center gap-2.5 text-sm text-white/70 font-medium">

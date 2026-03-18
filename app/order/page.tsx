@@ -1,43 +1,44 @@
 "use client"
 
-import { useState } from "react"
+import { useState, useMemo } from "react"
 import Link from "next/link"
+import Image from "next/image"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Textarea } from "@/components/ui/textarea"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
-import { ArrowLeft, CheckCircle2, Minus, Plus, Trash2 } from "lucide-react"
+import { ArrowLeft, CheckCircle2, Minus, Plus, Trash2, ChevronRight, ShoppingCart } from "lucide-react"
 import { Header } from "@/components/header"
 import { Footer } from "@/components/footer"
 
 const products = [
   {
-    id: "plain-labels",
-    name: "Plain Thermal Labels",
-    category: "Plain Labels",
-    basePrice: 233.58,
-    image: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-KmX2MXr7wFQcIezqCssZdx1vWvcvDv.png",
-  },
-  {
-    id: "plain-receipts",
-    name: "Plain Thermal Receipts",
-    category: "Plain Receipts",
-    basePrice: 202.78,
-    image: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-KmX2MXr7wFQcIezqCssZdx1vWvcvDv.png",
-  },
-  {
     id: "custom-labels",
-    name: "Custom Thermal Labels",
+    name: "Customized Label — Thermal Paper Roll",
     category: "Customized Labels",
     basePrice: null,
     image: null,
   },
   {
     id: "custom-receipts",
-    name: "Custom Thermal Receipts",
+    name: "Customized Receipt — Thermal Paper Roll",
     category: "Customized Receipts",
     basePrice: null,
     image: null,
+  },
+  {
+    id: "plain-labels",
+    name: "Plain Label — Thermal Paper Roll",
+    category: "Plain Labels",
+    basePrice: 233.58,
+    image: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-KmX2MXr7wFQcIezqCssZdx1vWvcvDv.png",
+  },
+  {
+    id: "plain-receipts",
+    name: "Plain Receipt — Thermal Paper Roll",
+    category: "Plain Receipts",
+    basePrice: 202.78,
+    image: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-KmX2MXr7wFQcIezqCssZdx1vWvcvDv.png",
   },
   {
     id: "thermal-printer",
@@ -46,6 +47,14 @@ const products = [
     basePrice: 1.00,
     image: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-KmX2MXr7wFQcIezqCssZdx1vWvcvDv.png",
   },
+]
+
+const sortOptions = [
+  { value: "default", label: "Default sorting" },
+  { value: "name-asc", label: "Name (A-Z)" },
+  { value: "name-desc", label: "Name (Z-A)" },
+  { value: "price-low", label: "Price: Low to High" },
+  { value: "price-high", label: "Price: High to Low" },
 ]
 
 const quantityOptions = [1, 2, 3, 4, 5, 10, 20, 50, 100]
@@ -61,9 +70,27 @@ function generateOrderId() {
 
 export default function OrderPage() {
   const [cart, setCart] = useState<CartItem[]>([])
+  const [sortBy, setSortBy] = useState("default")
   const [formData, setFormData] = useState({ name: "", email: "", phone: "", pharmacy: "", notes: "" })
   const [submitted, setSubmitted] = useState(false)
   const [orderId, setOrderId] = useState("")
+  const [showCheckout, setShowCheckout] = useState(false)
+
+  const sortedProducts = useMemo(() => {
+    const sorted = [...products]
+    switch (sortBy) {
+      case "name-asc":
+        return sorted.sort((a, b) => a.name.localeCompare(b.name))
+      case "name-desc":
+        return sorted.sort((a, b) => b.name.localeCompare(a.name))
+      case "price-low":
+        return sorted.sort((a, b) => (a.basePrice ?? Infinity) - (b.basePrice ?? Infinity))
+      case "price-high":
+        return sorted.sort((a, b) => (b.basePrice ?? -Infinity) - (a.basePrice ?? -Infinity))
+      default:
+        return sorted
+    }
+  }, [sortBy])
 
   const addToCart = (productId: string) => {
     const existing = cart.find((item) => item.productId === productId)
@@ -114,20 +141,32 @@ export default function OrderPage() {
       <main className="pt-[140px] pb-20">
         <div className="mx-auto max-w-7xl px-6 lg:px-8">
 
-          {/* Back link */}
-          <Link href="/" className="inline-flex items-center gap-2 text-sm font-semibold text-blue-600 hover:text-blue-800 mb-8 transition-colors">
-            <ArrowLeft className="h-4 w-4" />
-            Back to Home
-          </Link>
+          {/* Breadcrumb */}
+          <nav className="flex items-center gap-2 text-sm text-slate-500 mb-8">
+            <Link href="/" className="hover:text-blue-600 transition-colors">Home</Link>
+            <ChevronRight className="h-4 w-4" />
+            <span className="font-medium text-slate-900">Products</span>
+          </nav>
 
-          {/* Header */}
-          <div className="mb-12">
-            <h1 className="text-4xl font-extrabold tracking-tight text-slate-900 sm:text-5xl">
-              Place an Order
-            </h1>
-            <p className="mt-3 text-lg text-slate-500 font-medium">
-              Select your products and quantities below. We&apos;ll confirm pricing and delivery details.
-            </p>
+          {/* Header with sorting */}
+          <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4 mb-10">
+            <div>
+              <h1 className="text-4xl font-extrabold tracking-tight text-slate-900">
+                Products
+              </h1>
+            </div>
+            <div className="flex items-center gap-3">
+              <Select value={sortBy} onValueChange={setSortBy}>
+                <SelectTrigger className="w-48 h-10 rounded-lg border-slate-200 bg-white text-sm font-medium">
+                  <SelectValue placeholder="Default sorting" />
+                </SelectTrigger>
+                <SelectContent>
+                  {sortOptions.map((option) => (
+                    <SelectItem key={option.value} value={option.value}>{option.label}</SelectItem>
+                  ))}
+                </SelectContent>
+              </Select>
+            </div>
           </div>
 
           {submitted ? (
@@ -148,57 +187,175 @@ export default function OrderPage() {
                 <Link href="/">Return to Home</Link>
               </Button>
             </div>
-          ) : (
+          ) : showCheckout ? (
+            /* Checkout Form */
             <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+              <div className="lg:col-span-2">
+                <button
+                  type="button"
+                  onClick={() => setShowCheckout(false)}
+                  className="inline-flex items-center gap-2 text-sm font-semibold text-blue-600 hover:text-blue-800 mb-6 transition-colors"
+                >
+                  <ArrowLeft className="h-4 w-4" />
+                  Back to Products
+                </button>
 
-              {/* Product selection */}
-              <div className="lg:col-span-2 space-y-6">
-                <div className="bg-white rounded-2xl border border-slate-100 shadow-lg shadow-slate-100/50 p-6">
-                  <h2 className="text-lg font-bold text-slate-900 mb-6">Select Products</h2>
+                <form onSubmit={handleSubmit} className="bg-white rounded-2xl border border-slate-100 shadow-lg shadow-slate-100/50 p-8">
+                  <h2 className="text-xl font-bold text-slate-900 mb-6">Complete Your Order</h2>
                   
-                  <div className="space-y-4">
-                    {products.map((product) => {
-                      const cartItem = cart.find((item) => item.productId === product.id)
-                      const inCart = !!cartItem
-                      
-                      return (
-                        <div
-                          key={product.id}
-                          className={`flex items-center gap-4 p-4 rounded-xl border-2 transition-all ${
-                            inCart ? "border-blue-200 bg-blue-50/50" : "border-slate-100 bg-white hover:border-slate-200"
-                          }`}
-                        >
-                          {/* Product image placeholder */}
-                          <div className="w-16 h-16 rounded-lg bg-slate-100 flex items-center justify-center shrink-0 overflow-hidden">
-                            {product.image ? (
-                              <div className="w-full h-full bg-slate-200 flex items-center justify-center">
-                                <svg className="w-8 h-8 text-slate-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
-                                </svg>
-                              </div>
-                            ) : (
-                              <svg className="w-8 h-8 text-slate-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
-                              </svg>
-                            )}
-                          </div>
+                  <div className="space-y-5">
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                      <div className="flex flex-col gap-1.5">
+                        <label htmlFor="order-name" className="text-xs font-bold uppercase tracking-widest text-slate-500">Name</label>
+                        <Input id="order-name" type="text" placeholder="Your name" value={formData.name} onChange={(e) => setFormData({ ...formData, name: e.target.value })} className="rounded-xl border-slate-200 h-11 text-sm font-medium" required />
+                      </div>
+                      <div className="flex flex-col gap-1.5">
+                        <label htmlFor="order-email" className="text-xs font-bold uppercase tracking-widest text-slate-500">Email</label>
+                        <Input id="order-email" type="email" placeholder="you@pharmacy.com" value={formData.email} onChange={(e) => setFormData({ ...formData, email: e.target.value })} className="rounded-xl border-slate-200 h-11 text-sm font-medium" required />
+                      </div>
+                    </div>
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                      <div className="flex flex-col gap-1.5">
+                        <label htmlFor="order-pharmacy" className="text-xs font-bold uppercase tracking-widest text-slate-500">Pharmacy Name</label>
+                        <Input id="order-pharmacy" type="text" placeholder="e.g. Queen St. Pharmacy" value={formData.pharmacy} onChange={(e) => setFormData({ ...formData, pharmacy: e.target.value })} className="rounded-xl border-slate-200 h-11 text-sm font-medium" required />
+                      </div>
+                      <div className="flex flex-col gap-1.5">
+                        <label htmlFor="order-phone" className="text-xs font-bold uppercase tracking-widest text-slate-500">
+                          Phone <span className="text-slate-400 normal-case tracking-normal font-medium">(optional)</span>
+                        </label>
+                        <Input id="order-phone" type="tel" placeholder="(647) 123-4567" value={formData.phone} onChange={(e) => setFormData({ ...formData, phone: e.target.value })} className="rounded-xl border-slate-200 h-11 text-sm font-medium" />
+                      </div>
+                    </div>
+                    <div className="flex flex-col gap-1.5">
+                      <label htmlFor="order-notes" className="text-xs font-bold uppercase tracking-widest text-slate-500">
+                        Notes <span className="text-slate-400 normal-case tracking-normal font-medium">(optional)</span>
+                      </label>
+                      <Textarea id="order-notes" placeholder="Special requirements, custom branding details, etc." rows={3} value={formData.notes} onChange={(e) => setFormData({ ...formData, notes: e.target.value })} className="resize-none rounded-xl border-slate-200 text-sm font-medium" />
+                    </div>
+                  </div>
 
-                          <div className="flex-1 min-w-0">
-                            <p className="text-xs font-semibold text-blue-600 uppercase tracking-wide">{product.category}</p>
-                            <h3 className="text-sm font-bold text-slate-900 mt-0.5">{product.name}</h3>
-                            {product.basePrice ? (
-                              <p className="text-sm text-slate-500 font-medium mt-0.5">${product.basePrice.toFixed(2)}</p>
-                            ) : (
-                              <p className="text-xs text-slate-400 font-medium mt-0.5">Contact for pricing</p>
-                            )}
-                          </div>
+                  <div className="mt-6 pt-6 border-t border-slate-100">
+                    <p className="text-xs text-slate-400 font-medium mb-4">
+                      By submitting, you agree to be contacted regarding your order. For online payment, we use secure Shopify checkout.
+                    </p>
+                    <Button
+                      type="submit"
+                      size="lg"
+                      className="w-full rounded-full h-12 text-sm font-bold bg-gradient-to-r from-blue-600 to-indigo-600 text-white hover:from-blue-700 hover:to-indigo-700 shadow-lg shadow-blue-200 border-0 transition-all"
+                    >
+                      Submit Order Request
+                    </Button>
+                  </div>
+                </form>
+              </div>
 
+              {/* Order summary sidebar */}
+              <div className="bg-white rounded-2xl border border-slate-100 shadow-lg shadow-slate-100/50 p-6 h-fit sticky top-[160px]">
+                <h2 className="text-lg font-bold text-slate-900 mb-4">Order Summary</h2>
+                <div className="space-y-3 mb-4">
+                  {cart.map((item) => {
+                    const product = products.find((p) => p.id === item.productId)!
+                    return (
+                      <div key={item.productId} className="flex justify-between items-start text-sm">
+                        <div>
+                          <p className="font-semibold text-slate-800">{product.name}</p>
+                          <p className="text-slate-400 text-xs">Qty: {item.quantity}</p>
+                        </div>
+                        {product.basePrice ? (
+                          <p className="font-bold text-slate-900">${(product.basePrice * item.quantity).toFixed(2)}</p>
+                        ) : (
+                          <p className="text-xs text-slate-400 italic">Quote required</p>
+                        )}
+                      </div>
+                    )
+                  })}
+                </div>
+                <div className="border-t border-slate-100 pt-4">
+                  {hasCustomProducts && (
+                    <p className="text-xs text-amber-600 font-medium mb-3">
+                      * Custom products require a quote. We&apos;ll confirm final pricing.
+                    </p>
+                  )}
+                  <div className="flex justify-between items-center">
+                    <span className="text-sm font-semibold text-slate-600">Estimated Total</span>
+                    <span className="text-xl font-extrabold text-slate-900">
+                      {hasCustomProducts && getCartTotal() === 0 ? "Quote" : `$${getCartTotal().toFixed(2)}${hasCustomProducts ? "+" : ""}`}
+                    </span>
+                  </div>
+                </div>
+
+                {/* Payment methods */}
+                <div className="mt-6 pt-6 border-t border-slate-100">
+                  <p className="text-xs font-bold uppercase tracking-widest text-slate-500 mb-3">Payment Options</p>
+                  <div className="flex items-center gap-2">
+                    <div className="h-7 px-2 bg-slate-100 rounded flex items-center justify-center">
+                      <span className="text-[10px] font-bold text-slate-600">VISA</span>
+                    </div>
+                    <div className="h-7 px-2 bg-slate-100 rounded flex items-center justify-center">
+                      <span className="text-[10px] font-bold text-slate-600">MC</span>
+                    </div>
+                    <div className="h-7 px-2 bg-slate-100 rounded flex items-center justify-center">
+                      <span className="text-[10px] font-bold text-slate-600">AMEX</span>
+                    </div>
+                    <div className="h-7 px-2 bg-slate-100 rounded flex items-center justify-center">
+                      <span className="text-[10px] font-bold text-slate-600">Interac</span>
+                    </div>
+                  </div>
+                  <p className="text-[10px] text-slate-400 mt-2">Secure checkout powered by Shopify</p>
+                </div>
+              </div>
+            </div>
+          ) : (
+            /* Product grid */
+            <>
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
+                {sortedProducts.map((product) => {
+                  const cartItem = cart.find((item) => item.productId === product.id)
+                  const inCart = !!cartItem
+
+                  return (
+                    <div
+                      key={product.id}
+                      className={`group flex flex-col rounded-2xl border-2 bg-white overflow-hidden transition-all duration-200 ${
+                        inCart ? "border-blue-300 shadow-lg shadow-blue-100" : "border-slate-100 hover:border-slate-200 hover:shadow-lg hover:shadow-slate-100"
+                      }`}
+                    >
+                      {/* Product image */}
+                      <div className="relative aspect-square bg-slate-50 flex items-center justify-center overflow-hidden">
+                        {product.image ? (
+                          <Image
+                            src={product.image}
+                            alt={product.name}
+                            fill
+                            className="object-cover group-hover:scale-105 transition-transform duration-300"
+                          />
+                        ) : (
+                          <div className="flex flex-col items-center justify-center text-slate-300">
+                            <svg className="w-16 h-16" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1} d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                            </svg>
+                          </div>
+                        )}
+                      </div>
+
+                      {/* Product info */}
+                      <div className="flex flex-col flex-1 p-5">
+                        <p className="text-xs font-semibold text-blue-600 uppercase tracking-wide mb-1">{product.category}</p>
+                        <h3 className="text-sm font-bold text-slate-900 leading-snug mb-2">{product.name}</h3>
+                        
+                        {product.basePrice ? (
+                          <p className="text-lg font-extrabold text-slate-900">${product.basePrice.toFixed(2)}</p>
+                        ) : (
+                          <p className="text-sm text-slate-400 font-medium italic">Contact for pricing</p>
+                        )}
+
+                        <div className="mt-auto pt-4">
                           {inCart ? (
                             <div className="flex items-center gap-2">
                               <button
                                 type="button"
                                 onClick={() => updateQuantity(product.id, cartItem.quantity - 1)}
-                                className="h-8 w-8 rounded-lg border border-slate-200 flex items-center justify-center hover:bg-slate-50 transition-colors"
+                                className="h-9 w-9 rounded-lg border border-slate-200 flex items-center justify-center hover:bg-slate-50 transition-colors"
                               >
                                 <Minus className="h-4 w-4 text-slate-600" />
                               </button>
@@ -206,7 +363,7 @@ export default function OrderPage() {
                                 value={String(cartItem.quantity)}
                                 onValueChange={(val) => updateQuantity(product.id, parseInt(val))}
                               >
-                                <SelectTrigger className="w-20 h-8 text-sm font-semibold border-slate-200">
+                                <SelectTrigger className="flex-1 h-9 text-sm font-semibold border-slate-200">
                                   <SelectValue />
                                 </SelectTrigger>
                                 <SelectContent>
@@ -218,14 +375,14 @@ export default function OrderPage() {
                               <button
                                 type="button"
                                 onClick={() => updateQuantity(product.id, cartItem.quantity + 1)}
-                                className="h-8 w-8 rounded-lg border border-slate-200 flex items-center justify-center hover:bg-slate-50 transition-colors"
+                                className="h-9 w-9 rounded-lg border border-slate-200 flex items-center justify-center hover:bg-slate-50 transition-colors"
                               >
                                 <Plus className="h-4 w-4 text-slate-600" />
                               </button>
                               <button
                                 type="button"
                                 onClick={() => removeFromCart(product.id)}
-                                className="h-8 w-8 rounded-lg border border-red-200 flex items-center justify-center hover:bg-red-50 transition-colors ml-2"
+                                className="h-9 w-9 rounded-lg border border-red-200 flex items-center justify-center hover:bg-red-50 transition-colors"
                               >
                                 <Trash2 className="h-4 w-4 text-red-500" />
                               </button>
@@ -233,108 +390,42 @@ export default function OrderPage() {
                           ) : (
                             <Button
                               type="button"
-                              size="sm"
                               onClick={() => addToCart(product.id)}
-                              className="rounded-full px-4 text-sm font-bold bg-gradient-to-r from-blue-600 to-blue-700 text-white hover:from-blue-700 hover:to-indigo-700"
+                              className="w-full rounded-full h-10 text-sm font-bold bg-gradient-to-r from-blue-600 to-blue-700 text-white hover:from-blue-700 hover:to-indigo-700 shadow-md shadow-blue-200"
                             >
-                              Add
+                              Add to Cart
                             </Button>
                           )}
                         </div>
-                      )
-                    })}
-                  </div>
-                </div>
-              </div>
-
-              {/* Order summary & form */}
-              <div className="space-y-6">
-                {/* Cart summary */}
-                <div className="bg-white rounded-2xl border border-slate-100 shadow-lg shadow-slate-100/50 p-6">
-                  <h2 className="text-lg font-bold text-slate-900 mb-4">Order Summary</h2>
-                  
-                  {cart.length === 0 ? (
-                    <p className="text-sm text-slate-400 font-medium py-4 text-center">No products selected</p>
-                  ) : (
-                    <div className="space-y-3 mb-4">
-                      {cart.map((item) => {
-                        const product = products.find((p) => p.id === item.productId)!
-                        return (
-                          <div key={item.productId} className="flex justify-between items-start text-sm">
-                            <div>
-                              <p className="font-semibold text-slate-800">{product.name}</p>
-                              <p className="text-slate-400 text-xs">Qty: {item.quantity}</p>
-                            </div>
-                            {product.basePrice ? (
-                              <p className="font-bold text-slate-900">${(product.basePrice * item.quantity).toFixed(2)}</p>
-                            ) : (
-                              <p className="text-xs text-slate-400 italic">Quote required</p>
-                            )}
-                          </div>
-                        )
-                      })}
-                    </div>
-                  )}
-
-                  {cart.length > 0 && (
-                    <div className="border-t border-slate-100 pt-4">
-                      {hasCustomProducts && (
-                        <p className="text-xs text-amber-600 font-medium mb-3">
-                          * Custom products require a quote. We&apos;ll confirm final pricing.
-                        </p>
-                      )}
-                      <div className="flex justify-between items-center">
-                        <span className="text-sm font-semibold text-slate-600">Estimated Total</span>
-                        <span className="text-xl font-extrabold text-slate-900">
-                          {hasCustomProducts && getCartTotal() === 0 ? "Quote" : `$${getCartTotal().toFixed(2)}${hasCustomProducts ? "+" : ""}`}
-                        </span>
                       </div>
                     </div>
-                  )}
-                </div>
-
-                {/* Contact form */}
-                <form onSubmit={handleSubmit} className="bg-white rounded-2xl border border-slate-100 shadow-lg shadow-slate-100/50 p-6">
-                  <h2 className="text-lg font-bold text-slate-900 mb-4">Your Details</h2>
-                  
-                  <div className="space-y-4">
-                    <div className="flex flex-col gap-1.5">
-                      <label htmlFor="order-name" className="text-xs font-bold uppercase tracking-widest text-slate-500">Name</label>
-                      <Input id="order-name" type="text" placeholder="Your name" value={formData.name} onChange={(e) => setFormData({ ...formData, name: e.target.value })} className="rounded-xl border-slate-200 h-11 text-sm font-medium" required />
-                    </div>
-                    <div className="flex flex-col gap-1.5">
-                      <label htmlFor="order-email" className="text-xs font-bold uppercase tracking-widest text-slate-500">Email</label>
-                      <Input id="order-email" type="email" placeholder="you@pharmacy.com" value={formData.email} onChange={(e) => setFormData({ ...formData, email: e.target.value })} className="rounded-xl border-slate-200 h-11 text-sm font-medium" required />
-                    </div>
-                    <div className="flex flex-col gap-1.5">
-                      <label htmlFor="order-pharmacy" className="text-xs font-bold uppercase tracking-widest text-slate-500">Pharmacy Name</label>
-                      <Input id="order-pharmacy" type="text" placeholder="e.g. Queen St. Pharmacy" value={formData.pharmacy} onChange={(e) => setFormData({ ...formData, pharmacy: e.target.value })} className="rounded-xl border-slate-200 h-11 text-sm font-medium" required />
-                    </div>
-                    <div className="flex flex-col gap-1.5">
-                      <label htmlFor="order-phone" className="text-xs font-bold uppercase tracking-widest text-slate-500">
-                        Phone <span className="text-slate-400 normal-case tracking-normal font-medium">(optional)</span>
-                      </label>
-                      <Input id="order-phone" type="tel" placeholder="(647) 123-4567" value={formData.phone} onChange={(e) => setFormData({ ...formData, phone: e.target.value })} className="rounded-xl border-slate-200 h-11 text-sm font-medium" />
-                    </div>
-                    <div className="flex flex-col gap-1.5">
-                      <label htmlFor="order-notes" className="text-xs font-bold uppercase tracking-widest text-slate-500">
-                        Notes <span className="text-slate-400 normal-case tracking-normal font-medium">(optional)</span>
-                      </label>
-                      <Textarea id="order-notes" placeholder="Special requirements, custom branding details, etc." rows={3} value={formData.notes} onChange={(e) => setFormData({ ...formData, notes: e.target.value })} className="resize-none rounded-xl border-slate-200 text-sm font-medium" />
-                    </div>
-                  </div>
-
-                  <Button
-                    type="submit"
-                    size="lg"
-                    disabled={cart.length === 0}
-                    className="w-full rounded-full h-12 text-sm font-bold bg-gradient-to-r from-blue-600 to-indigo-600 text-white hover:from-blue-700 hover:to-indigo-700 shadow-lg shadow-blue-200 border-0 transition-all mt-6 disabled:opacity-50 disabled:cursor-not-allowed"
-                  >
-                    Submit Order Request
-                  </Button>
-                </form>
+                  )
+                })}
               </div>
-            </div>
+
+              {/* Floating cart bar */}
+              {cart.length > 0 && (
+                <div className="fixed bottom-6 left-1/2 -translate-x-1/2 z-40">
+                  <div className="flex items-center gap-4 bg-slate-900 text-white rounded-full px-6 py-3 shadow-2xl shadow-slate-900/40">
+                    <div className="flex items-center gap-2">
+                      <ShoppingCart className="h-5 w-5" />
+                      <span className="font-bold">{cart.reduce((sum, item) => sum + item.quantity, 0)} items</span>
+                    </div>
+                    <div className="h-5 w-px bg-white/20" />
+                    <span className="font-bold">
+                      {hasCustomProducts && getCartTotal() === 0 ? "Quote required" : `$${getCartTotal().toFixed(2)}${hasCustomProducts ? "+" : ""}`}
+                    </span>
+                    <Button
+                      onClick={() => setShowCheckout(true)}
+                      size="sm"
+                      className="rounded-full px-5 h-9 text-sm font-bold bg-white text-slate-900 hover:bg-blue-50 border-0 ml-2"
+                    >
+                      Checkout
+                    </Button>
+                  </div>
+                </div>
+              )}
+            </>
           )}
         </div>
       </main>
