@@ -453,8 +453,8 @@ export default function OrderPage() {
                         />
                       </div>
 
-                      {/* Email + Phone + Submit in one row */}
-                      <div className="flex gap-2 items-end">
+                      {/* Email + Phone row */}
+                      <div className="flex gap-2">
                         <div className="flex flex-col gap-1.5 flex-1">
                           <label className="text-[10px] font-bold uppercase tracking-widest text-white/50">Email</label>
                           <input
@@ -475,14 +475,16 @@ export default function OrderPage() {
                             className="w-full rounded-lg bg-white/10 border border-white/15 text-white placeholder:text-white/30 text-sm font-medium px-3 py-2 focus:outline-none focus:border-sky-400"
                           />
                         </div>
-                        <button
-                          type="button"
-                          onClick={() => setShowCheckout(true)}
-                          className="shrink-0 rounded-full h-10 px-5 text-sm font-bold bg-gradient-to-r from-sky-400 to-blue-500 text-white hover:from-sky-500 hover:to-blue-600 transition-all shadow-lg shadow-blue-900/40 self-end"
-                        >
-                          Add to Cart
-                        </button>
                       </div>
+
+                      {/* Submit button — full width */}
+                      <button
+                        type="button"
+                        onClick={() => setShowCheckout(true)}
+                        className="w-full rounded-full h-10 text-sm font-bold bg-gradient-to-r from-sky-400 to-blue-500 text-white hover:from-sky-500 hover:to-blue-600 transition-all shadow-lg shadow-blue-900/40"
+                      >
+                        Submit Request
+                      </button>
                     </div>
                   </div>
                 </div>
