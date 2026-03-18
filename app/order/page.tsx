@@ -480,7 +480,7 @@ export default function OrderPage() {
                           onClick={() => setShowCheckout(true)}
                           className="shrink-0 rounded-full h-10 px-5 text-sm font-bold bg-gradient-to-r from-sky-400 to-blue-500 text-white hover:from-sky-500 hover:to-blue-600 transition-all shadow-lg shadow-blue-900/40 self-end"
                         >
-                          Order Now
+                          Add to Cart
                         </button>
                       </div>
                     </div>
