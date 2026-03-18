@@ -43,14 +43,6 @@ export function Header() {
 
   return (
     <header className="fixed top-0 left-0 right-0 z-50">
-      {/* Top announcement bar */}
-      <div className="bg-gradient-to-r from-blue-700 via-blue-600 to-sky-500 text-white text-xs font-medium text-center py-2 px-4 tracking-wide">
-        Serving Ontario pharmacies — IDA, Guardian &amp; Pharmasave labels available &nbsp;·&nbsp;{" "}
-        <a href="tel:+16474292677" className="underline underline-offset-2 hover:no-underline">+1 (647) 429-2677</a>
-        &nbsp;·&nbsp;
-        <a href="mailto:supplies@pharmabest.ca" className="underline underline-offset-2 hover:no-underline">supplies@pharmabest.ca</a>
-      </div>
-
       {/* Main nav - solid gradient background that stays fixed */}
       <nav className="bg-gradient-to-r from-blue-800 via-blue-700 to-indigo-800 shadow-lg shadow-blue-900/20">
         <div className="mx-auto flex max-w-7xl items-center justify-between px-6 lg:px-8 h-[72px]">

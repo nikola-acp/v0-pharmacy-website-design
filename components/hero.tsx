@@ -13,7 +13,7 @@ const highlights = [
 
 export function Hero() {
   return (
-    <section className="relative pt-[140px] overflow-hidden">
+    <section className="relative pt-[88px] overflow-hidden">
       {/* Background gradient - slightly lighter to work with solid header */}
       <div className="absolute inset-0 bg-gradient-to-b from-blue-800 via-blue-900 to-indigo-950" />
       <div
@@ -60,15 +60,16 @@ export function Hero() {
           </div>
         </div>
 
-        {/* Highlights bar - horizontal with icons, no descriptions */}
+        {/* Highlights bar - icons only, no text */}
         <div className="relative pb-12">
-          <div className="flex flex-wrap justify-center gap-x-10 gap-y-4">
+          <div className="flex justify-center gap-6">
             {highlights.map((item) => (
-              <div key={item.text} className="flex items-center gap-2.5 text-sm text-white/70 font-medium">
-                <div className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-white/10 border border-white/15">
-                  <item.icon className="h-3.5 w-3.5 text-sky-300" />
-                </div>
-                {item.text}
+              <div
+                key={item.text}
+                title={item.text}
+                className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-white/10 border border-white/15"
+              >
+                <item.icon className="h-4 w-4 text-sky-300" />
               </div>
             ))}
           </div>
