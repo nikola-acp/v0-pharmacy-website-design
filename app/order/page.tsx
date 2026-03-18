@@ -75,7 +75,7 @@ export default function OrderPage() {
   const [submitted, setSubmitted] = useState(false)
   const [orderId, setOrderId] = useState("")
   const [showCheckout, setShowCheckout] = useState(false)
-  const [customOrder, setCustomOrder] = useState({ description: "", size: "", quantity: "", format: "" })
+  const [customOrder, setCustomOrder] = useState({ description: "", size: "", quantity: "", format: "", email: "", phone: "" })
 
   const sortedProducts = useMemo(() => {
     const sorted = [...products]
@@ -446,20 +446,43 @@ export default function OrderPage() {
                         <label className="text-[10px] font-bold uppercase tracking-widest text-white/50">Details</label>
                         <textarea
                           placeholder="Branding, size, logo, special requirements..."
-                          rows={3}
+                          rows={2}
                           value={customOrder.description}
                           onChange={(e) => setCustomOrder({ ...customOrder, description: e.target.value })}
                           className="w-full resize-none rounded-lg bg-white/10 border border-white/15 text-white placeholder:text-white/30 text-sm font-medium px-3 py-2 focus:outline-none focus:border-sky-400"
                         />
                       </div>
 
-                      <button
-                        type="button"
-                        onClick={() => setShowCheckout(true)}
-                        className="w-full rounded-full h-10 text-sm font-bold bg-gradient-to-r from-sky-400 to-blue-500 text-white hover:from-sky-500 hover:to-blue-600 transition-all shadow-lg shadow-blue-900/40 mt-1"
-                      >
-                        Submit Request
-                      </button>
+                      {/* Email + Phone + Submit in one row */}
+                      <div className="flex gap-2 items-end">
+                        <div className="flex flex-col gap-1.5 flex-1">
+                          <label className="text-[10px] font-bold uppercase tracking-widest text-white/50">Email</label>
+                          <input
+                            type="email"
+                            placeholder="you@pharmacy.com"
+                            value={customOrder.email ?? ""}
+                            onChange={(e) => setCustomOrder({ ...customOrder, email: e.target.value })}
+                            className="w-full rounded-lg bg-white/10 border border-white/15 text-white placeholder:text-white/30 text-sm font-medium px-3 py-2 focus:outline-none focus:border-sky-400"
+                          />
+                        </div>
+                        <div className="flex flex-col gap-1.5 flex-1">
+                          <label className="text-[10px] font-bold uppercase tracking-widest text-white/50">Phone</label>
+                          <input
+                            type="tel"
+                            placeholder="(647) 000-0000"
+                            value={customOrder.phone ?? ""}
+                            onChange={(e) => setCustomOrder({ ...customOrder, phone: e.target.value })}
+                            className="w-full rounded-lg bg-white/10 border border-white/15 text-white placeholder:text-white/30 text-sm font-medium px-3 py-2 focus:outline-none focus:border-sky-400"
+                          />
+                        </div>
+                        <button
+                          type="button"
+                          onClick={() => setShowCheckout(true)}
+                          className="shrink-0 rounded-full h-10 px-5 text-sm font-bold bg-gradient-to-r from-sky-400 to-blue-500 text-white hover:from-sky-500 hover:to-blue-600 transition-all shadow-lg shadow-blue-900/40 self-end"
+                        >
+                          Order Now
+                        </button>
+                      </div>
                     </div>
                   </div>
                 </div>

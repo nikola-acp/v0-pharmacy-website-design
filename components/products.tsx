@@ -44,7 +44,7 @@ const products = [
 ]
 
 export function Products() {
-  const [customOrder, setCustomOrder] = useState({ format: "", quantity: "", description: "" })
+  const [customOrder, setCustomOrder] = useState({ format: "", quantity: "", description: "", email: "", phone: "" })
   const [submitted, setSubmitted] = useState(false)
 
   const handleCustomSubmit = (e: React.FormEvent) => {
@@ -140,7 +140,7 @@ export function Products() {
                   </div>
                   <p className="text-sm font-bold text-white">Request Submitted!</p>
                   <p className="text-xs text-white/50">We will reach out with a quote shortly.</p>
-                  <button type="button" onClick={() => { setSubmitted(false); setCustomOrder({ format: "", quantity: "", description: "" }) }} className="text-xs text-sky-400 hover:text-sky-300 underline underline-offset-2 transition-colors">Submit another</button>
+                  <button type="button" onClick={() => { setSubmitted(false); setCustomOrder({ format: "", quantity: "", description: "", email: "", phone: "" }) }} className="text-xs text-sky-400 hover:text-sky-300 underline underline-offset-2 transition-colors">Submit another</button>
                 </div>
               ) : (
                 <form onSubmit={handleCustomSubmit} className="flex flex-col gap-3">
@@ -179,19 +179,42 @@ export function Products() {
                     <label className="text-[10px] font-bold uppercase tracking-widest text-white/50">Details</label>
                     <textarea
                       placeholder="Branding, size, logo, special requirements..."
-                      rows={3}
+                      rows={2}
                       value={customOrder.description}
                       onChange={(e) => setCustomOrder({ ...customOrder, description: e.target.value })}
                       className="w-full resize-none rounded-lg bg-white/10 border border-white/15 text-white placeholder:text-white/30 text-sm font-medium px-3 py-2 focus:outline-none focus:border-sky-400"
                     />
                   </div>
 
-                  <button
-                    type="submit"
-                    className="w-full rounded-full h-10 text-sm font-bold bg-gradient-to-r from-sky-400 to-blue-500 text-white hover:from-sky-500 hover:to-blue-600 transition-all shadow-lg shadow-blue-900/40 mt-1"
-                  >
-                    Submit Request
-                  </button>
+                  {/* Email + Phone + Submit in one row */}
+                  <div className="flex gap-2 items-end">
+                    <div className="flex flex-col gap-1.5 flex-1">
+                      <label className="text-[10px] font-bold uppercase tracking-widest text-white/50">Email</label>
+                      <input
+                        type="email"
+                        placeholder="you@pharmacy.com"
+                        value={customOrder.email}
+                        onChange={(e) => setCustomOrder({ ...customOrder, email: e.target.value })}
+                        className="w-full rounded-lg bg-white/10 border border-white/15 text-white placeholder:text-white/30 text-sm font-medium px-3 py-2 focus:outline-none focus:border-sky-400"
+                      />
+                    </div>
+                    <div className="flex flex-col gap-1.5 flex-1">
+                      <label className="text-[10px] font-bold uppercase tracking-widest text-white/50">Phone</label>
+                      <input
+                        type="tel"
+                        placeholder="(647) 000-0000"
+                        value={customOrder.phone}
+                        onChange={(e) => setCustomOrder({ ...customOrder, phone: e.target.value })}
+                        className="w-full rounded-lg bg-white/10 border border-white/15 text-white placeholder:text-white/30 text-sm font-medium px-3 py-2 focus:outline-none focus:border-sky-400"
+                      />
+                    </div>
+                    <button
+                      type="submit"
+                      className="shrink-0 rounded-full h-10 px-5 text-sm font-bold bg-gradient-to-r from-sky-400 to-blue-500 text-white hover:from-sky-500 hover:to-blue-600 transition-all shadow-lg shadow-blue-900/40 self-end"
+                    >
+                      Order Now
+                    </button>
+                  </div>
                 </form>
               )}
             </div>
