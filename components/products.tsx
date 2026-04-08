@@ -106,7 +106,7 @@ export function Products() {
               {/* Promotional banner — only for Thermal Printers */}
               {product.title === "Thermal Printers" && (
                 <div className="bg-gradient-to-r from-blue-600 to-blue-700 px-4 py-2 text-center">
-                  <p className="text-white text-xs font-bold tracking-wide">Free with purchase of labels and receipts!</p>
+                  <p className="text-white text-xs font-bold tracking-wide">Free with initial purchase of labels and receipts!</p>
                 </div>
               )}
 
