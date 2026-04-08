@@ -83,7 +83,7 @@ export function Products() {
               {product.tag && (
                 <Badge
                   variant="secondary"
-                  className="absolute top-0 left-1/2 -translate-x-1/2 z-10 bg-blue-600 text-white border-0 text-xs font-bold tracking-wide px-4 py-1.5 max-w-full whitespace-normal text-center leading-tight rounded-b-lg"
+                  className="absolute top-0 left-1/2 -translate-x-1/2 z-10 bg-white text-blue-600 border-0 text-xs font-bold tracking-wide px-4 py-1.5 max-w-full whitespace-normal text-center leading-tight rounded-b-lg"
                 >
                   {product.tag}
                 </Badge>
@@ -145,7 +145,7 @@ export function Products() {
 
                 {/* Regular products — Order Now button */}
                 {product.title !== "Thermal Printers" && (
-                  <div className="mt-4 pt-4 border-t border-slate-100">
+                  <div className="mt-4 pt-4 border-t border-slate-100 flex items-center justify-between gap-4">
                     <Link
                       href={product.href}
                       target="_blank"
@@ -157,6 +157,18 @@ export function Products() {
                         <path d="M2.5 7h9m0 0L8 3.5M11.5 7L8 10.5" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"/>
                       </svg>
                     </Link>
+                    {(product.title === "Plain Thermal Labels" || product.title === "Custom Thermal Labels") && (
+                      <div className="text-right">
+                        <p className="text-xs font-bold text-slate-700">12,000 / box</p>
+                        <p className="text-xs font-bold text-slate-700">500 / roll</p>
+                      </div>
+                    )}
+                    {(product.title === "Plain Thermal Receipts" || product.title === "Custom Thermal Receipts") && (
+                      <div className="text-right">
+                        <p className="text-xs font-bold text-slate-700">24,000 / box</p>
+                        <p className="text-xs font-bold text-slate-700">1,000 / roll</p>
+                      </div>
+                    )}
                   </div>
                 )}
               </div>
