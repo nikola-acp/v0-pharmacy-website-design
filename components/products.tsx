@@ -10,21 +10,21 @@ const products = [
     title: "Plain Thermal Labels",
     description: "High-adhesion durable label rolls for prescription bottles and general pharmacy use.",
     tag: "20% more labels!",
-    image: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Plain%20Thermal%20Labels-0zsvg6D5JxzFCpDweqsvd3HswPm4Ct.jpeg",
+    image: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Plain%20Thermal%20Labels%202-4jFPAE8bzIJXnO8HIeH7QKemxATXSL.jpg",
     href: "https://pharmabest-supplies.myshopify.com",
   },
   {
     title: "Plain Thermal Receipts",
     description: "Crystal-clear thermal receipt rolls for long-lasting transaction records.",
     tag: "20% more for 10% less!",
-    image: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Plain%20Receipts-Cc0kS7gEOCPSbzYbXgt0L4ENyjRmIV.jpg",
+    image: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Plain%20Thermal%20Receipts%202-PC8QUyIMdHDiUthlaAi40fkH5XKGS6.jpg",
     href: "https://pharmabest-supplies.myshopify.com",
   },
   {
     title: "Custom Thermal Labels",
     description: "Branded labels with your pharmacy's logo, name, and contact information.",
     tag: "20% more labels!",
-    image: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Custom%20Thermal%20Labels-IVaFt1dV589Vmiw5TRMwcF15sFS0EN.jpg",
+    image: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Custom%20Thermal%20Labels-KeAAs1N6kS65p5ZFzpTdZBPfOqiMfZ.jpg",
     href: "https://pharmabest-supplies.myshopify.com",
   },
   {
@@ -83,7 +83,7 @@ export function Products() {
               {product.tag && (
                 <Badge
                   variant="secondary"
-                  className="absolute top-4 right-4 z-10 bg-blue-50 text-blue-700 border border-blue-100 text-sm font-bold tracking-wide px-3 py-2 max-w-20 whitespace-normal text-center leading-snug"
+                  className="absolute top-0 left-1/2 -translate-x-1/2 z-10 bg-blue-600 text-white border-0 text-xs font-bold tracking-wide px-4 py-1.5 max-w-full whitespace-normal text-center leading-tight rounded-b-lg"
                 >
                   {product.tag}
                 </Badge>
