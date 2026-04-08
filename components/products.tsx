@@ -148,9 +148,8 @@ export function Products() {
 
                 {/* Regular products — Order Now button */}
                 {product.title !== "Thermal Printers" && (
-                  <div className="mt-4 pt-4 border-t border-slate-100 flex flex-col gap-3">
-                    <p className="text-sm font-bold text-blue-600 text-center">{product.tag}</p>
-                    <div className="flex items-center justify-between gap-4">
+                  <div className="mt-4 pt-4 border-t border-slate-100">
+                    <div className="flex items-center justify-between gap-4 mb-3">
                       <Link
                         href={product.href}
                         target="_blank"
@@ -164,15 +163,16 @@ export function Products() {
                       </Link>
                       {(product.title === "Plain Thermal Labels" || product.title === "Custom Thermal Labels") && (
                         <div className="text-right">
-                          <p className="text-xs font-bold text-slate-700">12,000 / box</p>
+                          <p className="text-xs font-bold text-slate-500">12,000 / box</p>
                         </div>
                       )}
                       {(product.title === "Plain Thermal Receipts" || product.title === "Custom Thermal Receipts") && (
                         <div className="text-right">
-                          <p className="text-xs font-bold text-slate-700">24,000 / box</p>
+                          <p className="text-xs font-bold text-slate-500">24,000 / box</p>
                         </div>
                       )}
                     </div>
+                    <p className="text-sm font-bold text-blue-600 text-right">{product.tag}</p>
                   </div>
                 )}
               </div>
