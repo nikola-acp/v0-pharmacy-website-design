@@ -42,10 +42,10 @@ export function Hero() {
 
           <div className="mt-10 flex flex-col sm:flex-row gap-3 justify-center">
             <Button asChild size="lg" className="rounded-full px-8 h-12 text-sm font-bold bg-white text-blue-900 hover:bg-blue-50 shadow-xl shadow-blue-900/30 border-0 transition-all">
-              <Link href="/order" className="flex items-center justify-center gap-2">
+              <a href="https://pharmabest-supplies.myshopify.com" target="_blank" rel="noopener noreferrer" className="flex items-center justify-center gap-2">
                 Order Now
                 <ArrowRight className="h-4 w-4" />
-              </Link>
+              </a>
             </Button>
             <Button asChild variant="outline" size="lg" className="rounded-full px-8 h-12 text-sm font-bold border-white/20 bg-white/8 text-white hover:bg-white/15 transition-all">
               <Link href="#contact">Get a Quote</Link>

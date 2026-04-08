@@ -11,35 +11,35 @@ const products = [
     description: "High-adhesion durable label rolls for prescription bottles and general pharmacy use.",
     tag: null,
     image: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-CyXKAprfGp7MKoJXZKXeDw1M7qRrB4.png",
-    href: "/order",
+    href: "https://pharmabest-supplies.myshopify.com",
   },
   {
     title: "Plain Thermal Receipts",
     description: "Crystal-clear thermal receipt rolls for long-lasting transaction records.",
     tag: null,
     image: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-YZOxQdTt8EFDgAF1ce6vdsxIH0ZuhQ.png",
-    href: "/order",
+    href: "https://pharmabest-supplies.myshopify.com",
   },
   {
     title: "Custom Thermal Labels",
     description: "Branded labels with your pharmacy's logo, name, and contact information.",
     tag: "Most Popular",
     image: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-HsFNwQitEq1sKAWPAMG2V7WtrkGX7Z.png",
-    href: "/order",
+    href: "https://pharmabest-supplies.myshopify.com",
   },
   {
     title: "Custom Thermal Receipts",
     description: "Branded receipt rolls featuring your pharmacy logo on every transaction.",
     tag: "Most Popular",
     image: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-dLfXYCgucqqwxxUCriQqiUl1QNv8IL.png",
-    href: "/order",
+    href: "https://pharmabest-supplies.myshopify.com",
   },
   {
     title: "Thermal Printers",
     description: "Fast, reliable thermal printers built for high-volume pharmacy environments.",
     tag: "Free setup",
     image: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-6qTMTr3SaenmF1yFhAf43rJWRY9v0n.png",
-    href: "/order",
+    href: "https://pharmabest-supplies.myshopify.com",
   },
 ]
 
@@ -131,6 +131,8 @@ export function Products() {
                     </div>
                     <Link
                       href={product.href}
+                      target="_blank"
+                      rel="noopener noreferrer"
                       className="shrink-0 inline-flex items-center justify-center gap-1.5 rounded-full bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-indigo-700 text-white text-sm font-bold px-5 py-2 shadow-md shadow-blue-200 hover:shadow-blue-300 transition-all duration-200 h-10"
                     >
                       Order Now
@@ -146,6 +148,8 @@ export function Products() {
                   <div className="mt-4 pt-4 border-t border-slate-100">
                     <Link
                       href={product.href}
+                      target="_blank"
+                      rel="noopener noreferrer"
                       className="inline-flex items-center justify-center gap-1.5 rounded-full bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-indigo-700 text-white text-sm font-bold px-5 py-2 shadow-md shadow-blue-200 hover:shadow-blue-300 transition-all duration-200"
                     >
                       Order Now

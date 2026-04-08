@@ -100,10 +100,10 @@ export function Contact() {
                 size="lg"
                 className="w-full rounded-full h-11 text-sm font-bold bg-white text-blue-900 hover:bg-blue-50 shadow-lg shadow-blue-900/30 border-0 transition-all"
               >
-                <Link href="/order">
+                <a href="https://pharmabest-supplies.myshopify.com" target="_blank" rel="noopener noreferrer">
                   Order Now
                   <ArrowRight className="ml-2 h-4 w-4" />
-                </Link>
+                </a>
               </Button>
             </div>
           </div>
