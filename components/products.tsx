@@ -31,7 +31,7 @@ const products = [
     title: "Custom Thermal Receipts",
     description: "Branded receipt rolls featuring your pharmacy logo on every transaction.",
     tag: "20% more for 10% less!",
-    image: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Pharmsave%20IDA-E0xsfz7eVnHGO8DgX0uuLJph6jg1so.jpg",
+    image: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Custom%20Thermal%20Receipts-eWbQlPTysT5PostC3MFaorbXnw0soi.jpg",
     href: "https://pharmabest-supplies.myshopify.com",
   },
   {
