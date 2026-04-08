@@ -110,6 +110,13 @@ export function Products() {
                 </div>
               )}
 
+              {/* Promotional banner — only for Thermal Receipts */}
+              {(product.title === "Plain Thermal Receipts" || product.title === "Custom Thermal Receipts") && (
+                <div className="bg-gradient-to-r from-blue-600 to-blue-700 px-4 py-2 text-center">
+                  <p className="text-white text-xs font-bold tracking-wide">10% more receipts for 20% less!</p>
+                </div>
+              )}
+
               <div className="p-6 flex flex-col flex-1">
                 <h3 className="text-[15px] font-extrabold text-slate-900 mb-2 tracking-tight">{product.title}</h3>
                 <p className="text-sm text-slate-500 leading-relaxed flex-1 font-medium">{product.description}</p>
