@@ -9,35 +9,35 @@ const products = [
   {
     title: "Plain Thermal Labels",
     description: "High-adhesion durable label rolls for prescription bottles and general pharmacy use.",
-    tag: null,
+    tag: "20% more labels for the same price!",
     image: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Plain%20Thermal%20Labels-0zsvg6D5JxzFCpDweqsvd3HswPm4Ct.jpeg",
     href: "https://pharmabest-supplies.myshopify.com",
   },
   {
     title: "Plain Thermal Receipts",
     description: "Crystal-clear thermal receipt rolls for long-lasting transaction records.",
-    tag: null,
+    tag: "10% more receipts for 20% less!",
     image: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Plain%20Receipts-Cc0kS7gEOCPSbzYbXgt0L4ENyjRmIV.jpg",
     href: "https://pharmabest-supplies.myshopify.com",
   },
   {
     title: "Custom Thermal Labels",
     description: "Branded labels with your pharmacy's logo, name, and contact information.",
-    tag: "Most Popular",
+    tag: "20% more labels for the same price!",
     image: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Custom%20Thermal%20Labels-IVaFt1dV589Vmiw5TRMwcF15sFS0EN.jpg",
     href: "https://pharmabest-supplies.myshopify.com",
   },
   {
     title: "Custom Thermal Receipts",
     description: "Branded receipt rolls featuring your pharmacy logo on every transaction.",
-    tag: "Most Popular",
+    tag: "10% more receipts for 20% less!",
     image: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Pharmsave%20IDA-E0xsfz7eVnHGO8DgX0uuLJph6jg1so.jpg",
     href: "https://pharmabest-supplies.myshopify.com",
   },
   {
     title: "Thermal Printers",
     description: "Fast, reliable thermal printers built for high-volume pharmacy environments.",
-    tag: "Free setup",
+    tag: "Free with initial purchase of labels and receipts!",
     image: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Thermal%20Printer%202-5wrKPwtS9wZBFX8NLxnwGNsqHhXUpD.jpg",
     href: "https://pharmabest-supplies.myshopify.com",
   },
@@ -102,27 +102,6 @@ export function Products() {
                   <div className="flex items-center justify-center h-full bg-slate-100" />
                 )}
               </div>
-
-              {/* Promotional banner — only for Thermal Printers */}
-              {product.title === "Thermal Printers" && (
-                <div className="bg-gradient-to-r from-blue-600 to-blue-700 px-4 py-2 text-center">
-                  <p className="text-white text-xs font-bold tracking-wide">Free with initial purchase of labels and receipts!</p>
-                </div>
-              )}
-
-              {/* Promotional banner — only for Thermal Receipts */}
-              {(product.title === "Plain Thermal Receipts" || product.title === "Custom Thermal Receipts") && (
-                <div className="bg-gradient-to-r from-blue-600 to-blue-700 px-4 py-2 text-center">
-                  <p className="text-white text-xs font-bold tracking-wide">10% more receipts for 20% less!</p>
-                </div>
-              )}
-
-              {/* Promotional banner — only for Thermal Labels */}
-              {(product.title === "Plain Thermal Labels" || product.title === "Custom Thermal Labels") && (
-                <div className="bg-gradient-to-r from-blue-600 to-blue-700 px-4 py-2 text-center">
-                  <p className="text-white text-xs font-bold tracking-wide">20% more labels for the same price!</p>
-                </div>
-              )}
 
               <div className="p-6 flex flex-col flex-1">
                 <h3 className="text-[15px] font-extrabold text-slate-900 mb-2 tracking-tight">{product.title}</h3>
