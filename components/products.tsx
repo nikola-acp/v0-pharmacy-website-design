@@ -17,21 +17,21 @@ const products = [
     title: "Plain Thermal Receipts",
     description: "Crystal-clear thermal receipt rolls for long-lasting transaction records.",
     tag: null,
-    image: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-YZOxQdTt8EFDgAF1ce6vdsxIH0ZuhQ.png",
+    image: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Plain%20Receipts-Cc0kS7gEOCPSbzYbXgt0L4ENyjRmIV.jpg",
     href: "https://pharmabest-supplies.myshopify.com",
   },
   {
     title: "Custom Thermal Labels",
     description: "Branded labels with your pharmacy's logo, name, and contact information.",
     tag: "Most Popular",
-    image: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-HsFNwQitEq1sKAWPAMG2V7WtrkGX7Z.png",
+    image: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Custom%20Thermal%20Labels-IVaFt1dV589Vmiw5TRMwcF15sFS0EN.jpg",
     href: "https://pharmabest-supplies.myshopify.com",
   },
   {
     title: "Custom Thermal Receipts",
     description: "Branded receipt rolls featuring your pharmacy logo on every transaction.",
     tag: "Most Popular",
-    image: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-dLfXYCgucqqwxxUCriQqiUl1QNv8IL.png",
+    image: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Pharmsave%20IDA-E0xsfz7eVnHGO8DgX0uuLJph6jg1so.jpg",
     href: "https://pharmabest-supplies.myshopify.com",
   },
   {
@@ -90,13 +90,13 @@ export function Products() {
               )}
 
               {/* Product image */}
-              <div className="relative aspect-square bg-slate-100 overflow-hidden">
+              <div className="relative aspect-square bg-slate-50 overflow-hidden">
                 {product.image ? (
                   <Image
                     src={product.image}
                     alt={product.title}
                     fill
-                    className="object-cover group-hover:scale-105 transition-transform duration-300"
+                    className="object-contain p-4 group-hover:scale-105 transition-transform duration-300"
                   />
                 ) : (
                   <div className="flex items-center justify-center h-full bg-slate-100" />
