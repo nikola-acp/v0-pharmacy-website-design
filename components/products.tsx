@@ -129,46 +129,50 @@ export function Products() {
                         </a>
                       </div>
                     </div>
-                    <Link
-                      href={product.href}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="shrink-0 inline-flex items-center justify-center gap-1.5 rounded-full bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-indigo-700 text-white text-sm font-bold px-5 py-2 shadow-md shadow-blue-200 hover:shadow-blue-300 transition-all duration-200 h-10"
-                    >
-                      Order Now
-                      <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
-                        <path d="M2.5 7h9m0 0L8 3.5M11.5 7L8 10.5" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"/>
-                      </svg>
-                    </Link>
+                    <div className="flex flex-col gap-3 flex-1">
+                      <p className="text-sm font-bold text-blue-600 text-center">Free with initial purchase!</p>
+                      <Link
+                        href={product.href}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="shrink-0 inline-flex items-center justify-center gap-1.5 rounded-full bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-indigo-700 text-white text-sm font-bold px-5 py-2 shadow-md shadow-blue-200 hover:shadow-blue-300 transition-all duration-200 h-10"
+                      >
+                        Order Now
+                        <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
+                          <path d="M2.5 7h9m0 0L8 3.5M11.5 7L8 10.5" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"/>
+                        </svg>
+                      </Link>
+                    </div>
                   </div>
                 )}
 
                 {/* Regular products — Order Now button */}
                 {product.title !== "Thermal Printers" && (
-                  <div className="mt-4 pt-4 border-t border-slate-100 flex items-center justify-between gap-4">
-                    <Link
-                      href={product.href}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="inline-flex items-center justify-center gap-1.5 rounded-full bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-indigo-700 text-white text-sm font-bold px-5 py-2 shadow-md shadow-blue-200 hover:shadow-blue-300 transition-all duration-200"
-                    >
-                      Order Now
-                      <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
-                        <path d="M2.5 7h9m0 0L8 3.5M11.5 7L8 10.5" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"/>
-                      </svg>
-                    </Link>
-                    {(product.title === "Plain Thermal Labels" || product.title === "Custom Thermal Labels") && (
-                      <div className="text-right">
-                        <p className="text-xs font-bold text-slate-700">12,000 / box</p>
-                        <p className="text-xs font-bold text-slate-700">500 / roll</p>
-                      </div>
-                    )}
-                    {(product.title === "Plain Thermal Receipts" || product.title === "Custom Thermal Receipts") && (
-                      <div className="text-right">
-                        <p className="text-xs font-bold text-slate-700">24,000 / box</p>
-                        <p className="text-xs font-bold text-slate-700">1,000 / roll</p>
-                      </div>
-                    )}
+                  <div className="mt-4 pt-4 border-t border-slate-100 flex flex-col gap-3">
+                    <p className="text-sm font-bold text-blue-600 text-center">{product.tag}</p>
+                    <div className="flex items-center justify-between gap-4">
+                      <Link
+                        href={product.href}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-flex items-center justify-center gap-1.5 rounded-full bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-indigo-700 text-white text-sm font-bold px-5 py-2 shadow-md shadow-blue-200 hover:shadow-blue-300 transition-all duration-200"
+                      >
+                        Order Now
+                        <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
+                          <path d="M2.5 7h9m0 0L8 3.5M11.5 7L8 10.5" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"/>
+                        </svg>
+                      </Link>
+                      {(product.title === "Plain Thermal Labels" || product.title === "Custom Thermal Labels") && (
+                        <div className="text-right">
+                          <p className="text-xs font-bold text-slate-700">12,000 / box</p>
+                        </div>
+                      )}
+                      {(product.title === "Plain Thermal Receipts" || product.title === "Custom Thermal Receipts") && (
+                        <div className="text-right">
+                          <p className="text-xs font-bold text-slate-700">24,000 / box</p>
+                        </div>
+                      )}
+                    </div>
                   </div>
                 )}
               </div>
