@@ -9,35 +9,35 @@ const products = [
   {
     title: "Plain Thermal Labels",
     description: "High-adhesion durable label rolls for prescription bottles and general pharmacy use.",
-    tag: "20% more labels for the same price!",
+    tag: "20% more labels!",
     image: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Plain%20Thermal%20Labels-0zsvg6D5JxzFCpDweqsvd3HswPm4Ct.jpeg",
     href: "https://pharmabest-supplies.myshopify.com",
   },
   {
     title: "Plain Thermal Receipts",
     description: "Crystal-clear thermal receipt rolls for long-lasting transaction records.",
-    tag: "10% more receipts for 20% less!",
+    tag: "20% more for 10% less!",
     image: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Plain%20Receipts-Cc0kS7gEOCPSbzYbXgt0L4ENyjRmIV.jpg",
     href: "https://pharmabest-supplies.myshopify.com",
   },
   {
     title: "Custom Thermal Labels",
     description: "Branded labels with your pharmacy's logo, name, and contact information.",
-    tag: "20% more labels for the same price!",
+    tag: "20% more labels!",
     image: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Custom%20Thermal%20Labels-IVaFt1dV589Vmiw5TRMwcF15sFS0EN.jpg",
     href: "https://pharmabest-supplies.myshopify.com",
   },
   {
     title: "Custom Thermal Receipts",
     description: "Branded receipt rolls featuring your pharmacy logo on every transaction.",
-    tag: "10% more receipts for 20% less!",
+    tag: "20% more for 10% less!",
     image: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Pharmsave%20IDA-E0xsfz7eVnHGO8DgX0uuLJph6jg1so.jpg",
     href: "https://pharmabest-supplies.myshopify.com",
   },
   {
     title: "Thermal Printers",
     description: "Fast, reliable thermal printers built for high-volume pharmacy environments.",
-    tag: "Free with initial purchase of labels and receipts!",
+    tag: "Free with initial purchase!",
     image: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Thermal%20Printer%202-5wrKPwtS9wZBFX8NLxnwGNsqHhXUpD.jpg",
     href: "https://pharmabest-supplies.myshopify.com",
   },
@@ -83,7 +83,7 @@ export function Products() {
               {product.tag && (
                 <Badge
                   variant="secondary"
-                  className="absolute top-4 right-4 z-10 bg-blue-50 text-blue-700 border border-blue-100 text-xs font-bold tracking-wide px-3 py-2 max-w-24 whitespace-normal text-center leading-tight"
+                  className="absolute top-4 right-4 z-10 bg-blue-50 text-blue-700 border border-blue-100 text-sm font-bold tracking-wide px-3 py-2 max-w-20 whitespace-normal text-center leading-snug"
                 >
                   {product.tag}
                 </Badge>
