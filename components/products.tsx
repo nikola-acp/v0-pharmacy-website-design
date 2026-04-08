@@ -10,7 +10,7 @@ const products = [
     title: "Plain Thermal Labels",
     description: "High-adhesion durable label rolls for prescription bottles and general pharmacy use.",
     tag: null,
-    image: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-CyXKAprfGp7MKoJXZKXeDw1M7qRrB4.png",
+    image: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Plain%20Thermal%20Labels-0zsvg6D5JxzFCpDweqsvd3HswPm4Ct.jpeg",
     href: "https://pharmabest-supplies.myshopify.com",
   },
   {
@@ -38,7 +38,7 @@ const products = [
     title: "Thermal Printers",
     description: "Fast, reliable thermal printers built for high-volume pharmacy environments.",
     tag: "Free setup",
-    image: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-6qTMTr3SaenmF1yFhAf43rJWRY9v0n.png",
+    image: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Thermal%20Printer%202-5wrKPwtS9wZBFX8NLxnwGNsqHhXUpD.jpg",
     href: "https://pharmabest-supplies.myshopify.com",
   },
 ]
