@@ -1,77 +1,58 @@
 import Image from "next/image";
-import { Star, ShoppingCart, Plus } from "lucide-react";
+import { Star, ShoppingCart } from "lucide-react";
+import { fetchShopifyProducts, formatPrice, productUrl, type ShopifyProduct } from "@/lib/shopify";
 
-type Product = {
+type DisplayConfig = {
+  handle: string;
   badge: string;
-  title: string;
-  description: string;
-  image: string;
-  rating: number;
-  reviews: string;
-  price: string;
-  oldPrice?: string;
-  stat: string;
   quantity: string;
+  stat?: string;
 };
 
-const products: Product[] = [
+const DISPLAY_ORDER: DisplayConfig[] = [
   {
+    handle: "plain-thermal-labels",
     badge: "Labels",
-    title: "Plain Thermal Labels",
-    description: "High-adhesion durable label rolls for prescription bottles and general pharmacy use.",
-    image: "/product-plain-thermal-labels.jpg",
-    rating: 5,
-    reviews: "1,240+",
-    price: "$49.99",
-    stat: "20% more labels",
     quantity: "12,000 / box",
+    stat: "20% more labels",
   },
   {
+    handle: "custom-thermal-labels-qty-12-000",
     badge: "Custom",
-    title: "Custom Thermal Labels",
-    description: "Branded labels with your pharmacy's logo, name, and contact information.",
-    image: "/product-custom-thermal-labels.jpg",
-    rating: 5,
-    reviews: "560+",
-    price: "$69.99",
-    stat: "20% more labels",
     quantity: "12,000 / box",
+    stat: "20% more labels",
   },
   {
+    handle: "plain-thermal-receipts-single-box-qty-24-000",
     badge: "Receipts",
-    title: "Plain Thermal Receipts",
-    description: "Crystal-clear thermal receipt rolls for long-lasting transaction records.",
-    image: "/product-plain-thermal-receipts.jpg",
-    rating: 5,
-    reviews: "980+",
-    price: "$39.99",
-    oldPrice: "$44.99",
-    stat: "20% more for 10% less",
     quantity: "24,000 / box",
+    stat: "20% more for 10% less",
   },
   {
+    handle: "custom-thermal-receipts-qty-24-000",
     badge: "Custom",
-    title: "Custom Thermal Receipts",
-    description: "Branded receipt rolls featuring your pharmacy logo on every transaction.",
-    image: "/product-custom-thermal-receipts.jpg",
-    rating: 5,
-    reviews: "420+",
-    price: "$59.99",
-    stat: "20% more for 10% less",
     quantity: "24,000 / box",
+    stat: "20% more for 10% less",
   },
   {
+    handle: "thermal-printer",
     badge: "Hardware",
-    title: "Thermal Printers",
-    description: "Fast, reliable thermal printers built for high-volume pharmacy environments.",
-    image: "/product-thermal-printer.jpg",
-    rating: 5,
-    reviews: "310+",
-    price: "Free",
-    stat: "Free with initial purchase",
     quantity: "Per location",
+    stat: "Free with initial purchase",
   },
 ];
+
+function stripHtml(html: string) {
+  return html
+    .replace(/<[^>]+>/g, " ")
+    .replace(/\s+/g, " ")
+    .trim();
+}
+
+function shortDescription(html: string, max = 120) {
+  const text = stripHtml(html);
+  return text.length > max ? text.slice(0, max).trimEnd() + "…" : text;
+}
 
 function Stars({ count }: { count: number }) {
   return (
@@ -86,7 +67,25 @@ function Stars({ count }: { count: number }) {
   );
 }
 
-export default function FeaturedProducts() {
+export default async function FeaturedProducts() {
+  const products = await fetchShopifyProducts();
+  const byHandle = new Map<string, ShopifyProduct>(products.map((p) => [p.handle, p]));
+
+  const cards = DISPLAY_ORDER.map((cfg) => {
+    const product = byHandle.get(cfg.handle);
+    if (!product) return null;
+    const variant = product.variants[0];
+    return {
+      ...cfg,
+      title: product.title,
+      description: shortDescription(product.body_html),
+      image: product.images[0]?.src,
+      price: variant ? formatPrice(variant.price) : "—",
+      oldPrice: variant?.compare_at_price ? formatPrice(variant.compare_at_price) : null,
+      url: productUrl(product.handle),
+    };
+  }).filter((c): c is NonNullable<typeof c> => c !== null);
+
   return (
     <section id="products" className="bg-slate-50 py-24 lg:py-32">
       <div className="max-w-[1440px] mx-auto px-6 lg:px-10">
@@ -95,7 +94,7 @@ export default function FeaturedProducts() {
             <div className="section-label mb-4">Essential Supplies</div>
             <h2 className="mb-4 text-slate-900">Premium quality for every pharmacy</h2>
             <p className="text-slate-600 text-lg">
-              We provide the most trusted thermal labels and receipt rolls for IDA, Guardian, 
+              We provide the most trusted thermal labels and receipt rolls for IDA, Guardian,
               and Pharmasave locations across Ontario.
             </p>
           </div>
@@ -107,19 +106,21 @@ export default function FeaturedProducts() {
         </div>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-6">
-          {products.map((product) => (
+          {cards.map((product) => (
             <article
-              key={product.title}
+              key={product.handle}
               className="card-modern group p-4 flex flex-col"
             >
               <div className="relative aspect-square rounded-xl overflow-hidden bg-slate-100 mb-4">
-                <Image
-                  src={product.image}
-                  alt={product.title}
-                  fill
-                  className="object-cover group-hover:scale-110 transition-transform duration-700"
-                  sizes="(min-width: 1280px) 20vw, (min-width: 1024px) 33vw, 50vw"
-                />
+                {product.image && (
+                  <Image
+                    src={product.image}
+                    alt={product.title}
+                    fill
+                    className="object-cover group-hover:scale-110 transition-transform duration-700"
+                    sizes="(min-width: 1280px) 20vw, (min-width: 1024px) 33vw, 50vw"
+                  />
+                )}
                 <div className="absolute top-3 left-3">
                   <span className="px-2.5 py-1 rounded-full bg-white/90 backdrop-blur-sm shadow-sm text-[10px] font-bold text-slate-900 uppercase tracking-wider">
                     {product.badge}
@@ -128,10 +129,7 @@ export default function FeaturedProducts() {
               </div>
 
               <div className="flex items-center gap-2 mb-2">
-                <Stars count={product.rating} />
-                <span className="text-[11px] text-slate-500 font-bold">
-                  {product.reviews}
-                </span>
+                <Stars count={5} />
               </div>
 
               <h3 className="text-base font-extrabold text-slate-900 mb-1 group-hover:text-blue-600 transition-colors">
@@ -154,14 +152,16 @@ export default function FeaturedProducts() {
                         </span>
                       )}
                     </div>
-                    <div className="text-[10px] text-blue-600 font-black uppercase tracking-tight">
-                      {product.stat}
-                    </div>
+                    {product.stat && (
+                      <div className="text-[10px] text-blue-600 font-black uppercase tracking-tight">
+                        {product.stat}
+                      </div>
+                    )}
                   </div>
                 </div>
 
                 <a
-                  href="https://pharmabest-supplies.myshopify.com/"
+                  href={product.url}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="w-full btn-primary !py-2.5 !text-[13px] group/btn"
@@ -179,7 +179,7 @@ export default function FeaturedProducts() {
 
         <div className="md:hidden flex justify-center mt-12">
           <a href="#custom" className="btn-outline w-full">
-            View All Products
+            Custom Orders
           </a>
         </div>
       </div>
