@@ -1,12 +1,15 @@
 import { NextResponse } from "next/server";
 import { Resend } from "resend";
 
-const resend = new Resend(process.env.RESEND_API_KEY);
-
 const TO = "supplies@pharmabest.ca";
 const FROM = "Pharmabest Site <noreply@arthas.ai>";
 
 export async function POST(req: Request) {
+  if (!process.env.RESEND_API_KEY) {
+    return NextResponse.json({ error: "Email service is not configured." }, { status: 500 });
+  }
+  const resend = new Resend(process.env.RESEND_API_KEY);
+
   const data = await req.json();
   const pharmacyName = (data.pharmacyName || "Unknown Pharmacy").toString().trim();
 
