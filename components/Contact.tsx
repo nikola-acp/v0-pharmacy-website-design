@@ -1,11 +1,6 @@
-"use client";
-
-import { useState } from "react";
-import { Phone, Mail, MapPin, Clock, Send, MessageSquare } from "lucide-react";
+import { Phone, Mail, MapPin, Clock, Send } from "lucide-react";
 
 export default function Contact() {
-  const [tab, setTab] = useState<"general" | "tech">("general");
-
   return (
     <section id="contact" className="bg-white py-24 lg:py-32">
       <div className="max-w-[1440px] mx-auto px-6 lg:px-10">
@@ -49,37 +44,6 @@ export default function Contact() {
           {/* Right: Form */}
           <div className="lg:w-2/3">
             <div className="bg-slate-50 rounded-[40px] p-8 lg:p-12 border border-slate-100 shadow-sm">
-              <div className="mb-10">
-                <span className="block text-[11px] font-black uppercase tracking-widest text-slate-600 mb-4 ml-1">
-                  How can we help?
-                </span>
-                <div className="bg-slate-200/50 rounded-2xl p-1.5 inline-flex border border-slate-200">
-                  <button
-                    type="button"
-                    onClick={() => setTab("general")}
-                    className={`flex items-center gap-2 px-6 py-3 rounded-xl text-sm font-bold transition-all ${
-                      tab === "general"
-                        ? "bg-white text-slate-900 shadow-sm"
-                        : "text-slate-500 hover:text-slate-700"
-                    }`}
-                  >
-                    <MessageSquare className="w-4 h-4" />
-                    General Inquiry
-                  </button>
-                  <button
-                    type="button"
-                    onClick={() => setTab("tech")}
-                    className={`flex items-center gap-2 px-6 py-3 rounded-xl text-sm font-bold transition-all ${
-                      tab === "tech"
-                        ? "bg-white text-slate-900 shadow-sm"
-                        : "text-slate-500 hover:text-slate-700"
-                    }`}
-                  >
-                    Tech Support
-                  </button>
-                </div>
-              </div>
-
               <form className="space-y-6">
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   <Field label="Full Name">
@@ -118,11 +82,7 @@ export default function Contact() {
                 <Field label="Your Message">
                   <textarea
                     rows={5}
-                    placeholder={
-                      tab === "general"
-                        ? "Tell us how we can assist your pharmacy today..."
-                        : "Please describe the technical issue you're experiencing with your printer or labels..."
-                    }
+                    placeholder="Tell us how we can assist your pharmacy today..."
                     className="w-full rounded-2xl border border-slate-200 bg-white px-5 py-4 text-[15px] text-slate-900 focus:outline-none focus:ring-2 focus:ring-blue-600/10 focus:border-blue-600 transition-all resize-none"
                   />
                 </Field>

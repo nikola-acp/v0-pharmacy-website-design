@@ -27,7 +27,7 @@ export default function Header() {
   return (
     <header 
       className={`sticky top-0 z-50 transition-all duration-300 ${
-        scrolled ? "bg-[#3336c3] shadow-lg py-2" : "bg-[#3336c3] py-4"
+        scrolled ? "bg-[#3B6FE6] shadow-lg py-2" : "bg-[#3B6FE6] py-4"
       }`}
     >
       <div className="max-w-[1440px] mx-auto px-6 lg:px-10">
@@ -100,7 +100,7 @@ export default function Header() {
 
       {/* Mobile nav */}
       {mobileOpen && (
-        <div className="lg:hidden fixed inset-x-0 top-[72px] bottom-0 bg-[#3336c3] z-40 border-t border-white/10">
+        <div className="lg:hidden fixed inset-x-0 top-[72px] bottom-0 bg-[#3B6FE6] z-40 border-t border-white/10">
           <nav className="flex flex-col p-8 gap-6">
             {navLinks.map((link) => (
               <a

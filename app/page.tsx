@@ -8,7 +8,6 @@ import WhyUs from "@/components/WhyUs";
 import Testimonials from "@/components/Testimonials";
 import CustomOrder from "@/components/CustomOrder";
 import Contact from "@/components/Contact";
-import Newsletter from "@/components/Newsletter";
 import Footer from "@/components/Footer";
 
 export default function Page() {
@@ -20,12 +19,11 @@ export default function Page() {
         <Hero />
         <BenefitsMarquee />
         <TrustLogoBar />
-        <FeaturedProducts />
         <WhyUs />
-        <Testimonials />
+        <FeaturedProducts />
         <CustomOrder />
+        <Testimonials />
         <Contact />
-        <Newsletter />
       </main>
       <Footer />
     </>

@@ -35,7 +35,7 @@ const stats = [
 
 export default function WhyUs() {
   return (
-    <section id="about" className="relative bg-[#3336c3] text-white py-24 lg:py-32 overflow-hidden">
+    <section id="about" className="relative bg-[#3B6FE6] text-white py-24 lg:py-32 overflow-hidden">
       {/* Decorative background elements */}
       <div className="absolute top-0 right-0 w-[50%] h-[50%] bg-blue-500/10 blur-[120px] rounded-full -translate-y-1/2 translate-x-1/3" />
       <div className="absolute bottom-0 left-0 w-[40%] h-[40%] bg-indigo-500/10 blur-[100px] rounded-full translate-y-1/3 -translate-x-1/4" />
@@ -43,19 +43,19 @@ export default function WhyUs() {
       <div className="relative max-w-[1440px] mx-auto px-6 lg:px-10">
         <div className="flex flex-col lg:flex-row gap-16 items-start">
           <div className="lg:sticky lg:top-32 lg:w-1/3">
-            <div className="section-label !text-blue-400 mb-6">Why Pharmabest</div>
+            <div className="section-label !text-white mb-6">Why Pharmabest</div>
             <h2 className="!text-white mb-6 !leading-tight">
-              Everything your pharmacy needs, <span className="text-blue-400">all in one place</span>
+              Everything your pharmacy needs, <span className="text-white">all in one place</span>
             </h2>
-            <p className="text-blue-100/70 text-lg leading-relaxed mb-8">
-              Based in Toronto, we specialize in high-performance thermal supplies engineered 
+            <p className="text-white/90 text-lg leading-relaxed mb-8">
+              Based in Toronto, we specialize in high-performance thermal supplies engineered
               specifically for the demanding workflows of Ontario's leading pharmacies.
             </p>
-            <div className="flex flex-col gap-8 pt-8 border-t border-white/10">
+            <div className="flex flex-col gap-8 pt-8 border-t border-white/20">
               {stats.map((s) => (
                 <div key={s.value} className="flex items-center gap-6">
-                  <div className="text-4xl font-black text-blue-400">{s.value}</div>
-                  <p className="text-blue-100/60 text-sm font-bold leading-tight max-w-[160px]">
+                  <div className="text-4xl font-black text-white">{s.value}</div>
+                  <p className="text-white/85 text-sm font-bold leading-tight max-w-[160px]">
                     {s.label}
                   </p>
                 </div>
@@ -69,13 +69,13 @@ export default function WhyUs() {
                 key={f.title}
                 className="bg-white/5 border border-white/10 rounded-[32px] p-8 lg:p-10 hover:bg-white/10 hover:border-blue-400/30 transition-all duration-300 group"
               >
-                <div className="w-14 h-14 rounded-2xl bg-blue-500/20 text-blue-400 flex items-center justify-center mb-8 group-hover:scale-110 group-hover:bg-blue-500/30 transition-all duration-300">
+                <div className="w-14 h-14 rounded-2xl bg-white/15 text-white flex items-center justify-center mb-8 group-hover:scale-110 group-hover:bg-white/25 transition-all duration-300">
                   {f.icon}
                 </div>
                 <h3 className="!text-white text-xl font-bold mb-4 leading-tight">
                   {f.title}
                 </h3>
-                <p className="text-blue-100/60 text-base leading-relaxed">
+                <p className="text-white/85 text-base leading-relaxed">
                   {f.description}
                 </p>
               </div>

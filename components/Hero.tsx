@@ -63,28 +63,28 @@ export default function Hero() {
               {/* Images */}
               <div className="absolute top-[5%] left-[5%] w-[55%] aspect-square rounded-3xl overflow-hidden bg-white shadow-2xl shadow-blue-900/10 -rotate-3 transition-transform hover:rotate-0 duration-500 z-20 border border-white/50">
                 <Image
-                  src="/product-plain-thermal-labels.jpg"
-                  alt="Plain thermal labels"
+                  src="/product-thermal-printer.jpg"
+                  alt="Thermal printer"
                   fill
                   className="object-cover p-2 rounded-3xl"
                   sizes="400px"
                 />
               </div>
-              
+
               <div className="absolute bottom-[5%] right-[5%] w-[50%] aspect-square rounded-3xl overflow-hidden bg-white shadow-2xl shadow-blue-900/10 rotate-6 transition-transform hover:rotate-0 duration-500 z-10 border border-white/50">
                 <Image
-                  src="/product-thermal-printer.jpg"
-                  alt="Thermal printer"
+                  src="/product-custom-thermal-labels.jpg"
+                  alt="IDA custom thermal labels"
                   fill
                   className="object-cover p-2 rounded-3xl"
                   sizes="350px"
                 />
               </div>
-              
+
               <div className="absolute top-[20%] right-[-5%] w-[45%] aspect-square rounded-3xl overflow-hidden bg-white shadow-2xl shadow-blue-900/10 rotate-12 transition-transform hover:rotate-0 duration-500 z-0 border border-white/50 opacity-90">
                 <Image
-                  src="/product-custom-thermal-labels.jpg"
-                  alt="Custom thermal labels"
+                  src="/product-plain-thermal-labels.jpg"
+                  alt="Plain thermal labels"
                   fill
                   className="object-cover p-2 rounded-3xl"
                   sizes="300px"
@@ -95,7 +95,6 @@ export default function Hero() {
               <div className="absolute top-0 right-10 bg-blue-600 text-white w-24 h-24 rounded-full flex flex-col items-center justify-center text-center shadow-xl shadow-blue-600/30 rotate-12 z-30 border-4 border-white">
                 <span className="text-[11px] font-black uppercase tracking-tighter leading-tight">Save</span>
                 <span className="text-3xl font-black leading-none">20%</span>
-                <span className="text-[9px] font-bold opacity-80 mt-0.5">More Value</span>
               </div>
             </div>
           </div>
