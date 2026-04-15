@@ -26,7 +26,7 @@ export type ShopifyProduct = {
 
 export async function fetchShopifyProducts(): Promise<ShopifyProduct[]> {
   const res = await fetch(`https://${STORE_DOMAIN}/products.json?limit=250`, {
-    next: { revalidate: 3600 },
+    next: { revalidate: 300 },
   });
   if (!res.ok) throw new Error(`Shopify fetch failed: ${res.status}`);
   const data = (await res.json()) as { products: ShopifyProduct[] };
