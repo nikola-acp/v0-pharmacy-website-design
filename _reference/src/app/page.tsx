@@ -3,6 +3,7 @@ import Header from "@/components/Header";
 import Hero from "@/components/Hero";
 import BenefitsMarquee from "@/components/BenefitsMarquee";
 import TrustLogoBar from "@/components/TrustLogoBar";
+import ShopByCategory from "@/components/ShopByCategory";
 import FeaturedProducts from "@/components/FeaturedProducts";
 import WhyUs from "@/components/WhyUs";
 import Testimonials from "@/components/Testimonials";
@@ -20,6 +21,7 @@ export default function Page() {
         <Hero />
         <BenefitsMarquee />
         <TrustLogoBar />
+        <ShopByCategory />
         <FeaturedProducts />
         <WhyUs />
         <Testimonials />

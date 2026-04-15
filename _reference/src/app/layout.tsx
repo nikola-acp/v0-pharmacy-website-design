@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { Plus_Jakarta_Sans } from "next/font/google";
-import "../styles/globals.css";
+import "./globals.css";
 
 const plusJakarta = Plus_Jakarta_Sans({
   variable: "--font-plus-jakarta",
@@ -9,20 +9,9 @@ const plusJakarta = Plus_Jakarta_Sans({
 });
 
 export const metadata: Metadata = {
-  title: "Pharmabest Supplies | Pharmacy Thermal Labels, Receipts & Printers — Ontario",
+  title: "Pharmabest Supplies — Premium Pharmacy Thermal Labels, Receipts & Printers",
   description:
     "Pharmabest Supplies provides high-quality thermal labels, receipt rolls, thermal printers, and accessories to pharmacies across Ontario. Best price guaranteed, fast shipping, free tech support.",
-  keywords: [
-    "pharmacy supplies",
-    "thermal labels",
-    "thermal printers",
-    "thermal receipt rolls",
-    "custom pharmacy labels",
-    "IDA labels",
-    "Pharmasave labels",
-    "Toronto",
-    "Ontario",
-  ],
 };
 
 export default function RootLayout({

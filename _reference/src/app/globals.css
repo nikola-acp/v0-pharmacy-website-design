@@ -1,0 +1,200 @@
+@import "tailwindcss";
+
+:root {
+  --background: #ffffff;
+  --foreground: #202324;
+
+  /* Perfect Keto inspired design tokens */
+  --color-primary: #00BA74;
+  --color-primary-dark: #008352;
+  --color-dark: #1F1F1F;
+  --color-text: #202324;
+  --color-text-secondary: #34393A;
+  --color-text-muted: #545C5F;
+  --color-text-placeholder: #98A1A4;
+  --color-sale: #D24D3E;
+  --color-bg-gray: #F3F4F6;
+  --color-bg-mint: #F3F6F4;
+
+  /* Pastel category colors */
+  --color-pastel-green: #B7EFC2;
+  --color-pastel-blue: #BBE1EE;
+  --color-pastel-yellow: #FFF5AD;
+  --color-pastel-pink: #FFD9D0;
+  --color-pastel-peach: #FEF1E1;
+  --color-hero-blue: #BFE0F6;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+
+  --color-brand: #00BA74;
+  --color-brand-dark: #008352;
+  --color-ink: #1F1F1F;
+  --color-body-text: #202324;
+  --color-body-muted: #545C5F;
+  --color-sale: #D24D3E;
+
+  --color-pastel-green: #B7EFC2;
+  --color-pastel-blue: #BBE1EE;
+  --color-pastel-yellow: #FFF5AD;
+  --color-pastel-pink: #FFD9D0;
+  --color-pastel-peach: #FEF1E1;
+  --color-hero-blue: #BFE0F6;
+  --color-bg-soft: #F3F4F6;
+  --color-bg-mint: #F3F6F4;
+
+  --font-sans: var(--font-plus-jakarta), "GT Walsheim", system-ui, sans-serif;
+}
+
+body {
+  background: var(--background);
+  color: var(--color-text);
+  font-family: var(--font-plus-jakarta), "GT Walsheim", system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Perfect Keto-style heading scale */
+h1 {
+  font-size: clamp(2.5rem, 5.5vw, 3.75rem); /* up to 60px */
+  font-weight: 700;
+  line-height: 1.06;
+  letter-spacing: -0.01em;
+  color: var(--color-text);
+}
+
+h2 {
+  font-size: clamp(2rem, 4vw, 2.75rem); /* up to 44px */
+  font-weight: 700;
+  line-height: 1.1;
+  letter-spacing: -0.01em;
+  color: var(--color-text);
+}
+
+h3 {
+  font-size: 1.125rem; /* 18px */
+  font-weight: 600;
+  line-height: 1.56;
+  color: var(--color-text);
+}
+
+h4 {
+  font-size: 1.25rem; /* 20px */
+  font-weight: 500;
+  line-height: 1.2;
+  color: var(--color-text);
+}
+
+/* Section label utility — small uppercase label text */
+.section-label {
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--color-primary-dark);
+}
+
+/* Primary dark pill button */
+.btn-pill {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  background: #1F1F1F;
+  color: #ffffff;
+  padding: 14px 27px;
+  border-radius: 9999px;
+  font-size: 1rem;
+  font-weight: 800;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  border: 2px solid transparent;
+  transition: all 0.2s ease;
+  cursor: pointer;
+}
+.btn-pill:hover {
+  background: #000000;
+  transform: translateY(-1px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+}
+
+/* Outline pill button */
+.btn-pill-outline {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  background: #ffffff;
+  color: #1F1F1F;
+  padding: 14px 27px;
+  border-radius: 9999px;
+  font-size: 1rem;
+  font-weight: 800;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  border: 2px solid #1F1F1F;
+  transition: all 0.2s ease;
+  cursor: pointer;
+}
+.btn-pill-outline:hover {
+  background: #1F1F1F;
+  color: #ffffff;
+}
+
+/* Green accent pill button */
+.btn-pill-green {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  background: #00BA74;
+  color: #ffffff;
+  padding: 14px 27px;
+  border-radius: 9999px;
+  font-size: 1rem;
+  font-weight: 800;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  border: 2px solid transparent;
+  transition: all 0.2s ease;
+  cursor: pointer;
+}
+.btn-pill-green:hover {
+  background: #008352;
+  transform: translateY(-1px);
+  box-shadow: 0 8px 20px rgba(0, 186, 116, 0.25);
+}
+
+/* Category badge */
+.badge-pill {
+  display: inline-flex;
+  align-items: center;
+  padding: 4px 12px;
+  border-radius: 30px;
+  border: 1px solid currentColor;
+  font-size: 0.625rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+/* Marquee scroll animation */
+@keyframes marquee {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+
+.marquee-track {
+  display: flex;
+  width: max-content;
+  animation: marquee 30s linear infinite;
+}
+
+.marquee-slow {
+  animation: marquee 60s linear infinite;
+}
+
+/* Hide scrollbars on carousel */
+.scroll-hide::-webkit-scrollbar { display: none; }
+.scroll-hide { -ms-overflow-style: none; scrollbar-width: none; }
