@@ -28,7 +28,7 @@ const features = [
 ];
 
 const stats = [
-  { value: "100+", label: "Ontario pharmacies trust Pharmabest" },
+  { value: "100+", label: "Ontario pharmacies trust Pharmabest Supplies" },
   { value: "24h", label: "Most orders ship within 24 hours" },
   { value: "20%", label: "More product per box than competitors" },
 ];
@@ -43,7 +43,7 @@ export default function WhyUs() {
       <div className="relative max-w-[1440px] mx-auto px-6 lg:px-10">
         <div className="flex flex-col lg:flex-row gap-16 items-start">
           <div className="lg:sticky lg:top-32 lg:w-1/3">
-            <div className="section-label !text-white mb-6">Why Pharmabest</div>
+            <div className="section-label !text-white mb-6">Why Pharmabest Supplies</div>
             <h2 className="!text-white mb-6 !leading-tight">
               Everything your pharmacy needs, <span className="text-white">all in one place</span>
             </h2>

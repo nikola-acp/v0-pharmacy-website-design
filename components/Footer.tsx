@@ -27,7 +27,7 @@ const footerCols = [
     heading: "Company",
     links: [
       { label: "Our Story", href: "#about" },
-      { label: "Why Pharmabest", href: "#about" },
+      { label: "Why Pharmabest Supplies", href: "#about" },
       { label: "Contact Us", href: "#contact" },
       { label: "Request Quote", href: "#custom" },
     ],

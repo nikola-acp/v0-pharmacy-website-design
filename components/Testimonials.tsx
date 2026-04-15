@@ -37,7 +37,7 @@ const testimonials = [
     pharmacy: "Multi-location chain, GTA",
     product: "Plain Thermal Labels",
     quote:
-      "Switched all 6 of our locations to Pharmabest. The consistency and volume pricing saved us thousands last year.",
+      "Switched all 6 of our locations to Pharmabest Supplies. The consistency and volume pricing saved us thousands last year.",
   },
 ];
 
@@ -59,7 +59,7 @@ export default function Testimonials() {
       <div className="max-w-[1440px] mx-auto px-6 lg:px-10">
         <div className="text-center mb-14">
           <p className="section-label mb-3">2,000+ Reviews</p>
-          <h2>Pharmacies love Pharmabest.</h2>
+          <h2>Pharmacies love Pharmabest Supplies.</h2>
           <div className="flex items-center justify-center gap-0.5 text-[#FFB400] mt-4">
             {Array.from({ length: 5 }).map((_, i) => (
               <svg key={i} className="w-6 h-6 fill-current" viewBox="0 0 20 20">

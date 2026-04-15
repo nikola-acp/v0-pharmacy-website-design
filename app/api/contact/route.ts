@@ -2,7 +2,7 @@ import { NextResponse } from "next/server";
 import { Resend } from "resend";
 
 const TO = "supplies@pharmabest.ca";
-const FROM = "Pharmabest Site <noreply@arthas.ai>";
+const FROM = "Pharmabest Supplies <noreply@arthas.ai>";
 
 export async function POST(req: Request) {
   if (!process.env.RESEND_API_KEY) {
