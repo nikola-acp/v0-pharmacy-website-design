@@ -101,7 +101,7 @@ export default function FeaturedProducts() {
           </div>
           <div className="hidden md:block">
             <a href="#custom" className="btn-outline">
-              View All Products
+              Custom Orders
             </a>
           </div>
         </div>

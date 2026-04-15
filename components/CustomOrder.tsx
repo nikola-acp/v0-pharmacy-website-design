@@ -1,4 +1,8 @@
+"use client";
+
 import Image from "next/image";
+import { useState } from "react";
+import { toast } from "sonner";
 import { Send, CheckCircle } from "lucide-react";
 
 const productOptions = [
@@ -11,6 +15,38 @@ const productOptions = [
 ];
 
 export default function CustomOrder() {
+  const [submitting, setSubmitting] = useState(false);
+
+  async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
+    e.preventDefault();
+    const form = e.currentTarget;
+    const fd = new FormData(form);
+    const payload = {
+      productType: fd.get("productType"),
+      quantity: fd.get("quantity"),
+      pharmacyName: fd.get("pharmacyName"),
+      email: fd.get("email"),
+      phone: fd.get("phone"),
+      details: fd.get("details"),
+    };
+
+    setSubmitting(true);
+    try {
+      const res = await fetch("/api/custom-order", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(payload),
+      });
+      if (!res.ok) throw new Error(await res.text());
+      toast.success("Quote request submitted! We'll get back to you within 1 business day.");
+      form.reset();
+    } catch {
+      toast.error("Couldn't submit your request. Please try again or email us directly.");
+    } finally {
+      setSubmitting(false);
+    }
+  }
+
   return (
     <section
       id="custom"
@@ -28,7 +64,7 @@ export default function CustomOrder() {
               Tailored solutions for your <span className="text-blue-600">unique pharmacy</span>
             </h2>
             <p className="text-slate-600 text-lg leading-relaxed mb-10 max-w-lg">
-              Whether you need unique branding or high-volume wholesale pricing, 
+              Whether you need unique branding or high-volume wholesale pricing,
               we provide customized quotes designed to scale with your business.
             </p>
 
@@ -85,12 +121,17 @@ export default function CustomOrder() {
               Request a Custom Quote
             </h3>
 
-            <form className="space-y-6">
+            <form className="space-y-6" onSubmit={handleSubmit}>
               <Field label="Product Type">
-                <select className="w-full rounded-2xl border border-slate-200 bg-slate-50 px-5 py-4 text-[15px] font-bold text-slate-900 focus:outline-none focus:ring-2 focus:ring-blue-600/20 focus:border-blue-600 transition-all appearance-none cursor-pointer">
-                  <option>Select a product category...</option>
+                <select
+                  name="productType"
+                  required
+                  defaultValue=""
+                  className="w-full rounded-2xl border border-slate-200 bg-slate-50 px-5 py-4 text-[15px] font-bold text-slate-900 focus:outline-none focus:ring-2 focus:ring-blue-600/20 focus:border-blue-600 transition-all appearance-none cursor-pointer"
+                >
+                  <option value="" disabled>Select a product category...</option>
                   {productOptions.map((opt) => (
-                    <option key={opt}>{opt}</option>
+                    <option key={opt} value={opt}>{opt}</option>
                   ))}
                 </select>
               </Field>
@@ -98,14 +139,18 @@ export default function CustomOrder() {
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
                 <Field label="Quantity (Rolls)">
                   <input
+                    name="quantity"
                     type="text"
+                    required
                     placeholder="e.g. 50"
                     className="w-full rounded-2xl border border-slate-200 bg-slate-50 px-5 py-4 text-[15px] text-slate-900 placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-blue-600/20 focus:border-blue-600 transition-all"
                   />
                 </Field>
                 <Field label="Pharmacy Name">
                   <input
+                    name="pharmacyName"
                     type="text"
+                    required
                     placeholder="e.g. Queen St. Pharmacy"
                     className="w-full rounded-2xl border border-slate-200 bg-slate-50 px-5 py-4 text-[15px] text-slate-900 placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-blue-600/20 focus:border-blue-600 transition-all"
                   />
@@ -115,13 +160,16 @@ export default function CustomOrder() {
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
                 <Field label="Email Address">
                   <input
+                    name="email"
                     type="email"
+                    required
                     placeholder="you@pharmacy.com"
                     className="w-full rounded-2xl border border-slate-200 bg-slate-50 px-5 py-4 text-[15px] text-slate-900 placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-blue-600/20 focus:border-blue-600 transition-all"
                   />
                 </Field>
                 <Field label="Phone Number">
                   <input
+                    name="phone"
                     type="tel"
                     placeholder="(647) 000-0000"
                     className="w-full rounded-2xl border border-slate-200 bg-slate-50 px-5 py-4 text-[15px] text-slate-900 placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-blue-600/20 focus:border-blue-600 transition-all"
@@ -131,6 +179,7 @@ export default function CustomOrder() {
 
               <Field label="Details & Requirements">
                 <textarea
+                  name="details"
                   rows={4}
                   placeholder="Tell us about your branding, logo, or special requirements..."
                   className="w-full rounded-2xl border border-slate-200 bg-slate-50 px-5 py-4 text-[15px] text-slate-900 placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-blue-600/20 focus:border-blue-600 transition-all resize-none"
@@ -139,9 +188,10 @@ export default function CustomOrder() {
 
               <button
                 type="submit"
-                className="w-full btn-brand !py-5 !text-base group shadow-xl shadow-blue-600/20"
+                disabled={submitting}
+                className="w-full btn-brand !py-5 !text-base group shadow-xl shadow-blue-600/20 disabled:opacity-60 disabled:cursor-not-allowed"
               >
-                Submit Custom Request
+                {submitting ? "Submitting..." : "Submit Custom Request"}
                 <Send className="w-5 h-5 transition-transform group-hover:translate-x-1 group-hover:-translate-y-1" />
               </button>
 
