@@ -4,7 +4,6 @@ import { fetchShopifyProducts, formatPrice, productUrl, type ShopifyProduct } fr
 
 type DisplayConfig = {
   handle: string;
-  badge: string;
   quantity: string;
   stat?: string;
 };
@@ -12,31 +11,26 @@ type DisplayConfig = {
 const DISPLAY_ORDER: DisplayConfig[] = [
   {
     handle: "plain-thermal-labels",
-    badge: "Labels",
     quantity: "12,000 / box",
     stat: "20% more labels",
   },
   {
     handle: "custom-thermal-labels-qty-12-000",
-    badge: "Custom",
     quantity: "12,000 / box",
     stat: "20% more labels",
   },
   {
     handle: "plain-thermal-receipts-single-box-qty-24-000",
-    badge: "Receipts",
     quantity: "24,000 / box",
     stat: "20% more for 10% less",
   },
   {
     handle: "custom-thermal-receipts-qty-24-000",
-    badge: "Custom",
     quantity: "24,000 / box",
     stat: "20% more for 10% less",
   },
   {
     handle: "thermal-printer",
-    badge: "Hardware",
     quantity: "Per location",
     stat: "Free with initial purchase",
   },
@@ -121,11 +115,6 @@ export default async function FeaturedProducts() {
                     sizes="(min-width: 1280px) 20vw, (min-width: 1024px) 33vw, 50vw"
                   />
                 )}
-                <div className="absolute top-3 left-3">
-                  <span className="px-2.5 py-1 rounded-full bg-white/90 backdrop-blur-sm shadow-sm text-[10px] font-bold text-slate-900 uppercase tracking-wider">
-                    {product.badge}
-                  </span>
-                </div>
               </div>
 
               <div className="flex items-center gap-2 mb-2">
