@@ -5,7 +5,7 @@ const benefits = [
   "20% More Product Per Box",
   "Expert Custom Branding",
   "Free Printer Program",
-  "Trusted by 70+ Locations",
+  "Trusted by Pharmacists",
 ];
 
 export default function BenefitsMarquee() {
