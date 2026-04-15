@@ -27,6 +27,17 @@ const products: Product[] = [
     quantity: "12,000 / box",
   },
   {
+    badge: "Custom",
+    title: "Custom Thermal Labels",
+    description: "Branded labels with your pharmacy's logo, name, and contact information.",
+    image: "/product-custom-thermal-labels.jpg",
+    rating: 5,
+    reviews: "560+",
+    price: "$69.99",
+    stat: "20% more labels",
+    quantity: "12,000 / box",
+  },
+  {
     badge: "Receipts",
     title: "Plain Thermal Receipts",
     description: "Crystal-clear thermal receipt rolls for long-lasting transaction records.",
@@ -37,17 +48,6 @@ const products: Product[] = [
     oldPrice: "$44.99",
     stat: "20% more for 10% less",
     quantity: "24,000 / box",
-  },
-  {
-    badge: "Custom",
-    title: "Custom Thermal Labels",
-    description: "Branded labels with your pharmacy's logo, name, and contact information.",
-    image: "/product-custom-thermal-labels.jpg",
-    rating: 5,
-    reviews: "560+",
-    price: "$69.99",
-    stat: "20% more labels",
-    quantity: "12,000 / box",
   },
   {
     badge: "Custom",
@@ -160,10 +160,15 @@ export default function FeaturedProducts() {
                   </div>
                 </div>
 
-                <button className="w-full btn-primary !py-2.5 !text-[13px] group/btn">
+                <a
+                  href="https://pharmabest-supplies.myshopify.com/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="w-full btn-primary !py-2.5 !text-[13px] group/btn"
+                >
                   Order Now
                   <ShoppingCart className="w-4 h-4 transition-transform group-hover/btn:scale-110" />
-                </button>
+                </a>
                 <div className="text-[10px] text-center text-blue-600 mt-2 font-bold">
                   {product.quantity}
                 </div>
