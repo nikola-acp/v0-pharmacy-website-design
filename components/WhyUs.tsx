@@ -54,7 +54,7 @@ export default function WhyUs() {
             <div className="flex flex-col gap-8 pt-8 border-t border-white/20">
               {stats.map((s) => (
                 <div key={s.value} className="flex items-center gap-6">
-                  <div className="text-4xl font-black text-white">{s.value}</div>
+                  <div className="text-4xl font-black text-white w-24 shrink-0">{s.value}</div>
                   <p className="text-white/85 text-sm font-bold leading-tight max-w-[160px]">
                     {s.label}
                   </p>
