@@ -81,16 +81,6 @@ export default function Hero() {
                 />
               </div>
 
-              <div className="absolute top-[20%] right-[-5%] w-[45%] aspect-square rounded-3xl overflow-hidden bg-white shadow-2xl shadow-blue-900/10 rotate-12 transition-transform hover:rotate-0 duration-500 z-0 border border-white/50 opacity-90">
-                <Image
-                  src="/product-plain-thermal-labels.jpg"
-                  alt="Plain thermal labels"
-                  fill
-                  className="object-cover p-2 rounded-3xl"
-                  sizes="300px"
-                />
-              </div>
-
               {/* Polished Floating badge */}
               <div className="absolute top-0 right-10 bg-blue-600 text-white w-24 h-24 rounded-full flex flex-col items-center justify-center text-center shadow-xl shadow-blue-600/30 rotate-12 z-30 border-4 border-white">
                 <span className="text-[11px] font-black uppercase tracking-tighter leading-tight">Save</span>

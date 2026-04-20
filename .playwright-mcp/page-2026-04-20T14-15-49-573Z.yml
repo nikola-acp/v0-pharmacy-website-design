@@ -1,0 +1,583 @@
+- generic [active] [ref=e1]:
+  - link "Shop Now" [ref=e3] [cursor=pointer]:
+    - /url: "#products"
+  - banner [ref=e4]:
+    - generic [ref=e6]:
+      - link "Pharmabest Supplies Pharmabest Supplies" [ref=e7] [cursor=pointer]:
+        - /url: /
+        - img "Pharmabest Supplies" [ref=e8]
+        - generic [ref=e9]:
+          - text: Pharmabest
+          - text: Supplies
+      - navigation [ref=e10]:
+        - link "Shop All" [ref=e11] [cursor=pointer]:
+          - /url: "#products"
+          - text: Shop All
+        - link "Why Us" [ref=e12] [cursor=pointer]:
+          - /url: "#about"
+          - text: Why Us
+        - link "Custom Orders" [ref=e13] [cursor=pointer]:
+          - /url: "#custom"
+          - text: Custom Orders
+        - link "Contact" [ref=e14] [cursor=pointer]:
+          - /url: "#contact"
+          - text: Contact
+      - generic [ref=e15]:
+        - generic [ref=e16]:
+          - link "(647) 429-2677" [ref=e17] [cursor=pointer]:
+            - /url: tel:+16474292677
+            - img [ref=e18]
+            - text: (647) 429-2677
+          - link "Email Us" [ref=e20] [cursor=pointer]:
+            - /url: mailto:supplies@pharmabest.ca
+            - img [ref=e21]
+            - text: Email Us
+        - link "Get a Quote" [ref=e24] [cursor=pointer]:
+          - /url: "#custom"
+          - text: Get a Quote
+          - img [ref=e25]
+  - main [ref=e27]:
+    - generic [ref=e32]:
+      - generic [ref=e33]:
+        - generic [ref=e34]:
+          - img [ref=e35]
+          - text: Trusted by 100+ Ontario Pharmacies
+        - heading "Your Partner for Pharmacy Supplies" [level=1] [ref=e38]
+        - paragraph [ref=e39]: Premium quality thermal labels, receipt rolls, printers, and accessories. Lowest prices, fast Ontario-wide delivery, and dedicated support for every pharmacy.
+        - generic [ref=e40]:
+          - link "Shop Our Products" [ref=e41] [cursor=pointer]:
+            - /url: "#products"
+            - text: Shop Our Products
+            - img [ref=e42]
+          - link "Get a Custom Quote" [ref=e44] [cursor=pointer]:
+            - /url: "#custom"
+        - generic [ref=e45]:
+          - generic [ref=e46]:
+            - generic [ref=e47]: 100+
+            - generic [ref=e48]: Ontario Pharmacies
+          - generic [ref=e49]:
+            - generic [ref=e50]: 24h
+            - generic [ref=e51]: Ships Within
+          - generic [ref=e52]:
+            - generic [ref=e53]: 20%
+            - generic [ref=e54]: More Per Box
+      - generic [ref=e56]:
+        - img "Thermal printer" [ref=e59]
+        - img "IDA custom thermal labels" [ref=e61]
+        - generic [ref=e62]:
+          - generic [ref=e63]: Save
+          - generic [ref=e64]: 20%
+    - generic [ref=e66]:
+      - generic [ref=e68]: Best Prices Guaranteed
+      - generic [ref=e71]: Free Lifetime Tech Support
+      - generic [ref=e74]: Expedited Ontario Delivery
+      - generic [ref=e77]: 20% More Product Per Box
+      - generic [ref=e80]: Expert Custom Branding
+      - generic [ref=e83]: Free Printer Program
+      - generic [ref=e86]: Trusted by Pharmacists
+      - generic [ref=e89]: Best Prices Guaranteed
+      - generic [ref=e92]: Free Lifetime Tech Support
+      - generic [ref=e95]: Expedited Ontario Delivery
+      - generic [ref=e98]: 20% More Product Per Box
+      - generic [ref=e101]: Expert Custom Branding
+      - generic [ref=e104]: Free Printer Program
+      - generic [ref=e107]: Trusted by Pharmacists
+      - generic [ref=e110]: Best Prices Guaranteed
+      - generic [ref=e113]: Free Lifetime Tech Support
+      - generic [ref=e116]: Expedited Ontario Delivery
+      - generic [ref=e119]: 20% More Product Per Box
+      - generic [ref=e122]: Expert Custom Branding
+      - generic [ref=e125]: Free Printer Program
+      - generic [ref=e128]: Trusted by Pharmacists
+    - generic [ref=e130]:
+      - paragraph [ref=e132]: Preferred supplier for leading banners
+      - generic [ref=e136]:
+        - img "Guardian" [ref=e139]
+        - img "Pharmasave" [ref=e142]
+        - img "I.D.A." [ref=e145]
+        - img "Guardian" [ref=e148]
+        - img "Pharmasave" [ref=e151]
+        - img "I.D.A." [ref=e154]
+        - img "Guardian" [ref=e157]
+        - img "Pharmasave" [ref=e160]
+        - img "I.D.A." [ref=e163]
+        - img "Guardian" [ref=e166]
+        - img "Pharmasave" [ref=e169]
+        - img "I.D.A." [ref=e172]
+        - img "Guardian" [ref=e175]
+        - img "Pharmasave" [ref=e178]
+        - img "I.D.A." [ref=e181]
+        - img "Guardian" [ref=e184]
+        - img "Pharmasave" [ref=e187]
+        - img "I.D.A." [ref=e190]
+    - generic [ref=e195]:
+      - generic [ref=e196]:
+        - generic [ref=e197]: Why Pharmabest Supplies
+        - heading "Everything your pharmacy needs, all in one place" [level=2] [ref=e198]
+        - paragraph [ref=e199]: Based in Toronto, we specialize in high-performance thermal supplies engineered specifically for the demanding workflows of Ontario's leading pharmacies.
+        - generic [ref=e200]:
+          - generic [ref=e201]:
+            - generic [ref=e202]: 100+
+            - paragraph [ref=e203]: Ontario pharmacies trust Pharmabest Supplies
+          - generic [ref=e204]:
+            - generic [ref=e205]: 24h
+            - paragraph [ref=e206]: Most orders ship within 24 hours
+          - generic [ref=e207]:
+            - generic [ref=e208]: 20%
+            - paragraph [ref=e209]: More product per box than competitors
+      - generic [ref=e210]:
+        - generic [ref=e211]:
+          - img [ref=e213]
+          - heading "Easy-Remove Labels" [level=3] [ref=e219]
+          - paragraph [ref=e220]: Our thermal labels peel cleanly with no residue — designed specifically for prescription bottles and pharmacy packaging.
+        - generic [ref=e221]:
+          - img [ref=e223]
+          - heading "Wholesale & Custom Orders" [level=3] [ref=e227]
+          - paragraph [ref=e228]: Volume pricing for high-quantity orders, plus fully custom-branded labels and receipts built to your specifications.
+        - generic [ref=e229]:
+          - img [ref=e231]
+          - heading "Highest Quality Products" [level=3] [ref=e234]
+          - paragraph [ref=e235]: Premium-grade pharmacy supplies, selected for consistent quality and dependable everyday performance.
+        - generic [ref=e236]:
+          - img [ref=e238]
+          - heading "Fast Delivery Ontario-Wide" [level=3] [ref=e240]
+          - paragraph [ref=e241]: Most orders ship within 24 hours and arrive in 48 hours. Serving independent pharmacies and multi-location chains across Ontario.
+    - generic [ref=e243]:
+      - generic [ref=e244]:
+        - generic [ref=e245]: Thermal vs. Laser
+        - heading "Why Thermal Printing" [level=2] [ref=e246]
+        - paragraph [ref=e247]: A smarter, leaner print setup for today's pharmacy — lower costs, less waste, and dependable performance on every prescription.
+      - generic [ref=e248]:
+        - article [ref=e249]:
+          - generic [ref=e250]: "01"
+          - img [ref=e252]
+          - heading "Cut Printing Costs by ~40% Per Year" [level=3] [ref=e255]
+          - paragraph [ref=e256]: Switching from laser to thermal printing reduces annual printing expenses by approximately 40%, saving pharmacies thousands of dollars every year.
+        - article [ref=e257]:
+          - generic [ref=e258]: "02"
+          - img [ref=e260]
+          - heading "No Diffusers. No Ink. No Waste." [level=3] [ref=e267]
+          - paragraph [ref=e268]: Thermal printing eliminates the ongoing costs that make laser expensive — no diffuser replacements, no ink cartridges, and no wasted label sheets. Print only what you need, every time.
+        - article [ref=e269]:
+          - generic [ref=e270]: "03"
+          - img [ref=e272]
+          - heading "A Fraction of the Cost of Laser" [level=3] [ref=e274]
+          - paragraph [ref=e275]: Laser printers cost thousands of dollars to buy and even more to maintain. Thermal printers are proven reliable, far cheaper to acquire, and significantly cheaper to run over their lifetime.
+        - article [ref=e276]:
+          - generic [ref=e277]: "04"
+          - img [ref=e279]
+          - heading "Print Only What You Need" [level=3] [ref=e283]
+          - paragraph [ref=e284]: Thermal printing produces labels on demand with zero waste — one prescription, one label. No partial sheets, no discarded stock.
+      - generic [ref=e287]:
+        - generic [ref=e288]:
+          - generic [ref=e289]: Make the switch
+          - heading "Still using laser? Switch to thermal." [level=3] [ref=e290]
+          - paragraph [ref=e291]: Save your business. Save on expenses. Get a free thermal printer with minimum order — order today.
+        - generic [ref=e292]:
+          - link "Get a Quote" [ref=e293] [cursor=pointer]:
+            - /url: "#custom"
+            - text: Get a Quote
+            - img [ref=e294]
+          - link "Shop Printers" [ref=e296] [cursor=pointer]:
+            - /url: "#products"
+    - generic [ref=e298]:
+      - generic [ref=e299]:
+        - generic [ref=e300]:
+          - generic [ref=e301]: Essential Supplies
+          - heading "Premium quality for every pharmacy" [level=2] [ref=e302]
+          - paragraph [ref=e303]: We provide the most trusted thermal labels and receipt rolls for IDA, Guardian, and Pharmasave locations across Ontario.
+        - link "Custom Orders" [ref=e305] [cursor=pointer]:
+          - /url: "#custom"
+      - generic [ref=e306]:
+        - article [ref=e307]:
+          - img "Plain Thermal Labels" [ref=e309]
+          - generic [ref=e311]:
+            - img [ref=e312]
+            - img [ref=e314]
+            - img [ref=e316]
+            - img [ref=e318]
+            - img [ref=e320]
+          - heading "Plain Thermal Labels" [level=3] [ref=e322]
+          - paragraph [ref=e323]: High-adhesion durable label rolls for prescription bottles and general pharmacy use. 12,000 labels per box 500 labels pe…
+          - generic [ref=e324]:
+            - generic [ref=e326]:
+              - generic [ref=e328]: $233.58
+              - generic [ref=e329]: 20% more labels
+            - link "Order Now" [ref=e330] [cursor=pointer]:
+              - /url: https://pharmabest-supplies.myshopify.com/products/plain-thermal-labels
+              - text: Order Now
+              - img [ref=e331]
+            - generic [ref=e335]: 12,000 / box
+        - article [ref=e336]:
+          - img "Custom Thermal Labels" [ref=e338]
+          - generic [ref=e340]:
+            - img [ref=e341]
+            - img [ref=e343]
+            - img [ref=e345]
+            - img [ref=e347]
+            - img [ref=e349]
+          - heading "Custom Thermal Labels" [level=3] [ref=e351]
+          - paragraph [ref=e352]: Branded labels with your pharmacy's logo, name, and contact information. Used by Guardian, IDA, Pharmasave, and more! 12…
+          - generic [ref=e353]:
+            - generic [ref=e355]:
+              - generic [ref=e357]: $240.00
+              - generic [ref=e358]: 20% more labels
+            - link "Order Now" [ref=e359] [cursor=pointer]:
+              - /url: https://pharmabest-supplies.myshopify.com/products/custom-thermal-labels-qty-12-000
+              - text: Order Now
+              - img [ref=e360]
+            - generic [ref=e364]: 12,000 / box
+        - article [ref=e365]:
+          - img "Plain Thermal Receipts" [ref=e367]
+          - generic [ref=e369]:
+            - img [ref=e370]
+            - img [ref=e372]
+            - img [ref=e374]
+            - img [ref=e376]
+            - img [ref=e378]
+          - heading "Plain Thermal Receipts" [level=3] [ref=e380]
+          - paragraph [ref=e381]: Crystal-clear thermal receipt rolls for long-lasting transaction records. 24,000 receipts per box 1,000 receipts per rol…
+          - generic [ref=e382]:
+            - generic [ref=e384]:
+              - generic [ref=e386]: $206.00
+              - generic [ref=e387]: 20% more for 10% less
+            - link "Order Now" [ref=e388] [cursor=pointer]:
+              - /url: https://pharmabest-supplies.myshopify.com/products/plain-thermal-receipts-single-box-qty-24-000
+              - text: Order Now
+              - img [ref=e389]
+            - generic [ref=e393]: 24,000 / box
+        - article [ref=e394]:
+          - img "Custom Thermal Receipts" [ref=e396]
+          - generic [ref=e398]:
+            - img [ref=e399]
+            - img [ref=e401]
+            - img [ref=e403]
+            - img [ref=e405]
+            - img [ref=e407]
+          - heading "Custom Thermal Receipts" [level=3] [ref=e409]
+          - paragraph [ref=e410]: Branded receipt rolls featuring your pharmacy logo on every transaction. Used by Guardian, IDA, Pharmasave, and more! 24…
+          - generic [ref=e411]:
+            - generic [ref=e413]:
+              - generic [ref=e415]: $206.00
+              - generic [ref=e416]: 20% more for 10% less
+            - link "Order Now" [ref=e417] [cursor=pointer]:
+              - /url: https://pharmabest-supplies.myshopify.com/products/custom-thermal-receipts-qty-24-000
+              - text: Order Now
+              - img [ref=e418]
+            - generic [ref=e422]: 24,000 / box
+        - article [ref=e423]:
+          - img "White Thermal Printer" [ref=e425]
+          - generic [ref=e427]:
+            - img [ref=e428]
+            - img [ref=e430]
+            - img [ref=e432]
+            - img [ref=e434]
+            - img [ref=e436]
+          - heading "White Thermal Printer" [level=3] [ref=e438]
+          - paragraph [ref=e439]: Fast, reliable thermal printers built for high-volume pharmacy environments. FREE WITH INITIAL PURCHASE OF LABELS OR REC…
+          - generic [ref=e440]:
+            - generic [ref=e442]:
+              - generic [ref=e444]: $460.00
+              - generic [ref=e445]: Free with initial purchase
+            - link "Order Now" [ref=e446] [cursor=pointer]:
+              - /url: https://pharmabest-supplies.myshopify.com/products/thermal-printer
+              - text: Order Now
+              - img [ref=e447]
+            - generic [ref=e451]: Per location
+    - generic [ref=e455]:
+      - generic [ref=e456]:
+        - generic [ref=e457]: Custom Orders
+        - heading "Tailored solutions for your unique pharmacy" [level=2] [ref=e458]
+        - paragraph [ref=e459]: Whether you need unique branding or high-volume wholesale pricing, we provide customized quotes designed to scale with your business.
+        - generic [ref=e460]:
+          - generic [ref=e461]:
+            - img [ref=e463]
+            - generic [ref=e466]:
+              - heading "Response within 24 hours" [level=4] [ref=e467]
+              - paragraph [ref=e468]: Our team reviews and responds to all requests within one business day.
+          - generic [ref=e469]:
+            - img [ref=e471]
+            - generic [ref=e474]:
+              - heading "Volume-based discounts" [level=4] [ref=e475]
+              - paragraph [ref=e476]: Unlock lower per-unit pricing for high-quantity roll orders.
+        - generic [ref=e477]:
+          - img "Custom labels" [ref=e479]
+          - img "Custom receipts" [ref=e481]
+          - generic [ref=e482]: Branded For You
+      - generic [ref=e483]:
+        - heading "Request a Custom Quote" [level=3] [ref=e484]
+        - generic [ref=e485]:
+          - generic [ref=e486]:
+            - generic [ref=e487]: Product Type
+            - combobox "Product Type" [ref=e488] [cursor=pointer]:
+              - option "Select a product category..." [disabled] [selected]
+              - option "Plain Thermal Labels"
+              - option "Plain Thermal Receipts"
+              - option "Custom Thermal Labels"
+              - option "Custom Thermal Receipts"
+              - option "Thermal Printer"
+              - option "Other (Please specify)"
+          - generic [ref=e489]:
+            - generic [ref=e490]:
+              - generic [ref=e491]: Quantity (Rolls)
+              - textbox "Quantity (Rolls)" [ref=e492]:
+                - /placeholder: e.g. 50
+            - generic [ref=e493]:
+              - generic [ref=e494]: Pharmacy Name
+              - textbox "Pharmacy Name" [ref=e495]:
+                - /placeholder: e.g. Queen St. Pharmacy
+          - generic [ref=e496]:
+            - generic [ref=e497]:
+              - generic [ref=e498]: Email Address
+              - textbox "Email Address" [ref=e499]:
+                - /placeholder: you@pharmacy.com
+            - generic [ref=e500]:
+              - generic [ref=e501]: Phone Number
+              - textbox "Phone Number" [ref=e502]:
+                - /placeholder: (647) 000-0000
+          - generic [ref=e503]:
+            - generic [ref=e504]: Details & Requirements
+            - textbox "Details & Requirements" [ref=e505]:
+              - /placeholder: Tell us about your branding, logo, or special requirements...
+          - button "Submit Custom Request" [ref=e506] [cursor=pointer]:
+            - text: Submit Custom Request
+            - img [ref=e507]
+          - paragraph [ref=e510]: Most quotes are delivered within 1 business day.
+    - generic [ref=e512]:
+      - generic [ref=e513]:
+        - paragraph [ref=e514]: 2,000+ Reviews
+        - heading "Pharmacies love Pharmabest Supplies." [level=2] [ref=e515]
+        - generic [ref=e516]:
+          - img [ref=e517]
+          - img [ref=e519]
+          - img [ref=e521]
+          - img [ref=e523]
+          - img [ref=e525]
+      - generic [ref=e528]:
+        - article [ref=e529]:
+          - generic [ref=e530]:
+            - img [ref=e531]
+            - img [ref=e533]
+            - img [ref=e535]
+            - img [ref=e537]
+            - img [ref=e539]
+          - paragraph [ref=e541]: “The custom branding looks so professional — our patients notice. And the 24-hour shipping is a lifesaver when we run low.”
+          - generic [ref=e542]:
+            - generic [ref=e543]: SM
+            - generic [ref=e544]:
+              - generic [ref=e545]: Sarah M.
+              - generic [ref=e546]: Independent Pharmacy, Toronto
+              - generic [ref=e547]: Custom Thermal Labels
+        - article [ref=e548]:
+          - generic [ref=e549]:
+            - img [ref=e550]
+            - img [ref=e552]
+            - img [ref=e554]
+            - img [ref=e556]
+            - img [ref=e558]
+          - paragraph [ref=e560]: “Best pricing we've ever had on thermal rolls, and the quality is way better than what we used to buy through our old supplier.”
+          - generic [ref=e561]:
+            - generic [ref=e562]: DK
+            - generic [ref=e563]:
+              - generic [ref=e564]: David K.
+              - generic [ref=e565]: Guardian Pharmacy, Mississauga
+              - generic [ref=e566]: Plain Thermal Receipts
+        - article [ref=e567]:
+          - generic [ref=e568]:
+            - img [ref=e569]
+            - img [ref=e571]
+            - img [ref=e573]
+            - img [ref=e575]
+            - img [ref=e577]
+          - paragraph [ref=e579]: “The free printer with our first order was a huge win. It's been rock solid for months running hundreds of labels a day.”
+          - generic [ref=e580]:
+            - generic [ref=e581]: JT
+            - generic [ref=e582]:
+              - generic [ref=e583]: Jennifer T.
+              - generic [ref=e584]: I.D.A. Pharmacy, Ottawa
+              - generic [ref=e585]: Thermal Printers
+        - article [ref=e586]:
+          - generic [ref=e587]:
+            - img [ref=e588]
+            - img [ref=e590]
+            - img [ref=e592]
+            - img [ref=e594]
+            - img [ref=e596]
+          - paragraph [ref=e598]: “Love that our pharmacy logo shows up on every receipt. Small branding touch, but it makes a real difference.”
+          - generic [ref=e599]:
+            - generic [ref=e600]: RP
+            - generic [ref=e601]:
+              - generic [ref=e602]: Raj P.
+              - generic [ref=e603]: Pharmasave, Hamilton
+              - generic [ref=e604]: Custom Thermal Receipts
+        - article [ref=e605]:
+          - generic [ref=e606]:
+            - img [ref=e607]
+            - img [ref=e609]
+            - img [ref=e611]
+            - img [ref=e613]
+            - img [ref=e615]
+          - paragraph [ref=e617]: “Switched all 6 of our locations to Pharmabest Supplies. The consistency and volume pricing saved us thousands last year.”
+          - generic [ref=e618]:
+            - generic [ref=e619]: LC
+            - generic [ref=e620]:
+              - generic [ref=e621]: Linda C.
+              - generic [ref=e622]: Multi-location chain, GTA
+              - generic [ref=e623]: Plain Thermal Labels
+    - generic [ref=e626]:
+      - generic [ref=e627]:
+        - generic [ref=e628]: Contact Us
+        - heading "Let's find the right solution for your pharmacy" [level=2] [ref=e629]
+        - paragraph [ref=e630]: Whether you need products, custom pricing, or technical support — we respond within one business day.
+        - generic [ref=e631]:
+          - link "Call Us +1 (647) 429-2677" [ref=e632] [cursor=pointer]:
+            - /url: tel:+16474292677
+            - generic [ref=e633]:
+              - img [ref=e635]
+              - generic [ref=e637]:
+                - generic [ref=e638]: Call Us
+                - generic [ref=e639]: +1 (647) 429-2677
+          - link "Email Support supplies@pharmabest.ca" [ref=e640] [cursor=pointer]:
+            - /url: mailto:supplies@pharmabest.ca
+            - generic [ref=e641]:
+              - img [ref=e643]
+              - generic [ref=e646]:
+                - generic [ref=e647]: Email Support
+                - generic [ref=e648]: supplies@pharmabest.ca
+          - generic [ref=e649]:
+            - img [ref=e651]
+            - generic [ref=e654]:
+              - generic [ref=e655]: Our Office
+              - generic [ref=e656]: Toronto, Ontario, Canada
+          - generic [ref=e657]:
+            - img [ref=e659]
+            - generic [ref=e662]:
+              - generic [ref=e663]: Business Hours
+              - generic [ref=e664]: Mon - Fri, 9 AM - 6 PM EST
+      - generic [ref=e667]:
+        - generic [ref=e668]:
+          - generic [ref=e669]:
+            - generic [ref=e670]: Full Name
+            - textbox "Full Name" [ref=e671]:
+              - /placeholder: John Doe
+          - generic [ref=e672]:
+            - generic [ref=e673]: Work Email
+            - textbox "Work Email" [ref=e674]:
+              - /placeholder: john@pharmacy.com
+        - generic [ref=e675]:
+          - generic [ref=e676]:
+            - generic [ref=e677]: Pharmacy Name
+            - textbox "Pharmacy Name" [ref=e678]:
+              - /placeholder: e.g. Queen St. Pharmacy
+          - generic [ref=e679]:
+            - generic [ref=e680]: Phone Number (Optional)
+            - textbox "Phone Number (Optional)" [ref=e681]:
+              - /placeholder: (647) 000-0000
+        - generic [ref=e682]:
+          - generic [ref=e683]: Your Message
+          - textbox "Your Message" [ref=e684]:
+            - /placeholder: Tell us how we can assist your pharmacy today...
+        - button "Send Message" [ref=e685] [cursor=pointer]:
+          - text: Send Message
+          - img [ref=e686]
+  - contentinfo [ref=e689]:
+    - generic [ref=e690]:
+      - generic [ref=e691]:
+        - generic [ref=e692]:
+          - link "Pharmabest Supplies Pharmabest Supplies" [ref=e693] [cursor=pointer]:
+            - /url: /
+            - img "Pharmabest Supplies" [ref=e694]
+            - generic [ref=e695]:
+              - text: Pharmabest
+              - text: Supplies
+          - paragraph [ref=e696]: The premier supplier of precision-engineered thermal supplies for Ontario pharmacies. Committed to quality, speed, and unbeatable value.
+          - generic [ref=e697]:
+            - link "+1 (647) 429-2677" [ref=e698] [cursor=pointer]:
+              - /url: tel:+16474292677
+              - img [ref=e700]
+              - generic [ref=e702]: +1 (647) 429-2677
+            - link "supplies@pharmabest.ca" [ref=e703] [cursor=pointer]:
+              - /url: mailto:supplies@pharmabest.ca
+              - img [ref=e705]
+              - generic [ref=e708]: supplies@pharmabest.ca
+            - generic [ref=e709]:
+              - img [ref=e711]
+              - generic [ref=e714]: Toronto, Ontario, Canada
+        - generic [ref=e716]:
+          - generic [ref=e717]:
+            - heading "Shop" [level=3] [ref=e718]
+            - list [ref=e719]:
+              - listitem [ref=e720]:
+                - link "Plain Thermal Labels" [ref=e721] [cursor=pointer]:
+                  - /url: "#products"
+              - listitem [ref=e722]:
+                - link "Plain Thermal Receipts" [ref=e723] [cursor=pointer]:
+                  - /url: "#products"
+              - listitem [ref=e724]:
+                - link "Custom Thermal Labels" [ref=e725] [cursor=pointer]:
+                  - /url: "#products"
+              - listitem [ref=e726]:
+                - link "Custom Thermal Receipts" [ref=e727] [cursor=pointer]:
+                  - /url: "#products"
+              - listitem [ref=e728]:
+                - link "Thermal Printers" [ref=e729] [cursor=pointer]:
+                  - /url: "#products"
+              - listitem [ref=e730]:
+                - link "Shop All" [ref=e731] [cursor=pointer]:
+                  - /url: "#products"
+          - generic [ref=e732]:
+            - heading "Support" [level=3] [ref=e733]
+            - list [ref=e734]:
+              - listitem [ref=e735]:
+                - link "Product Guide" [ref=e736] [cursor=pointer]:
+                  - /url: "#products"
+              - listitem [ref=e737]:
+                - link "Label Sizing Help" [ref=e738] [cursor=pointer]:
+                  - /url: "#contact"
+              - listitem [ref=e739]:
+                - link "Custom Branding" [ref=e740] [cursor=pointer]:
+                  - /url: "#custom"
+              - listitem [ref=e741]:
+                - link "Ordering FAQ" [ref=e742] [cursor=pointer]:
+                  - /url: "#contact"
+          - generic [ref=e743]:
+            - heading "Company" [level=3] [ref=e744]
+            - list [ref=e745]:
+              - listitem [ref=e746]:
+                - link "Our Story" [ref=e747] [cursor=pointer]:
+                  - /url: "#about"
+              - listitem [ref=e748]:
+                - link "Why Pharmabest Supplies" [ref=e749] [cursor=pointer]:
+                  - /url: "#about"
+              - listitem [ref=e750]:
+                - link "Contact Us" [ref=e751] [cursor=pointer]:
+                  - /url: "#contact"
+              - listitem [ref=e752]:
+                - link "Request Quote" [ref=e753] [cursor=pointer]:
+                  - /url: "#custom"
+      - generic [ref=e754]:
+        - generic [ref=e755]:
+          - paragraph [ref=e756]: © 2026 Pharmabest Supplies Inc. All rights reserved.
+          - generic [ref=e757]:
+            - link "Privacy" [ref=e758] [cursor=pointer]:
+              - /url: "#"
+            - link "Terms" [ref=e759] [cursor=pointer]:
+              - /url: "#"
+        - generic [ref=e760]:
+          - link [ref=e761] [cursor=pointer]:
+            - /url: "#"
+            - img [ref=e762]
+          - link [ref=e764] [cursor=pointer]:
+            - /url: "#"
+            - img [ref=e765]
+          - link [ref=e768] [cursor=pointer]:
+            - /url: "#"
+            - img [ref=e769]
+  - region "Notifications alt+T":
+    - list:
+      - listitem [ref=e789]:
+        - img [ref=e791]
+        - generic [ref=e794]: Message sent! We'll get back to you within 1 business day.
+  - button "Open Next.js Dev Tools" [ref=e778] [cursor=pointer]:
+    - img [ref=e779]
+  - alert [ref=e782]

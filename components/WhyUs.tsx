@@ -2,6 +2,12 @@ import { Package, ShieldCheck, Zap, Scissors } from "lucide-react";
 
 const features = [
   {
+    title: "Easy-Remove Labels",
+    description:
+      "Our thermal labels peel cleanly with no residue — designed specifically for prescription bottles and pharmacy packaging.",
+    icon: <Scissors className="w-6 h-6" />,
+  },
+  {
     title: "Wholesale & Custom Orders",
     description:
       "Volume pricing for high-quantity orders, plus fully custom-branded labels and receipts built to your specifications.",
@@ -10,14 +16,8 @@ const features = [
   {
     title: "Highest Quality Products",
     description:
-      "High-sensitivity thermal paper and high-adhesion labels — carefully sourced for reliability and long-lasting print quality.",
+      "Premium-grade pharmacy supplies, selected for consistent quality and dependable everyday performance.",
     icon: <ShieldCheck className="w-6 h-6" />,
-  },
-  {
-    title: "Easy-Remove Labels",
-    description:
-      "Our thermal labels peel cleanly with no residue — designed specifically for prescription bottles and pharmacy packaging.",
-    icon: <Scissors className="w-6 h-6" />,
   },
   {
     title: "Fast Delivery Ontario-Wide",
