@@ -1,40 +1,6 @@
 import Image from "next/image";
 import { Star, ShoppingCart } from "lucide-react";
-import { fetchShopifyProducts, formatPrice, productUrl, type ShopifyProduct } from "@/lib/shopify";
-
-type DisplayConfig = {
-  handle: string;
-  quantity: string;
-  stat?: string;
-};
-
-const DISPLAY_ORDER: DisplayConfig[] = [
-  {
-    handle: "plain-thermal-labels",
-    quantity: "12,000 / box",
-    stat: "20% more labels",
-  },
-  {
-    handle: "custom-thermal-labels-qty-12-000",
-    quantity: "12,000 / box",
-    stat: "20% more labels",
-  },
-  {
-    handle: "plain-thermal-receipts-single-box-qty-24-000",
-    quantity: "24,000 / box",
-    stat: "20% more for 10% less",
-  },
-  {
-    handle: "custom-thermal-receipts-qty-24-000",
-    quantity: "24,000 / box",
-    stat: "20% more for 10% less",
-  },
-  {
-    handle: "thermal-printer",
-    quantity: "Per location",
-    stat: "Free with initial purchase",
-  },
-];
+import { fetchShopifyProducts, formatPrice, productUrl } from "@/lib/shopify";
 
 function stripHtml(html: string) {
   return html
@@ -63,14 +29,11 @@ function Stars({ count }: { count: number }) {
 
 export default async function FeaturedProducts() {
   const products = await fetchShopifyProducts();
-  const byHandle = new Map<string, ShopifyProduct>(products.map((p) => [p.handle, p]));
 
-  const cards = DISPLAY_ORDER.map((cfg) => {
-    const product = byHandle.get(cfg.handle);
-    if (!product) return null;
+  const cards = products.map((product) => {
     const variant = product.variants[0];
     return {
-      ...cfg,
+      handle: product.handle,
       title: product.title,
       description: shortDescription(product.body_html),
       image: product.images[0]?.src,
@@ -78,7 +41,7 @@ export default async function FeaturedProducts() {
       oldPrice: variant?.compare_at_price ? formatPrice(variant.compare_at_price) : null,
       url: productUrl(product.handle),
     };
-  }).filter((c): c is NonNullable<typeof c> => c !== null);
+  });
 
   return (
     <section id="products" className="bg-slate-50 py-24 lg:py-32">
@@ -141,11 +104,6 @@ export default async function FeaturedProducts() {
                         </span>
                       )}
                     </div>
-                    {product.stat && (
-                      <div className="text-[10px] text-blue-600 font-black uppercase tracking-tight">
-                        {product.stat}
-                      </div>
-                    )}
                   </div>
                 </div>
 
@@ -158,9 +116,6 @@ export default async function FeaturedProducts() {
                   Order Now
                   <ShoppingCart className="w-4 h-4 transition-transform group-hover/btn:scale-110" />
                 </a>
-                <div className="text-[10px] text-center text-blue-600 mt-2 font-bold">
-                  {product.quantity}
-                </div>
               </div>
             </article>
           ))}
