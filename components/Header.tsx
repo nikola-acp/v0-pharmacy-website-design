@@ -6,10 +6,11 @@ import { useState, useEffect } from "react";
 import { Phone, Mail, Menu, X, ArrowRight } from "lucide-react";
 
 const navLinks = [
-  { label: "Shop All", href: "#products" },
-  { label: "Why Us", href: "#about" },
-  { label: "Custom Orders", href: "#custom" },
-  { label: "Contact", href: "#contact" },
+  { label: "Shop All", href: "/#products" },
+  { label: "Why Us", href: "/#about" },
+  { label: "Custom Orders", href: "/#custom" },
+  { label: "Support", href: "/support" },
+  { label: "Contact", href: "/#contact" },
 ];
 
 export default function Header() {
@@ -80,7 +81,7 @@ export default function Header() {
                 Email Us
               </a>
             </div>
-            <a href="#custom" className="btn-brand !py-2.5 !px-6 !text-[13px] group">
+            <a href="/#custom" className="btn-brand !py-2.5 !px-6 !text-[13px] group">
               Get a Quote
               <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
             </a>
@@ -125,7 +126,7 @@ export default function Header() {
                 </div>
                 supplies@pharmabest.ca
               </a>
-              <a href="#custom" className="btn-brand !py-4 !text-lg w-full">
+              <a href="/#custom" className="btn-brand !py-4 !text-lg w-full">
                 Get a Quote
               </a>
             </div>
