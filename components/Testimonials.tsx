@@ -5,7 +5,7 @@ const testimonials = [
     pharmacy: "Independent Pharmacy, Toronto",
     product: "Custom Thermal Labels",
     quote:
-      "The custom branding looks so professional — our patients notice. And the 24-hour shipping is a lifesaver when we run low.",
+      "The branding looks so professional — our patients notice. And the 24-hour shipping is a lifesaver when we run low.",
   },
   {
     initials: "DK",
