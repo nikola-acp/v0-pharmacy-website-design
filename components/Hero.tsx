@@ -80,12 +80,6 @@ export default function Hero() {
                   sizes="350px"
                 />
               </div>
-
-              {/* Polished Floating badge */}
-              <div className="absolute top-0 right-10 bg-blue-600 text-white w-24 h-24 rounded-full flex flex-col items-center justify-center text-center shadow-xl shadow-blue-600/30 rotate-12 z-30 border-4 border-white">
-                <span className="text-[11px] font-black uppercase tracking-tighter leading-tight">Save</span>
-                <span className="text-3xl font-black leading-none">20%</span>
-              </div>
             </div>
           </div>
         </div>
