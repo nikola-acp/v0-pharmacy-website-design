@@ -1,25 +1,21 @@
-import Hero from "@/components/Hero";
-import BenefitsMarquee from "@/components/BenefitsMarquee";
-import TrustLogoBar from "@/components/TrustLogoBar";
-import FeaturedProducts from "@/components/FeaturedProducts";
-import WhyUs from "@/components/WhyUs";
-import WhyThermal from "@/components/WhyThermal";
-import Testimonials from "@/components/Testimonials";
-import CustomOrder from "@/components/CustomOrder";
-import Contact from "@/components/Contact";
+import { Header } from "@/components/header"
+import { Hero } from "@/components/hero"
+import { TrustedBrands } from "@/components/trusted-brands"
+import { Products } from "@/components/products"
+import { About } from "@/components/about"
+import { Contact } from "@/components/contact"
+import { Footer } from "@/components/footer"
 
-export default function Page() {
+export default function Home() {
   return (
-    <>
+    <main className="min-h-screen">
+      <Header />
       <Hero />
-      <BenefitsMarquee />
-      <TrustLogoBar />
-      <WhyUs />
-      <WhyThermal />
-      <FeaturedProducts />
-      <CustomOrder />
-      <Testimonials />
+      <TrustedBrands />
+      <Products />
+      <About />
       <Contact />
-    </>
-  );
+      <Footer />
+    </main>
+  )
 }
